@@ -16,9 +16,9 @@ degradation_CI_all <- readxl::read_xlsx("vignettes/CaseStudies/FateFactorsUpdate
 regions <- regions |>
   slice(4:regions_rows)|>
   filter(!is.na(Variable)) |>
-  #dplyr::select(Variable, Scale, SubCompart, `North America`, `Latin America`, Europe, 
-  #              `Africa & Middle East`, `Central Asia`, `Southeast Asia`, `Northern regions`, `Oceania`) |>
-  dplyr::select(Variable, Scale, SubCompart, `Southeast Asia`, `Northern regions`,`Central Asia`) |> #test with SEA and NR only
+  dplyr::select(Variable, Scale, SubCompart, `North America`, `Latin America`, `Europe`, 
+                `Africa & Middle East`, `Central Asia`, `Southeast Asia`, `Northern regions`, `Oceania`) |>
+  #dplyr::select(Variable, Scale, SubCompart, `Southeast Asia`, `Northern regions`,`Central Asia`) |> #test with SEA and NR only
   rename(varName = Variable)
 
 # Initalize World
@@ -112,8 +112,8 @@ vars_to_update = c()
 # Loop over regions
 region_names <- colnames(regions)[4:11]
 region_names <- region_names[!is.na(region_names)]
-#polymer_names <- colnames(plastic_values)[3:ncol(plastic_values)]
-polymer_names <- colnames(plastic_values)[3:11]
+polymer_names <- colnames(plastic_values)[3:ncol(plastic_values)]
+#polymer_names <- colnames(plastic_values)[3:11]
 
 #### emission compartments, volumes, SDF, etc needed for CF calculation
 sizes <- c(1,10,100,1000,5000) #D will be divided by 2
