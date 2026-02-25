@@ -1,19 +1,24 @@
+# Set up SimpleBox----------------------------------------------------------
+
+## Load libraries ----------------------------------------------------------
 library(tidyverse)
 library(openxlsx)
 library(MASS)
 library(Rmpfr)
 
-source("InstallSBoo.R")
+## Install SBoo ------------------------------------------------------------
+# Only install SBoo if it is not installed yet
+if (!dir.exists("SimpleBox")){
+  source("InstallSBoo.R")
+}
 
-setwd("SimpleBox/SBooScripts")
-
-# Read csvs
-plastic_values <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.2.polymer_list") 
-regions <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.1.regional_data") 
-trackmpd <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.5.trackmpd_input") 
+## Read in and prepare input data ------------------------------------------
+plastic_values <- read.xlsx("SI_B.xlsx", sheet = "3.2.polymer_list") 
+regions <- read.xlsx("SI_B.xlsx", sheet = "3.1.regional_data") 
+trackmpd <- read.xlsx("SI_B.xlsx", sheet = "3.5.trackmpd_input") 
 colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
-degradation_CI_all <- readxl::read_xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", 
+degradation_CI_all <- readxl::read_xlsx("SI_B.xlsx", 
                                     sheet = "3.3.polymer_data_CI")[, 1:9]
 
 #Import the data with regionalization. Some variables are left as the default input of SBoo
@@ -26,7 +31,10 @@ regions <- regions |>
   #dplyr::select(Variable, Scale, SubCompart, `Southeast Asia`, `Northern regions`,`Central Asia`) |> #test with SEA and NR only
   rename(varName = Variable)
 
-# Initalize World
+
+## Initialize World -----------------------------------------------------
+setwd("SimpleBox/SBooScripts")
+
 source("baseScripts/initWorld.R")
 
 #If Test FALSE: new version of SB, if True, then the old version (excel)
@@ -37,82 +45,79 @@ World$UpdateKaas(mergeExisting = FALSE)
 
 setup <- NULL
 
-# Change global landscape properties - make scales really small to remove them
-#In this case, the continental scale of SBoo IS USED AS THE GLOBAL -  and the regional is used as the continental
-#it is because SBoo has 3 different global regions, and a regional, which we don't need in LCIA
-#So regional(SBoo)=continental(LCIA) and continental(SBoo)=global(LCIA)
+## Rescale landscape -----------------------------------------------------
+
+# Change global landscape properties - make scales really small to remove them.
+# In this case, the continental scale of SBoo IS USED AS THE GLOBAL -  and the regional is used as the continental
+# It is because SBoo has 3 different global regions, and a regional, which we don't need in LCIA
+# So regional(SBoo)=continental(LCIA) and continental(SBoo)=global(LCIA)
+
+# The continental and regional are nested in the moderate scale. TotalArea needs to be the some of comp+nested comp.
 global_df <- data.frame(varName = c("TotalArea", "TotalArea", "TotalArea","FRACsea"), 
                         Scale = c("Arctic", "Moderate", "Tropic", "Moderate"),
                         Waarde = c(10^-20,  502268688752959+1 , 10^-20, 0.7244500823950340000000000000)) 
-#The continental and regional are nested in the moderate scale. TotalArea needs to be the some of comp+nested comp.
 
 World$mutateVars(global_df)
 World$UpdateDirty(unique(global_df$varName))
 
-#remove flows to moderate, artic, tropic
+# Remove flows to moderate, arctic, tropic
 global_df <- data.frame(varName = c("x_FromModerate2ArctWater", "x_OceanMixing2Deep", "x_OceanMixing2Sea","FRACsea"), 
-                        #fromScale = c("Moderate", "Moderate", "Tropic", "Moderate"),
                         Waarde = c(10^-20,  10^-20, 10^-20, 0.7244500823950340000000000000)) 
-#The continental and regional are nested in the moderate scale. TotalArea needs to be the sum of comp+nested comp.
 
 World$mutateVars(global_df)
 World$UpdateDirty(unique(global_df$varName))
 
-
-#remove flows to moderate, arctic, tropic
+# Remove flows to moderate, arctic, tropic
 airflow_df <- data.frame(varName = c("AirFlow", "AirFlow", "AirFlow"), 
                          Scale = c("Arctic", "Moderate", "Tropic"),
                          Waarde = c(10^-20,  10^-20, 10^-20)) 
 World$mutateVars(airflow_df)
 World$UpdateDirty(unique(airflow_df$varName))
 
-#remove flows to moderate, artic, tropic
+# Remove flows to moderate, artic, tropic
 current_df <- data.frame(varName = c("OceanCurrent"), 
-                         #fromScale = c("Arctic", "Moderate", "Tropic"),
                          Waarde = c(10^-20)) 
-#The continental and regional are nested in the moderate scale. TotalArea needs to be the some of comp+nested comp.
 
-
-#remove flows to moderate, artic, tropic
+# Remove flows to moderate, artic, tropic
 current_df <- data.frame(varName = c("x_ToModerateWater"), 
                          fromScale = c("Continental"),
                          Waarde = c(10^-20)) 
-#The continental and regional are nested in the moderate scale. TotalArea needs to be the some of comp+nested comp.
 
 World$mutateVars(current_df)
 World$UpdateDirty(unique(current_df$varName))
 
-#Set the interception in soil
+## Adjust SBoo variables  ------------------------------------------------
+
+# Set the interception in soil
 intercept_df <- data.frame(varName = c("VegInterceptFrac"), 
                            Waarde = c(0.975,0.975,0.975)) 
-#The continental and regional are nested in the moderate scale. TotalArea needs to be the some of comp+nested comp.
 
 World$mutateVars(intercept_df)
 World$UpdateDirty(unique(intercept_df$varName))
 
-#Change the drag method to Dioguardi 2018
+# Change the drag method to Dioguardi 2018
 DragMethod_df <- data.frame(varName = "DragMethod",
                             Waarde = "Bagheri")
 World$mutateVars(DragMethod_df)
 World$UpdateDirty(unique(DragMethod_df$varName))
 
+# Set the depth of all sediments and soil to 10cm, as per USEtox
 global_df <- data.frame(varName = c("VertDistance", "VertDistance", "VertDistance", "VertDistance", "VertDistance", "VertDistance"), 
                         SubCompart = c("freshwatersediment","lakesediment","marinesediment","naturalsoil","agriculturalsoil","othersoil"),
-                        #Scale = c("Continental","Regional"),
-                        Waarde = c(0.1, 0.1, 0.1, 0.1, 0.1, 0.1)) #Set the depth of all sediments and soil to 10cm, as per USEtox
+                        Waarde = c(0.1, 0.1, 0.1, 0.1, 0.1, 0.1)) 
 
 World$mutateVars(global_df)
 World$UpdateDirty(unique(global_df$varName))
 
-#Remove fragmentation
+# Remove fragmentation
 kfrag_df <- data.frame(varName = c("kfrag"), 
-                       #SubCompart = c("freshwatersediment","lakesediment","marinesediment","naturalsoil","agriculturalsoil"),
-                       #Species = c("Continental","Regional"),
                        Waarde = c(0))
 World$mutateVars(kfrag_df)
 World$UpdateDirty(unique(kfrag_df$varName))
 
 vars_to_update = c()
+
+## Set up FF variables --------------------------------------------------
 
 # Loop over regions
 region_names <- colnames(regions)[4:11]
@@ -156,7 +161,6 @@ compartment_names <- c( #fully written names
 receiving_compartments <- c("aRS","w1RS","w0RS","w2RS", "w3RS","sd1RS","sd0RS","sd2RS","s1RS","s2RS",
                             "aCS","w1CS","w0CS","w2CS", "w3CS","sd1CS","sd0CS","sd2CS","s1CS","s2CS") 
 
-
 ### fraction of species in each compartment
 FracSpe_w_marine = 0.4458 #fraction of marine species feeding in water - Saadi et al., 2025
 FracSpe_sed_marine = 1-FracSpe_w_marine #fraction of marine species feeding in the sediment - Saadi et al., 2025
@@ -176,7 +180,8 @@ tot_num_species_terr = 1600000
 list_tot_species = c(tot_num_species_marine, tot_num_species_fresh, tot_num_species_terr)
 ####
 
-#FUNCTIONS: for matrix aggregations
+## Functions for matrix aggregations ------------------------------------
+
 Xfree <- function(k_free_agg, k_free_att, k_agg_tot, k_att_tot) {
   1 / (1 + (k_free_agg / k_agg_tot) + (k_free_att / k_att_tot))
 }
@@ -188,6 +193,7 @@ Xatt <- function(k_free_agg, k_free_att, k_agg_tot, k_att_tot) {
 }
 X_list <- c("aR", "cwR","w1R","w0R","w2R", "w3R","sd1R","sd0R","sd2R","s1R","s2R",    #careful, this list contains cw (to for the X matrix)
             "aC", "cwC","w1C","w0C","w2C", "w3C","sd1C","sd0C","sd2C","s1C","s2C") 
+
 # Pre-compute only the STRUCTURE (which cells to fill)
 setup_fill_patterns <- function(first_mat, X_list) {
   comp_names <- rownames(first_mat)
@@ -288,11 +294,6 @@ process_single_matrix <- function(k_mat, setup) {
 setup <- NULL
 n_samples <- 10
 
-
-
-
-
-
 fill_X <- function(prefix) {
   free <- paste0(prefix, "S")
   agg  <- paste0(prefix, "A")
@@ -320,16 +321,13 @@ fill_X <- function(prefix) {
   )
 }
 
+# 1 Code for CFs uncertainty -----------------------------------------------
 
-
-####Code for CFs uncertainty
-# ============================================================
-# PART 1: SETUP FUNCTIONS 
-# ============================================================
+## Define functions ------------------------------------------------------
 
 SF <- 1 #Oginah et al. (2025)
 
-# 1.1 Function to generate EEF Monte Carlo samples
+### 1.1 Function to generate EEF Monte Carlo samples ---------------------
 generate_eef_samples <- function(n_samples = 1000) {
   eef_params <- list(
     EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
@@ -350,7 +348,7 @@ generate_eef_samples <- function(n_samples = 1000) {
 #call the function with n_samples
 eef_monte_carlo <- generate_eef_samples(n_samples)
 
-# 1.2 Helper function for elementary flow name
+### 1.2 Helper function for elementary flow name --------------------------
 get_elementary_flowname <- function(shape, pol, size, reg) {
   switch(shape,
          "Sphere" = paste0("Microsphere/fragment", " - ", pol, " (", size, " µm diameter), ", reg),
@@ -360,7 +358,7 @@ get_elementary_flowname <- function(shape, pol, size, reg) {
   )
 }
 
-# 1.3 Function to process ONE Monte Carlo iteration for FF and EEF
+### 1.3 Function to process ONE Monte Carlo iteration for FF and EEF ------
 process_single_iteration <- function(Masses_df, eef_iter, states, reg, pol, size, shape,
                                      emission_compartment_name, volume_compartments, areas_compartments) {
   
@@ -409,7 +407,7 @@ process_single_iteration <- function(Masses_df, eef_iter, states, reg, pol, size
   return(processed)
 }
 
-# 1.4 Function to calculate CFs for one iteration
+### 1.4 Function to calculate CFs for one iteration ----------------------
 calculate_cfs_for_iteration <- function(iter_data, SDF, SF, list_tot_species,
                                         FracSpe_wc_aqua, FracSpe_sed_aqua,
                                         FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine,
@@ -484,7 +482,7 @@ calculate_cfs_for_iteration <- function(iter_data, SDF, SF, list_tot_species,
   return(cf_results)
 }
 
-# 1.5 Function to calculate PDF·m²·year (from your original code)
+### 1.5 Function to calculate PDF·m²·year (from your original code) ------
 calculate_pdf_m2_year <- function(iter_data, SF,
                                   FracSpe_wc_aqua, FracSpe_sed_aqua,
                                   FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine) {
@@ -535,12 +533,7 @@ calculate_pdf_m2_year <- function(iter_data, SF,
   return(cf_pdf_m2)
 }
 
-
-
-######MOINTE CARLO
-# ============================================================
-# PART 2: MAIN MONTE CARLO PROCESSING FUNCTION
-# ============================================================
+# 2  Process Monte Carlo -------------------------------------------------------
 
 process_monte_carlo_combination <- function(ff_matrices_list, eef_samples, reg, pol, size, shape,
                                             emission_compartments, states, compartment_names,
@@ -674,14 +667,9 @@ process_monte_carlo_combination <- function(ff_matrices_list, eef_samples, reg, 
   ))
 }
 
+# 3 Statistics functions --------------------------------------------------
 
-
-
-# ============================================================
-# PART 3: STATISTICS FUNCTIONS
-# ============================================================
-
-# 3.1 Function to calculate FF statistics
+## 3.1 Function to calculate FF statistics ---------------------------------
 calculate_ff_statistics <- function(ff_data) {
   ff_stats <- ff_data |>
     group_by(region, polymer, size, shape, emission_compartment, Scale, SubCompart) |>
@@ -711,8 +699,7 @@ calculate_ff_statistics <- function(ff_data) {
   return(ff_stats)
 }
 
-# 3.2 Function to calculate CF statistics
-# 3.2 Function to calculate CF statistics
+## 3.2 Function to calculate CF statistics --------------------------------
 calculate_cf_statistics <- function(cf_data, cf_prefix) {
   # Extract ecosystem columns
   marine_col <- paste0(cf_prefix, "_marine")
@@ -797,9 +784,6 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
   return(stats)
 }
 
-
-
-
 # Get the names and abbreviations of all compartments
 states <- World$states$asDataFrame
 count <- 0
@@ -852,16 +836,12 @@ results_CF_end_PDF_m2_year <- data.frame()
 #                                           CF_end_PDF_m2_year = numeric()
 # )
 
-
-
 #####Loading bar
 n <- length(region_names) * length(polymer_names) * length(sizes) * length(shapes) * length(emission_compartments)
 pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
-
-
-#####TEST
+# TEST ------------------------------------------------------------------
 #Variables to test
 #reg = "Ocenia"
 reg = "Southeast Asia"
@@ -1155,11 +1135,8 @@ for(reg in region_names){
 }
 close(pb)
 
-library(openxlsx)
-
 # Path
-
-out_file <- "vignettes/CaseStudies/FateFactorsUpdate/results_FF_CF_CI_4.xlsx"
+out_file <- "results_FF_CF_CI_4.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
@@ -1186,6 +1163,3 @@ replace_sheet(wb, "results_CF_end_PDF_m2_year", results_CF_end_PDF_m2_year)
 
 # Save without deleting other sheets
 saveWorkbook(wb, out_file, overwrite = TRUE)
-
-
-
