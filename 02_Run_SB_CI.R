@@ -2,7 +2,11 @@ library(tidyverse)
 library(openxlsx)
 library(MASS)
 library(Rmpfr)
-setwd("~/Documents/GitHub/SBooScripts")
+
+source("InstallSBoo.R")
+
+setwd("SimpleBox/SBooScripts")
+
 # Read csvs
 plastic_values <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.2.polymer_list") 
 regions <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.1.regional_data") 
@@ -11,6 +15,7 @@ colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
 degradation_CI_all <- readxl::read_xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", 
                                     sheet = "3.3.polymer_data_CI")[, 1:9]
+
 #Import the data with regionalization. Some variables are left as the default input of SBoo
 #If no variable is provided in the regio sheet, the default value is kept
 regions <- regions |>
