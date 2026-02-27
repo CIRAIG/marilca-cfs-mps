@@ -1,10 +1,11 @@
 rm(list = ls())  # Removes all objects from environment
 
 library(openxlsx)
+library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-file <- "vignettes/CaseStudies/FateFactorsUpdate/results_FF_CF.xlsx"
+file <- "results_FF_CF_CI_5.xlsx"
 
 # Load workbook
 wb <- loadWorkbook(file)
@@ -154,23 +155,27 @@ for (sheet_name in names(sheets_list)) {
 # Polymer emissions weighted
 ###########
 
-# polymer weightings (as named numeric vectors)
-weighting_low_density <- c(
-  EPS = 0.00, PP = 0.37, LDPE = 0.35, PAN = 0.00, HDPE = 0.28, PS = 0.00,
-  PHA = 0.00, PA_Nylon = 0.00, PLA = 0.00, starch_blend = 0.00,
-  PBAT = 0.00, PET = 0.00, PVC = 0.00, TRWP = 0.00
+# Read data 
+weightings_data <- read_excel("SI_B.xlsx", 
+                              sheet = "4.3.polymer_emissions")
+
+# Remove rows where polymer is NA
+weightings_data <- weightings_data[!is.na(weightings_data$polymer), ]
+
+# Create vectors, replacing NA with 0
+weighting_all_density <- setNames(
+  ifelse(is.na(weightings_data$weighting_all_density), 0, weightings_data$weighting_all_density),
+  weightings_data$polymer
 )
 
-weighting_high_density <- c(
-  EPS = 0.00, PP = 0.00, LDPE = 0.00, PAN = 0.00, HDPE = 0.00, PS = 0.26,
-  PHA = 0.00, PA_Nylon = 0.00, PLA = 0.00, starch_blend = 0.00,
-  PBAT = 0.00, PET = 0.34, PVC = 0.40, TRWP = 0.00
+weighting_low_density <- setNames(
+  ifelse(is.na(weightings_data$weighting_low_density), 0, weightings_data$weighting_low_density),
+  weightings_data$polymer
 )
 
-weighting_all_density <- c(
-  EPS = 0.00, PP = 0.242, LDPE = 0.230, PAN = 0.00, HDPE = 0.188,
-  PS = 0.087, PHA = 0.00, PA_Nylon = 0.00, PLA = 0.00,
-  starch_blend = 0.00, PBAT = 0.00, PET = 0.117, PVC = 0.136, TRWP = 0.00
+weighting_high_density <- setNames(
+  ifelse(is.na(weightings_data$weighting_high_density), 0, weightings_data$weighting_high_density),
+  weightings_data$polymer
 )
 
 # default polymer patterns - use patterns to catch ALL variations
@@ -607,7 +612,7 @@ for (sheet in names(sheets_list)) {
   message("  Final row count: ", nrow(df_out))
 }
 
-file_out <- "vignettes/CaseStudies/FateFactorsUpdate/results_FF_CF_World_Default.xlsx"
+file_out <- "results_FF_CF_World_Default.xlsx"
 # save workbook after loop
 saveWorkbook(wb, file_out, overwrite = TRUE)
 
