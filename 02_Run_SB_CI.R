@@ -9,13 +9,13 @@ source("InstallSBoo.R")
 setwd("SimpleBox/SBooScripts")
 
 # Read csvs
-plastic_values <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.2.polymer_list") 
-regions <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.1.regional_data") 
-trackmpd <- read.xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", sheet = "3.5.trackmpd_input") 
+plastic_values <- read.xlsx("SI_B.xlsx", sheet = "3.2.polymer_list") 
+regions <- read.xlsx("SI_B.xlsx", sheet = "3.1.regional_data") 
+trackmpd <- read.xlsx("SI_B.xlsx", sheet = "3.5.trackmpd_input") 
 colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
-degradation_CI_all <- readxl::read_xlsx("vignettes/CaseStudies/FateFactorsUpdate/SI_B.xlsx", 
-                                    sheet = "3.3.polymer_data_CI")[, 1:9]
+degradation_CI_all <- readxl::read_xlsx("SI_B.xlsx", 
+                                        sheet = "3.3.polymer_data_CI")[, 1:9]
 
 #Import the data with regionalization. Some variables are left as the default input of SBoo
 #If no variable is provided in the regio sheet, the default value is kept
@@ -754,7 +754,7 @@ calculate_ff_statistics <- function(ff_data) {
     #              ff_mean, ff_geom_mean, ff_median, ff_sd, ff_gsd, ff_cv,
     #              ff_ll_95, ff_ul_95, ff_ll_90, ff_ul_90, n_samples)
     dplyr::select(region, polymer, size, shape, emission_compartment, receiving_compartment,
-                ff_geom_mean, ff_gsd, ff_ll_95, ff_ul_95, n_samples)
+                  ff_geom_mean, ff_gsd, ff_ll_95, ff_ul_95, n_samples)
   
   return(ff_stats)
 }
@@ -1070,7 +1070,7 @@ for(reg in region_names){
         
         if (Shortest_side > 5000 || Intermediate_side > 5000 ) {
           next  # Skip if one dimension exceeds 5000, except for microfibers, which can have length >5000um 
-                #(Scientific Coalition for an Effective Plastic Treaty). Therefore, Longest_side is not part of the check.
+          #(Scientific Coalition for an Effective Plastic Treaty). Therefore, Longest_side is not part of the check.
         } #Microfiber
         
         shape_df <- data.frame(varName = "Shape", Waarde = as.character(shape))
@@ -1111,7 +1111,7 @@ for(reg in region_names){
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
         k_detailed = World$fetchData("kaas")
         k_matrix_1 = k_matrix[[1]]
-      
+        
         # Setup on first iteration (only structure)
         if(is.null(setup)) {
           first_mat <- k_matrix[[1]]
@@ -1267,3 +1267,7 @@ replace_sheet(wb, "results_CF_end_PDF_m2_year_dyn", results_CF_end_PDF_m2_year_t
 
 # Save without deleting other sheets
 saveWorkbook(wb, out_file, overwrite = TRUE)
+
+
+
+
