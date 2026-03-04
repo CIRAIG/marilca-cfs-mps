@@ -2,4 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 /SimpleBox
+.ipynb_checkpoints/SI_Graphing-checkpoint.ipynb
