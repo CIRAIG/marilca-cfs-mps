@@ -403,7 +403,7 @@ get_elementary_flowname <- function(shape, pol, size, reg) {
   switch(shape,
          "Sphere" = paste0("Microsphere/fragment", " - ", pol, " (", size, " µm diameter), ", reg),
          "Fiber"  = paste0("Microfiber/cylinder", " - ", pol, " (", size, " µm diameter), ", reg),
-         "Film"   = paste0("Microfilm/sheet", " - ", pol, " (", size, " µm thickness), ", reg),
+         "Film"   = paste0("Microfilm", " - ", pol, " (", size, " µm thickness), ", reg),
          paste0("Micro", tolower(shape), " - ", pol, ", ", reg)
   )
 }
@@ -1117,25 +1117,28 @@ calculate_cumulative_cf_over_time <- function(mass_results, eef_samples,
   # Loop over Monte Carlo samples
   for (i in 1:n_samples) {
     mass_array <- mass_arrays[[i]]  # dim [time, comp, emit]
+    time_diffs <- c(time_years[1], diff(time_years))  # intervals from t=0 to each time point
     
-    # Compute cumulative integral (trapezoidal) for each emission compartment
     cum_mass <- array(0, dim = c(n_times, n_comps, n_emit))
+    
     for (e in 1:n_emit) {
       # Initial mass at t=0: 1 kg in emission compartment, 0 elsewhere
       mass0 <- rep(0, n_comps)
       mass0[which(comp_names == emit_comps[e])] <- 1
       
-      dt <- 1  # year
-      cum <- matrix(0, nrow = n_times, ncol = n_comps)
-      if (n_times >= 1) {
-        cum[1, ] <- (mass0 + mass_array[1, , e]) / 2 * dt
-      }
-      if (n_times >= 2) {
-        for (t in 2:n_times) {
-          cum[t, ] <- cum[t-1, ] + (mass_array[t-1, , e] + mass_array[t, , e]) / 2 * dt
+      # Loop over compartments to avoid vectorized length issues
+      for (c in 1:n_comps) {
+        # Mass over time for this compartment (including t=0)
+        mass_t <- c(mass0[c], mass_array[, c, e])  # length = n_times + 1
+        
+        # Cumulative integral using trapezoidal rule
+        integral <- 0
+        for (t in 1:n_times) {
+          # Trapezoid from previous time point (or t=0) to current time point
+          integral <- integral + (mass_t[t] + mass_t[t+1]) / 2 * time_diffs[t]
+          cum_mass[t, c, e] <- integral
         }
       }
-      cum_mass[, , e] <- cum
     }
     
     # For each emission compartment and each time point, compute CF
@@ -1143,7 +1146,7 @@ calculate_cumulative_cf_over_time <- function(mass_results, eef_samples,
       eef_iter <- eef_samples[i, ]
       for (t in 1:n_times) {
         # Integrated masses at this time (kg·yr per kg emitted)
-        integrated_masses <- cum_mass[t, , e]
+        integrated_masses <- cum_mass[t, , e] * 365.25   # kg·day / kg
         
         # Create data frame expected by process_single_iteration (Abbr must include "S")
         Masses_df <- data.frame(
@@ -1232,7 +1235,7 @@ count <- 0
 #####TEST
 #Variables to test
 #reg = "Ocenia"
-reg = "North America"
+reg = "Southeast Asia"
 pol = "EPS"
 size = 1000
 shape = "Sphere"
@@ -1481,11 +1484,22 @@ if(is.null(setup)) {
 
 cat("Calculating mass over time for 1-200 years...\n")
 
+# Logarithmic spacing from 1e-20 to 1 (50 points) to get fast variations at first showing on the graph
+log_times <- 10^seq(-20, 0, length.out = 100)
+
+# Linear spacing from 1 to 200 (199 points)
+linear_times <- seq(1, 200, length.out = 200)
+
+# Combine, removing duplicate 1.0
+time_years <- c(log_times[-length(log_times)], linear_times)
+
+# Alternative: keep 1.0 only once
+time_years <- c(log_times, linear_times[-1])
 # Calculate mass over time
 mass_results <- calculate_mass_over_time(
   k_matrix_list = k_matrix,  # Your list of matrices from World$K_matrix()
   setup = setup,
-  time_years = 1e-6:200
+  time_years = time_years
 )
 
 # Summarize across Monte Carlo samples
