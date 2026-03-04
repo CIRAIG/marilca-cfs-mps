@@ -45,6 +45,10 @@ World$UpdateKaas(mergeExisting = FALSE)
 
 setup <- NULL
 
+# Check advection k's 
+kaas <- World$kaas |>
+  filter(process == "k_Advection")
+
 ## Rescale landscape -----------------------------------------------------
 
 # Change global landscape properties - make scales really small to remove them.
@@ -119,16 +123,14 @@ vars_to_update = c()
 
 ## Set up FF variables --------------------------------------------------
 
-# Loop over regions
 region_names <- colnames(regions)[4:11]
 region_names <- region_names[!is.na(region_names)]
 polymer_names <- colnames(plastic_values)[3:ncol(plastic_values)]
-#polymer_names <- colnames(plastic_values)[3:11]
 
 #### emission compartments, volumes, SDF, etc needed for CF calculation
 sizes <- c(1,10,100,1000,5000) #D will be divided by 2
 shapes <- c("Sphere","Fiber","Film")
-time_horizon=20 #[yrs] time horizon for dynamic solver (Time over which impacts are integrated for )
+time_horizon <- 20 #[yrs] time horizon for dynamic solver (Time over which impacts are integrated for )
 #list of possible emission compartments to loop over
 #only SOLID
 emission_compartments <- c("aR","w1R","w0R","w2R", "w3R","sd1R","sd0R","sd2R","s1R","s2R",    
@@ -178,10 +180,8 @@ tot_num_species_marine = 250000
 tot_num_species_fresh = 150000
 tot_num_species_terr = 1600000
 list_tot_species = c(tot_num_species_marine, tot_num_species_fresh, tot_num_species_terr)
-####
 
 ## Functions for matrix aggregations ------------------------------------
-
 Xfree <- function(k_free_agg, k_free_att, k_agg_tot, k_att_tot) {
   1 / (1 + (k_free_agg / k_agg_tot) + (k_free_att / k_att_tot))
 }
@@ -841,17 +841,14 @@ n <- length(region_names) * length(polymer_names) * length(sizes) * length(shape
 pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
-# TEST ------------------------------------------------------------------
-#Variables to test
-#reg = "Ocenia"
+# Variables to test -------------------------------------------------------
 reg = "Southeast Asia"
 pol = "EPS"
 size = 1000
 shape = "Sphere"
 emission_compartment = "aRS"
 
-#### LOOPS
-
+# Calculation of fate factors ---------------------------------------------
 for(reg in region_names){
   print(reg)
   region_df <- regions[, c("varName", "Scale", "SubCompart", reg)]
@@ -890,7 +887,6 @@ for(reg in region_names){
                            Waarde = c(10^-20,  10^-20, 10^-20)) 
   World$mutateVars(airflow_df)
   World$UpdateDirty(unique(airflow_df$varName))
-  
   
   ### SDF matrix for that region
   FracSpe_C_marine <- World$fetchData("dens_marine_species_C") #fraction of marine species living in continental sea water - Tittensor et al., 2010
@@ -1081,8 +1077,6 @@ for(reg in region_names){
         k_matrix_1 = k_matrix[[1]]
         
         
-        
-        
         ########NEW
         # Setup on first iteration (only structure)
         if(is.null(setup)) {
@@ -1096,7 +1090,6 @@ for(reg in region_names){
         })
         
         ff_1 <- ff_matrices_list[[1]]
-        
         
         # Process ALL Monte Carlo samples for this combination
         all_results <- process_monte_carlo_combination(
@@ -1136,7 +1129,7 @@ for(reg in region_names){
 close(pb)
 
 # Path
-out_file <- "results_FF_CF_CI_4.xlsx"
+out_file <- "Output/results_FF_CF_CI_4.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
