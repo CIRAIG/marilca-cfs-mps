@@ -13,6 +13,8 @@ if (!dir.exists("SimpleBox")){
   source("InstallSBoo.R")
 }
 
+setwd("SimpleBox/SBooScripts")
+
 # Read csvs
 plastic_values <- read.xlsx("../../SI_B.xlsx", sheet = "3.2.polymer_list") 
 regions <- read.xlsx("../../SI_B.xlsx", sheet = "3.1.regional_data") 
@@ -34,7 +36,7 @@ regions <- regions |>
 
 
 ## Initialize World -----------------------------------------------------
-setwd("SimpleBox/SBooScripts")
+
 
 source("baseScripts/initWorld.R")
 
@@ -340,7 +342,7 @@ process_single_matrix_time_horizon <- function(k_mat, setup) {
 
 # Nested loops structure
 setup <- NULL
-n_samples <- 10
+n_samples <- 100
 
 fill_X <- function(prefix) {
   free <- paste0(prefix, "S")
