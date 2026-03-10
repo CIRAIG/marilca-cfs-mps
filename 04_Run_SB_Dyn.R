@@ -7,6 +7,7 @@ library(expm)
 source("InstallSBoo.R")
 
 setwd("SimpleBox/SBooScripts")
+rm(list = ls())
 
 # Read csvs
 plastic_values <- read.xlsx("../../SI_B.xlsx", sheet = "3.2.polymer_list") 
@@ -334,7 +335,7 @@ process_single_matrix_time_horizon <- function(k_mat, setup) {
 
 # Nested loops structure
 setup <- NULL
-n_samples <- 10
+n_samples <- 100
 
 
 
@@ -1117,28 +1118,26 @@ calculate_cumulative_cf_over_time <- function(mass_results, eef_samples,
   # Loop over Monte Carlo samples
   for (i in 1:n_samples) {
     mass_array <- mass_arrays[[i]]  # dim [time, comp, emit]
-    time_diffs <- c(time_years[1], diff(time_years))  # intervals from t=0 to each time point
     
+    # Compute cumulative integral (trapezoidal) for each emission compartment
     cum_mass <- array(0, dim = c(n_times, n_comps, n_emit))
-    
     for (e in 1:n_emit) {
       # Initial mass at t=0: 1 kg in emission compartment, 0 elsewhere
       mass0 <- rep(0, n_comps)
       mass0[which(comp_names == emit_comps[e])] <- 1
       
-      # Loop over compartments to avoid vectorized length issues
-      for (c in 1:n_comps) {
-        # Mass over time for this compartment (including t=0)
-        mass_t <- c(mass0[c], mass_array[, c, e])  # length = n_times + 1
-        
-        # Cumulative integral using trapezoidal rule
-        integral <- 0
-        for (t in 1:n_times) {
-          # Trapezoid from previous time point (or t=0) to current time point
-          integral <- integral + (mass_t[t] + mass_t[t+1]) / 2 * time_diffs[t]
-          cum_mass[t, c, e] <- integral
+      #dt <- 1  # year
+      dt_values <- diff(c(0, time_years)) 
+      cum <- matrix(0, nrow = n_times, ncol = n_comps)
+      cum[1, ] <- (mass0 + mass_array[1, , e]) / 2 * dt_values[1]
+      
+      # Subsequent time steps (only if there are more than one)
+      if (n_times > 1) {
+        for (t in 2:n_times) {
+          cum[t, ] <- cum[t-1, ] + (mass_array[t-1, , e] + mass_array[t, , e]) / 2 * dt_values[t]
         }
       }
+      cum_mass[, , e] <- cum
     }
     
     # For each emission compartment and each time point, compute CF
@@ -1532,7 +1531,7 @@ cf_cumulative <- calculate_cumulative_cf_over_time(
 
 
 # After you have summary_results and cf_cumulative
-out_file <- "../../mass_over_time_200years.xlsx"
+out_file <- paste0("../../mass_over_time_200years_", pol, ".xlsx")
 
 # Load existing workbook or create a new one
 wb <- if (file.exists(out_file)) {
