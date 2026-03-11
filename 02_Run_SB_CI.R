@@ -133,9 +133,11 @@ polymer_names <- colnames(plastic_values)[3:ncol(plastic_values)]
 #### emission compartments, volumes, SDF, etc needed for CF calculation
 sizes <- c(1,10,100,1000,5000) #D will be divided by 2
 shapes <- c("Sphere","Fiber","Film")
-time_horizon=100 #[yrs] time horizon for dynamic solver (Time over which impacts are integrated for )
+time_horizon_1=20 #[yrs] time horizon for dynamic solver (Time over which impacts are integrated for )
+time_horizon_2=100 #[yrs] time horizon for dynamic solver (Time over which impacts are integrated for )
 seconds_per_year <- 365.25 * 24 * 3600
-time_horizon_seconds=time_horizon*seconds_per_year
+time_horizon_seconds_1=time_horizon_1*seconds_per_year
+time_horizon_seconds_2=time_horizon_2*seconds_per_year
 #list of possible emission compartments to loop over
 #only SOLID
 emission_compartments <- c("aR","w1R","w0R","w2R", "w3R","sd1R","sd0R","sd2R","s1R","s2R",    
@@ -296,7 +298,7 @@ process_single_matrix <- function(k_mat, setup) {
 }
 
 #process one matrix until chosen time horizon
-process_single_matrix_time_horizon <- function(k_mat, setup) {
+process_single_matrix_time_horizon <- function(k_mat, setup, time_horizon_seconds) {
   # Filter matrix
   k_filtered <- k_mat[setup$keep_idx, setup$keep_idx, drop = FALSE]
   orig_rownames <- rownames(k_mat)[setup$keep_idx] # Store original compartment names (from k_mat)
@@ -307,16 +309,6 @@ process_single_matrix_time_horizon <- function(k_mat, setup) {
   K1X <- k_filtered %*% X_mat
   K_final <- setup$A_mat %*% K1X
   
-  # Invert and compute fate factors
-  #ff_matrix <- (-1 / 86400) * solve(K_final) #seconds to day 
-  #rownames(ff_matrix) <- paste0(rownames(ff_matrix), "S")
-  
-  #if (rcond(K_final) < 1e-12) {
-  #  warning("Matrix is near-singular, using pseudoinverse")
-  #  K_inv <- MASS::ginv(K_final)
-  #} else {
-  #  K_inv <- solve(K_final)
-  #}
   K_inv <- solve(K_final)
   # Calculate matrix exponential
   exp_KT <- expm(K_final * time_horizon_seconds) #k matrix is in seconds
@@ -333,16 +325,15 @@ process_single_matrix_time_horizon <- function(k_mat, setup) {
   } else {
     rownames(FF_T_days) <- paste0(rownames(FF_T_days), "S")
   }
-  
-  
-  
-  
+
   return(FF_T_days)
 }
 
+
+
 # Nested loops structure
 setup <- NULL
-n_samples <- 100
+n_samples <- 10
 
 fill_X <- function(prefix) {
   free <- paste0(prefix, "S")
@@ -845,11 +836,17 @@ results_CF_end_PDF_year <- data.frame()
 results_CF_end_species_year <- data.frame()
 results_CF_end_PDF_m2_year <- data.frame()
 
-results_FF_time_horizon <- data.frame()
-results_CF_mid_PAF_day_time_horizon <- data.frame()
-results_CF_end_PDF_year_time_horizon <- data.frame()
-results_CF_end_species_year_time_horizon <- data.frame()
-results_CF_end_PDF_m2_year_time_horizon <- data.frame()
+results_FF_20_yrs <- data.frame()
+results_CF_mid_PAF_day_20_yrs <- data.frame()
+results_CF_end_PDF_year_20_yrs <- data.frame()
+results_CF_end_species_year_20_yrs <- data.frame()
+results_CF_end_PDF_m2_year_20_yrs <- data.frame()
+
+results_FF_100_yrs <- data.frame()
+results_CF_mid_PAF_day_100_yrs <- data.frame()
+results_CF_end_PDF_year_100_yrs <- data.frame()
+results_CF_end_species_year_100_yrs <- data.frame()
+results_CF_end_PDF_m2_year_100_yrs <- data.frame()
 
 
 #####Loading bar
@@ -859,9 +856,9 @@ count <- 0
 
 # Variables to test -------------------------------------------------------
 reg = "Southeast Asia"
-pol = "EPS"
+pol = "PU"
 size = 1000
-shape = "Sphere"
+shape = "Fiber"
 emission_compartment = "aRS"
 
 # Calculation of fate factors ---------------------------------------------
@@ -1090,7 +1087,7 @@ for(reg in region_names){
         #k_matrix = World$exportEngineR()
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
         k_detailed = World$fetchData("kaas")
-        k_matrix_1 = k_matrix[[1]]
+        #k_matrix_1 = k_matrix[[1]]
         
         # Setup on first iteration (only structure)
         if(is.null(setup)) {
@@ -1103,7 +1100,7 @@ for(reg in region_names){
           process_single_matrix(k_mat, setup)
         })
         
-        ff_1 <- ff_matrices_list[[1]]
+        #ff_1 <- ff_matrices_list[[1]]
         
         # Process ALL Monte Carlo samples for this combination
         all_results <- process_monte_carlo_combination(
@@ -1142,15 +1139,50 @@ for(reg in region_names){
         #Then, we repeat the same calculations for CFs which integrates impacts from 0 to Tim horizon
         ###############
         # Process all Monte Carlo samples
-        ff_matrices_list_time_horizon  <- lapply(k_matrix, function(k_mat) {
-          process_single_matrix_time_horizon(k_mat, setup)
+        ff_matrices_list_20_yrs  <- lapply(k_matrix, function(k_mat) {
+          process_single_matrix_time_horizon(k_mat, setup, time_horizon_seconds_1)
         })
         
-        ff_1_time_horizon <- ff_matrices_list_time_horizon[[1]]
+        #Call the CFs code with the new dynamic FFs
+        all_results_20_yrs <- process_monte_carlo_combination(
+          ff_matrices_list = ff_matrices_list_20_yrs,
+          eef_samples = eef_monte_carlo,
+          reg = reg,
+          pol = pol,  
+          size = size,
+          shape = shape,
+          emission_compartments = emission_compartments,
+          states = states,
+          compartment_names = compartment_names,
+          volume_compartments = volume_compartments,
+          areas_compartments = areas_compartments,
+          SDF = SDF,
+          SF = SF,
+          list_tot_species = list_tot_species,
+          FracSpe_wc_aqua = FracSpe_wc_aqua,
+          FracSpe_sed_aqua = FracSpe_sed_aqua,
+          FracSpe_ws_marine = FracSpe_ws_marine,
+          FracSpe_wc_marine = FracSpe_wc_marine,
+          FracSpe_sed_marine = FracSpe_sed_marine
+        )
+        
+        # Append to results dataframes: 20 yrs time horizon only for ReCiPe
+        results_FF_20_yrs <- bind_rows(results_FF_20_yrs, all_results_20_yrs$ff_stats)
+        results_CF_mid_PAF_day_20_yrs <- bind_rows(results_CF_mid_PAF_day_20_yrs, all_results_20_yrs$cf_mid_stats)
+        #results_CF_end_PDF_year_20_yrs <- bind_rows(results_CF_end_PDF_year_20_yrs, all_results_20_yrs$cf_end_pdf_stats)
+        results_CF_end_species_year_20_yrs <- bind_rows(results_CF_end_species_year_20_yrs, all_results_20_yrs$cf_end_species_stats)
+        #results_CF_end_PDF_m2_year_20_yrs <- bind_rows(results_CF_end_PDF_m2_year_20_yrs, all_results_20_yrs$cf_end_pdf_m2_stats)
+        
+        ###Again with 100yrs horizon
+        
+        # Process all Monte Carlo samples
+        ff_matrices_list_100_yrs  <- lapply(k_matrix, function(k_mat) {
+          process_single_matrix_time_horizon(k_mat, setup, time_horizon_seconds_2)
+        })
         
         #CAll the CFs code with the new dynamic FFs
-        all_results_time_horizon <- process_monte_carlo_combination(
-          ff_matrices_list = ff_matrices_list_time_horizon,
+        all_results_100_yrs <- process_monte_carlo_combination(
+          ff_matrices_list = ff_matrices_list_100_yrs,
           eef_samples = eef_monte_carlo,
           reg = reg,
           pol = pol,  
@@ -1172,11 +1204,12 @@ for(reg in region_names){
         )
         
         # Append to results dataframes
-        results_FF_time_horizon <- bind_rows(results_FF_time_horizon, all_results_time_horizon$ff_stats)
-        results_CF_mid_PAF_day_time_horizon <- bind_rows(results_CF_mid_PAF_day_time_horizon, all_results_time_horizon$cf_mid_stats)
-        results_CF_end_PDF_year_time_horizon <- bind_rows(results_CF_end_PDF_year_time_horizon, all_results_time_horizon$cf_end_pdf_stats)
-        results_CF_end_species_year_time_horizon <- bind_rows(results_CF_end_species_year_time_horizon, all_results_time_horizon$cf_end_species_stats)
-        results_CF_end_PDF_m2_year_time_horizon <- bind_rows(results_CF_end_PDF_m2_year_time_horizon, all_results_time_horizon$cf_end_pdf_m2_stats)
+        results_FF_100_yrs <- bind_rows(results_FF_100_yrs, all_results_100_yrs$ff_stats)
+        results_CF_mid_PAF_day_100_yrs <- bind_rows(results_CF_mid_PAF_day_100_yrs, all_results_100_yrs$cf_mid_stats)
+        results_CF_end_PDF_year_100_yrs <- bind_rows(results_CF_end_PDF_year_100_yrs, all_results_100_yrs$cf_end_pdf_stats)
+        results_CF_end_species_year_100_yrs <- bind_rows(results_CF_end_species_year_100_yrs, all_results_100_yrs$cf_end_species_stats)
+        results_CF_end_PDF_m2_year_100_yrs <- bind_rows(results_CF_end_PDF_m2_year_100_yrs, all_results_100_yrs$cf_end_pdf_m2_stats)
+        
         
         vars_to_update = c() #reset to avoid recomputing vars that have not changed and making vars_to_update excessively long
       }
@@ -1207,11 +1240,11 @@ replace_sheet <- function(wb, sheet_name, data) {
 }
 
 # Replace result sheets
-replace_sheet(wb, "results_FF", results_FF)
-replace_sheet(wb, "results_CF_mid_PAF_day", results_CF_mid_PAF_day)
-replace_sheet(wb, "results_CF_end_PDF_year", results_CF_end_PDF_year)
-replace_sheet(wb, "results_CF_end_species_year", results_CF_end_species_year)
-replace_sheet(wb, "results_CF_end_PDF_m2_year", results_CF_end_PDF_m2_year)
+replace_sheet(wb, "FF_d", results_FF)
+replace_sheet(wb, "CF_mid_PAF_d", results_CF_mid_PAF_day)
+replace_sheet(wb, "CF_end_PDF_yr", results_CF_end_PDF_year)
+replace_sheet(wb, "CF_end_species_yr", results_CF_end_species_year)
+replace_sheet(wb, "CF_end_PDF_m2_yr", results_CF_end_PDF_m2_year)
 
 # Save without deleting other sheets
 saveWorkbook(wb, out_file, overwrite = TRUE)
@@ -1238,11 +1271,19 @@ replace_sheet <- function(wb, sheet_name, data) {
 }
 
 # Replace result sheets
-replace_sheet(wb, "results_FF_dyn", results_FF_time_horizon)
-replace_sheet(wb, "results_CF_mid_PAF_dyn", results_CF_mid_PAF_day_time_horizon)
-replace_sheet(wb, "results_CF_end_PDF_year_dyn", results_CF_end_PDF_year_time_horizon)
-replace_sheet(wb, "results_CF_end_species_year_dyn", results_CF_end_species_year_time_horizon)
-replace_sheet(wb, "results_CF_end_PDF_m2_year_dyn", results_CF_end_PDF_m2_year_time_horizon)
+replace_sheet(wb, "FF_d_20_yrs", results_FF_20_yrs)
+replace_sheet(wb, "CF_mid_PAF_d_20_yrs", results_CF_mid_PAF_day_20_yrs)
+#replace_sheet(wb, "CF_end_PDF_year_20_yrs", results_CF_end_PDF_year_20_yrs)
+replace_sheet(wb, "CF_species_yr_20_yrs", results_CF_end_species_year_20_yrs)
+#replace_sheet(wb, "CF_end_PDF_m2_year_20_yrs", results_CF_end_PDF_m2_year_20_yrs)
+
+# Replace result sheets
+replace_sheet(wb, "FF_d_100_yrs", results_FF_100_yrs)
+replace_sheet(wb, "CF_mid_PAF_d_100_yrs", results_CF_mid_PAF_day_100_yrs)
+replace_sheet(wb, "CF_end_PDF_yr_100_yrs", results_CF_end_PDF_year_100_yrs)
+replace_sheet(wb, "CF_end_species_yr_100_yrs", results_CF_end_species_year_100_yrs)
+replace_sheet(wb, "CF_end_PDF_m2_yr_100_yrs", results_CF_end_PDF_m2_year_100_yrs)
+
 
 # Save without deleting other sheets
 saveWorkbook(wb, out_file, overwrite = TRUE)
