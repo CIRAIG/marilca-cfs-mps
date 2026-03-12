@@ -856,9 +856,9 @@ count <- 0
 
 # Variables to test -------------------------------------------------------
 reg = "Europe"
-pol = "PP"
-size = 5000
-shape = "Sphere"
+pol = "Modal"
+size = 100
+shape = "Film"
 emission_compartment = "aRS"
 
 # Calculation of fate factors ---------------------------------------------
@@ -1096,7 +1096,7 @@ for(reg in region_names){
         #Masses <- World$Masses()
         #k_matrix = World$exportEngineR()
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
-        k_detailed = World$fetchData("kaas")
+        #k_detailed = World$fetchData("kaas")
         #k_matrix_1 = k_matrix[[1]]
         
         # Setup on first iteration (only structure)
@@ -1231,7 +1231,7 @@ close(pb)
 
 # Path
 ####Save steady state FFs and CFs
-out_file <- "../../results_FF_CF_CI_5.xlsx"
+out_file <- "../../results_FF_CF_CI_6.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
