@@ -855,10 +855,10 @@ pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
 # Variables to test -------------------------------------------------------
-reg = "Southeast Asia"
-pol = "PU"
-size = 1000
-shape = "Fiber"
+reg = "Europe"
+pol = "PP"
+size = 5000
+shape = "Sphere"
 emission_compartment = "aRS"
 
 # Calculation of fate factors ---------------------------------------------
@@ -1071,6 +1071,16 @@ for(reg in region_names){
         
         
         World$mutateVars(filtered_trackmpd_data)
+        vars_to_update <- c(vars_to_update,unique(filtered_trackmpd_data$varName))
+        
+        filtered_trackmpd_data_glo <- trackmpd %>%
+          filter(region == 'Global', 
+                 polymer == pol, 
+                 size == !!size, 
+                 shape == !!shape)
+        
+        
+        World$mutateVars(filtered_trackmpd_data_glo)
         vars_to_update <- c(vars_to_update,unique(filtered_trackmpd_data$varName))
         
         #UpdateDirty with the names of all variables that were changed, in all the loops
