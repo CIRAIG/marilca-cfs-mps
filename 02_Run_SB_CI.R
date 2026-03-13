@@ -43,6 +43,7 @@ source("baseScripts/initWorld.R")
 #If Test FALSE: new version of SB, if True, then the old version (excel)
 #World$SetConst(Test = "TRUE")
 World$SetConst(Test_surface_water = "TRUE")
+World$SetConst(Regional_and_Continental_deepocean = "TRUE")
 World$SetConst(Remove_global = "TRUE") #if true, remove flows to moderate, arctic and tropic
 World$UpdateKaas(mergeExisting = FALSE)
 
@@ -1231,7 +1232,7 @@ close(pb)
 
 # Path
 ####Save steady state FFs and CFs
-out_file <- "../../results_FF_CF_CI_6.xlsx"
+out_file <- "../../results_FF_CF_CI_8.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
