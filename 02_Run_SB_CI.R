@@ -371,12 +371,14 @@ SF <- 1 #Oginah et al. (2025)
 
 ### 1.1 Function to generate EEF Monte Carlo samples ---------------------
 generate_eef_samples <- function(n_samples = 1000) {
+  
   eef_params <- list(
     EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
     EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
     EEF_s = list(meanlog = -0.503436938, sdlog = 0.59737721)
   )
   
+  set.seed(123) #set a seed so that we get the same random numbers
   eef_samples <- data.frame(
     EEF_w = rlnorm(n_samples, eef_params$EEF_w$meanlog, eef_params$EEF_w$sdlog),
     EEF_sed = rlnorm(n_samples, eef_params$EEF_sed$meanlog, eef_params$EEF_sed$sdlog),
@@ -856,10 +858,10 @@ pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
 # Variables to test -------------------------------------------------------
-reg = "Europe"
-pol = "Modal"
-size = 100
-shape = "Film"
+reg = "Southeast Asia"
+pol = "PS"
+size = 1000
+shape = "Sphere"
 emission_compartment = "aRS"
 
 # Calculation of fate factors ---------------------------------------------
