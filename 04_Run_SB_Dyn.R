@@ -335,7 +335,7 @@ process_single_matrix_time_horizon <- function(k_mat, setup) {
 
 # Nested loops structure
 setup <- NULL
-n_samples <- 100
+n_samples <- 10
 
 
 
@@ -383,9 +383,10 @@ generate_eef_samples <- function(n_samples = 1000) {
   eef_params <- list(
     EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
     EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
-    EEF_s = list(meanlog = -0.503436938, sdlog = 0.59737721)
+    EEF_s = list(meanlog = -1.709258248, sdlog = 0.197720485)
   )
   
+  set.seed(123) #set a seed so that we get the same random numbers - if we run the code again, the differences won't be due to a new distribution of EEF
   eef_samples <- data.frame(
     EEF_w = rlnorm(n_samples, eef_params$EEF_w$meanlog, eef_params$EEF_w$sdlog),
     EEF_sed = rlnorm(n_samples, eef_params$EEF_sed$meanlog, eef_params$EEF_sed$sdlog),
@@ -439,7 +440,7 @@ process_single_iteration <- function(Masses_df, eef_iter, states, reg, pol, size
         SubCompart == "air" ~ eef_iter$EEF_air,
         SubCompart %in% c("river", "lake", "sea", "deepocean") ~ eef_iter$EEF_w,
         SubCompart %in% c("freshwatersediment", "lakesediment", "marinesediment") ~ eef_iter$EEF_sed,
-        SubCompart %in% c("naturalsoil", "agriculturalsoil") ~ eef_iter$EEF_s,
+        SubCompart %in% c("naturalsoil") ~ eef_iter$EEF_s, #in agricultural soil eef=0 
         TRUE ~ 0
       ),
       volume = volume_compartments,
@@ -1235,8 +1236,8 @@ count <- 0
 #Variables to test
 #reg = "Ocenia"
 reg = "Southeast Asia"
-pol = "EPS"
-size = 1000
+pol = "PS"
+size = 100
 shape = "Sphere"
 emission_compartment = "w2R"
 
