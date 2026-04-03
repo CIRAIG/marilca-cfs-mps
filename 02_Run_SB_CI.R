@@ -724,8 +724,10 @@ calculate_ff_statistics <- function(ff_data) {
       #ff_sd = sd(FF, na.rm = TRUE),
       ff_gsd = exp(sd(log(FF), na.rm = TRUE)),
       #ff_cv = ff_sd / ff_mean,
-      ff_ll_95 = quantile(FF, 0.025, na.rm = TRUE),
-      ff_ul_95 = quantile(FF, 0.975, na.rm = TRUE),
+      #ff_ll_95 = quantile(FF, 0.025, na.rm = TRUE),
+      #ff_ul_95 = quantile(FF, 0.975, na.rm = TRUE),
+      ff_ll_95 <- ff_geom_mean / ff_gsd^1.96, #Compouted ul and ll instead of retrieved from the list
+      ff_ul_95 <- ff_geom_mean * ff_gsd^1.96,
       #ff_ll_90 = quantile(FF, 0.05, na.rm = TRUE),
       #ff_ul_90 = quantile(FF, 0.95, na.rm = TRUE),
       n_samples = n(),
@@ -762,8 +764,10 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
       #marine_sd = sd(.data[[marine_col]], na.rm = TRUE),
       marine_gsd = exp(sd(log(.data[[marine_col]]), na.rm = TRUE)),
       #marine_cv = marine_sd / marine_mean,
-      marine_ll_95 = quantile(.data[[marine_col]], 0.025, na.rm = TRUE),
-      marine_ul_95 = quantile(.data[[marine_col]], 0.975, na.rm = TRUE),
+      #marine_ll_95 = quantile(.data[[marine_col]], 0.025, na.rm = TRUE),
+      #marine_ul_95 = quantile(.data[[marine_col]], 0.975, na.rm = TRUE),
+      marine_ll_95 <- marine_geom_mean / marine_gsd^1.96,
+      marine_ul_95 <- marine_geom_mean * marine_gsd^1.96,
       
       # Shapiro test
       
@@ -797,8 +801,10 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
       #freshwater_sd = sd(.data[[freshwater_col]], na.rm = TRUE),
       freshwater_gsd = exp(sd(log(.data[[freshwater_col]]), na.rm = TRUE)),
       #freshwater_cv = freshwater_sd / freshwater_mean,
-      freshwater_ll_95 = quantile(.data[[freshwater_col]], 0.025, na.rm = TRUE),
-      freshwater_ul_95 = quantile(.data[[freshwater_col]], 0.975, na.rm = TRUE),
+      #freshwater_ll_95 = quantile(.data[[freshwater_col]], 0.025, na.rm = TRUE),
+      #freshwater_ul_95 = quantile(.data[[freshwater_col]], 0.975, na.rm = TRUE),
+      freshwater_ll_95 <- freshwater_geom_mean / freshwater_gsd^1.96,
+      freshwater_ul_95 <- freshwater_geom_mean * freshwater_gsd^1.96,
       
       # Terrestrial statistics
       #terrestrial_mean = mean(.data[[terrestrial_col]], na.rm = TRUE),
@@ -807,8 +813,10 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
       #terrestrial_sd = sd(.data[[terrestrial_col]], na.rm = TRUE),
       terrestrial_gsd = exp(sd(log(.data[[terrestrial_col]]), na.rm = TRUE)),
       #terrestrial_cv = terrestrial_sd / terrestrial_mean,
-      terrestrial_ll_95 = quantile(.data[[terrestrial_col]], 0.025, na.rm = TRUE),
-      terrestrial_ul_95 = quantile(.data[[terrestrial_col]], 0.975, na.rm = TRUE),
+      #terrestrial_ll_95 = quantile(.data[[terrestrial_col]], 0.025, na.rm = TRUE),
+      #terrestrial_ul_95 = quantile(.data[[terrestrial_col]], 0.975, na.rm = TRUE),
+      terrestrial_ll_95 <- terrestrial_geom_mean / terrestrial_gsd^1.96,
+      terrestrial_ul_95 <- terrestrial_geom_mean * terrestrial_gsd^1.96,
       
       # Total statistics
       #total_mean = mean(.data[[total_col]], na.rm = TRUE),
@@ -817,8 +825,10 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
       #total_sd = sd(.data[[total_col]], na.rm = TRUE),
       total_gsd = exp(sd(log(.data[[total_col]]), na.rm = TRUE)),
       #total_cv = total_sd / total_mean,
-      total_ll_95 = quantile(.data[[total_col]], 0.025, na.rm = TRUE),
-      total_ul_95 = quantile(.data[[total_col]], 0.975, na.rm = TRUE),
+      #total_ll_95 = quantile(.data[[total_col]], 0.025, na.rm = TRUE),
+      #total_ul_95 = quantile(.data[[total_col]], 0.975, na.rm = TRUE),
+      total_ll_95 <- total_geom_mean / total_gsd^1.96,
+      total_ul_95 <- total_geom_mean * total_gsd^1.96,
       
       n_samples = n(),
       
