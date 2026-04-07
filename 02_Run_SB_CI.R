@@ -452,7 +452,7 @@ process_single_iteration <- function(Masses_df, eef_iter, states, reg, pol, size
 }
 
 ### 1.4 Function to calculate CFs for one iteration ----------------------
-calculate_cfs_for_iteration <- function(iter_data, SDF, SF, list_tot_species,
+calculate_cfs_for_iteration <- function(iter_data, SDF, SDF_GEP, SF, list_tot_species,
                                         FracSpe_wc_aqua, FracSpe_sed_aqua,
                                         FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine,
                                         shape, pol, size, reg, emission_compartment_name) {
@@ -460,7 +460,7 @@ calculate_cfs_for_iteration <- function(iter_data, SDF, SF, list_tot_species,
   # Get CF vector
   cf_vector <- as.matrix(iter_data$CF_comp_PAF_day)
   
-  # 1. Midpoint CFs (PAF·day)
+  # 1. Midpoint CFs (PAF_loc·day)
   cf_mid_matrix <- as.matrix(SDF) %*% cf_vector
   cf_mid_marine <- cf_mid_matrix[1, 1]
   cf_mid_freshwater <- cf_mid_matrix[2, 1]
@@ -468,10 +468,15 @@ calculate_cfs_for_iteration <- function(iter_data, SDF, SF, list_tot_species,
   cf_mid_total <- sum(cf_mid_matrix)
   
   # 2. Endpoint CFs (PDF·year)
-  cf_end_pdf_marine <- cf_mid_marine * SF / 365
-  cf_end_pdf_freshwater <- cf_mid_freshwater * SF / 365
-  cf_end_pdf_terrestrial <- cf_mid_terrestrial * SF / 365
-  cf_end_pdf_total <- cf_mid_total * SF / 365
+  cf_mid_matrix_gep <- as.matrix(SDF_GEP) %*% cf_vector #Compute PAF using the SDF_GEP instead of SDF for GLAM
+  cf_mid_marine_gep <- cf_mid_matrix_gep[1, 1]
+  cf_mid_freshwater_gep <- cf_mid_matrix_gep[2, 1]
+  cf_mid_terrestrial_gep <- cf_mid_matrix_gep[3, 1]
+  cf_mid_total_gep <- sum(cf_mid_matrix_gep)
+  cf_end_pdf_marine <- cf_mid_marine_gep * SF / 365
+  cf_end_pdf_freshwater <- cf_mid_freshwater_gep * SF / 365
+  cf_end_pdf_terrestrial <- cf_mid_terrestrial_gep * SF / 365
+  cf_end_pdf_total <- cf_mid_total_gep * SF / 365
   
   # 3. Endpoint CFs (species·year)
   #cf_species_matrix <- (t(as.matrix(list_tot_species)) * as.matrix(SDF)) %*% cf_vector * SF / 365
@@ -582,7 +587,7 @@ calculate_pdf_m2_year <- function(iter_data, SF,
 process_monte_carlo_combination <- function(ff_matrices_list, eef_samples, reg, pol, size, shape,
                                             emission_compartments, states, compartment_names,
                                             volume_compartments, areas_compartments,
-                                            SDF, SF, list_tot_species,
+                                            SDF, SDF_GEP, SF, list_tot_species,
                                             FracSpe_wc_aqua, FracSpe_sed_aqua,
                                             FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine) {
   
@@ -639,6 +644,7 @@ process_monte_carlo_combination <- function(ff_matrices_list, eef_samples, reg, 
       cf_results <- calculate_cfs_for_iteration(
         iter_data = iter_data,
         SDF = SDF,
+        SDF_GEP = SDF_GEP,
         SF = SF,
         list_tot_species = list_tot_species,
         FracSpe_wc_aqua = FracSpe_wc_aqua,
@@ -984,6 +990,72 @@ for(reg in region_names){
   SDF["Terrestrial_Ecosystem", "nat_soil_G"] <- SDF_TE_nat_soil_G
   SDF["Terrestrial_Ecosystem", "agr_soil_G"] <- SDF_TE_agr_soil_G
   
+  ###############
+  #
+  #### SDF based on GEP for GLAM: Same thing with GEP instead of species richness
+  #
+  #################
+  # Create an empty 3x18 matrix
+  tab_SDF_GEP <- matrix(0, nrow = 3, ncol = 20)
+  
+  # Name rows and columns
+  rownames(tab_SDF_GEP) <- c("Marine_Ecosystem", "Freshwater_Ecosystem", "Terrestrial_Ecosystem")
+  colnames(tab_SDF_GEP) <- c("a_C","fw_C","lw_C", "sw_ws_C", "sw_wc_C", "fw_sed_C","lw_sed_C",  "sw_sed_C",     #the order is slightly different than in Louvet et al. 20205
+                         "nat_soil_C", "agr_soil_C", "a_G","fw_G","lw_G",  "sw_ws_G", "sw_wc_G", "fw_sed_G", 
+                         "lw_sed_G", "sw_sed_G", "nat_soil_G", "agr_soil_G")
+  # Fill the matrix with the SDFs
+  SDF_GEP <- as.data.frame(tab_SDF_GEP)
+  FracSpe_C_marine_GEP <- World$fetchData("gep_mar_C") 
+  FracSpe_G_marine_GEP <- World$fetchData("gep_mar_G") 
+  FracSpe_C_aqua_GEP <- World$fetchData("gep_fw_C") 
+  FracSpe_G_aqua_GEP <- World$fetchData("gep_fw_G") 
+  FracSpe_C_ter_GEP <- World$fetchData("gep_ter_C") 
+  FracSpe_G_ter_GEP <- World$fetchData("gep_ter_G") 
+  # Marine ecosystem
+
+  
+  SDF_ME_sw_ws_C_GEP = FracSpe_ws_marine*FracSpe_C_marine_GEP #seawater water surface
+  SDF_ME_sw_wc_C_GEP = FracSpe_wc_marine*FracSpe_C_marine_GEP #seawater water column
+  SDF_ME_sw_sed_C_GEP = FracSpe_sed_marine*FracSpe_C_marine_GEP #seawater sediments
+  SDF_ME_sw_ws_G_GEP = FracSpe_ws_marine*FracSpe_G_marine_GEP #seawater water surface
+  SDF_ME_sw_wc_G_GEP = FracSpe_wc_marine*FracSpe_G_marine_GEP #seawater water column
+  SDF_ME_sw_sed_G_GEP = FracSpe_sed_marine*FracSpe_G_marine_GEP #seawater sediments
+  
+  SDF_AE_lw_C_GEP = FracSpe_lake*FracSpe_wc_aqua*FracSpe_C_aqua_GEP
+  SDF_AE_lw_sed_C_GEP = FracSpe_lake*FracSpe_sed_aqua*FracSpe_C_aqua_GEP
+  SDF_AE_fw_C_GEP = FracSpe_river*FracSpe_wc_aqua*FracSpe_C_aqua_GEP
+  SDF_AE_fw_sed_C_GEP = FracSpe_river*FracSpe_sed_aqua*FracSpe_C_aqua_GEP
+  SDF_AE_lw_G_GEP = FracSpe_lake*FracSpe_wc_aqua*FracSpe_G_aqua_GEP
+  SDF_AE_lw_sed_G_GEP = FracSpe_lake*FracSpe_sed_aqua*FracSpe_G_aqua_GEP
+  SDF_AE_fw_G_GEP = FracSpe_river*FracSpe_wc_aqua*FracSpe_G_aqua_GEP
+  SDF_AE_fw_sed_G_GEP = FracSpe_river*FracSpe_sed_aqua*FracSpe_G_aqua_GEP
+  
+  SDF_TE_nat_soil_C_GEP = FracSpe_nat_soil*FracSpe_C_ter_GEP
+  SDF_TE_agr_soil_C_GEP = FracSpe_agr_soil*FracSpe_C_ter_GEP
+  SDF_TE_nat_soil_G_GEP = FracSpe_nat_soil*FracSpe_G_ter_GEP
+  SDF_TE_agr_soil_G_GEP = FracSpe_agr_soil*FracSpe_G_ter_GEP
+  
+  
+  SDF_GEP["Marine_Ecosystem", "sw_ws_C"]       <- SDF_ME_sw_ws_C_GEP
+  SDF_GEP["Marine_Ecosystem", "sw_wc_C"]       <- SDF_ME_sw_wc_C_GEP
+  SDF_GEP["Marine_Ecosystem", "sw_sed_C"]   <- SDF_ME_sw_sed_C_GEP
+  SDF_GEP["Marine_Ecosystem", "sw_ws_G"]       <- SDF_ME_sw_ws_G_GEP
+  SDF_GEP["Marine_Ecosystem", "sw_wc_G"]       <- SDF_ME_sw_wc_G_GEP
+  SDF_GEP["Marine_Ecosystem", "sw_sed_G"]   <- SDF_ME_sw_sed_G_GEP
+  # Freshwater ecosystem
+  SDF_GEP["Freshwater_Ecosystem", "lw_C"]      <- SDF_AE_lw_C_GEP
+  SDF_GEP["Freshwater_Ecosystem", "lw_sed_C"]  <- SDF_AE_lw_sed_C_GEP
+  SDF_GEP["Freshwater_Ecosystem", "fw_C"]      <- SDF_AE_fw_C_GEP
+  SDF_GEP["Freshwater_Ecosystem", "fw_sed_C"]  <- SDF_AE_fw_sed_C_GEP
+  SDF_GEP["Freshwater_Ecosystem", "lw_G"]      <- SDF_AE_lw_G_GEP
+  SDF_GEP["Freshwater_Ecosystem", "lw_sed_G"]  <- SDF_AE_lw_sed_G_GEP
+  SDF_GEP["Freshwater_Ecosystem", "fw_G"]      <- SDF_AE_fw_G_GEP
+  SDF_GEP["Freshwater_Ecosystem", "fw_sed_G"]  <- SDF_AE_fw_sed_G_GEP
+  # Terrestrial ecosystem
+  SDF_GEP["Terrestrial_Ecosystem", "nat_soil_C"] <- SDF_TE_nat_soil_C_GEP
+  SDF_GEP["Terrestrial_Ecosystem", "agr_soil_C"] <- SDF_TE_agr_soil_C_GEP
+  SDF_GEP["Terrestrial_Ecosystem", "nat_soil_G"] <- SDF_TE_nat_soil_G_GEP
+  SDF_GEP["Terrestrial_Ecosystem", "agr_soil_G"] <- SDF_TE_agr_soil_G_GEP
   ###
   
   # Polymer loop
@@ -1139,6 +1211,7 @@ for(reg in region_names){
           volume_compartments = volume_compartments,
           areas_compartments = areas_compartments,
           SDF = SDF,
+          SDF_GEP = SDF_GEP,
           SF = SF,
           list_tot_species = list_tot_species,
           FracSpe_wc_aqua = FracSpe_wc_aqua,
@@ -1180,6 +1253,7 @@ for(reg in region_names){
           volume_compartments = volume_compartments,
           areas_compartments = areas_compartments,
           SDF = SDF,
+          SDF_GEP = SDF_GEP,
           SF = SF,
           list_tot_species = list_tot_species,
           FracSpe_wc_aqua = FracSpe_wc_aqua,
@@ -1217,6 +1291,7 @@ for(reg in region_names){
           volume_compartments = volume_compartments,
           areas_compartments = areas_compartments,
           SDF = SDF,
+          SDF_GEP = SDF_GEP,
           SF = SF,
           list_tot_species = list_tot_species,
           FracSpe_wc_aqua = FracSpe_wc_aqua,
