@@ -10,14 +10,13 @@ setwd("SimpleBox/SBooScripts")
 rm(list = ls())
 
 # Read csvs
-plastic_values <- read.xlsx("../../SI_B.xlsx", sheet = "3.2.polymer_list") 
-regions <- read.xlsx("../../SI_B.xlsx", sheet = "3.1.regional_data") 
-trackmpd <- read.xlsx("../../SI_B.xlsx", sheet = "3.5.trackmpd_input") 
+plastic_values <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.2.polymer_list") 
+regions <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.1.regional_data") 
+trackmpd <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.5.trackmpd_input") 
 colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
-degradation_CI_all <- readxl::read_xlsx("../../SI_B.xlsx", 
+degradation_CI_all <- readxl::read_xlsx("../../input/SI_B.xlsx", 
                                         sheet = "3.3.polymer_data_CI")[, 1:9]
-
 #Import the data with regionalization. Some variables are left as the default input of SBoo
 #If no variable is provided in the regio sheet, the default value is kept
 regions <- regions |>
@@ -1539,7 +1538,7 @@ cf_cumulative <- calculate_cumulative_cf_over_time(
 
 
 # After you have summary_results and cf_cumulative
-out_file <- paste0("../../mass_over_time_200years_", pol, ".xlsx")
+out_file <- paste0("../../results/mass_over_time_200years_", pol, ".xlsx")
 
 # Load existing workbook or create a new one
 wb <- if (file.exists(out_file)) {

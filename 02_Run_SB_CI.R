@@ -16,12 +16,13 @@ if (!dir.exists("SimpleBox")){
 setwd("SimpleBox/SBooScripts")
 
 # Read csvs
-plastic_values <- read.xlsx("../../SI_B.xlsx", sheet = "3.2.polymer_list") 
-regions <- read.xlsx("../../SI_B.xlsx", sheet = "3.1.regional_data") 
-trackmpd <- read.xlsx("../../SI_B.xlsx", sheet = "3.5.trackmpd_input") 
+
+plastic_values <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.2.polymer_list") 
+regions <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.1.regional_data") 
+trackmpd <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.5.trackmpd_input") 
 colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
-degradation_CI_all <- readxl::read_xlsx("../../SI_B.xlsx", 
+degradation_CI_all <- readxl::read_xlsx("../../input/SI_B.xlsx", 
                                         sheet = "3.3.polymer_data_CI")[, 1:9]
 
 #Import the data with regionalization. Some variables are left as the default input of SBoo
@@ -1319,7 +1320,7 @@ close(pb)
 
 # Path
 ####Save steady state FFs and CFs
-out_file <- "../../results_FF_CF_CI_9.xlsx"
+out_file <- "../../results/results_FF_CF_CI_9.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
@@ -1350,7 +1351,7 @@ saveWorkbook(wb, out_file, overwrite = TRUE)
 
 
 ####Save time explicit FFs and CFs
-out_file <- "../../results_FF_CF_CI_time_horizon.xlsx"
+out_file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
