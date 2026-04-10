@@ -5,7 +5,8 @@ library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-file <- "results_FF_CF_CI_5.xlsx"
+#file <- "results/results_FF_CF_CI_9.xlsx"
+file <- "results/results_FF_CF_CI_time_horizon.xlsx"
 
 # Load workbook
 wb <- loadWorkbook(file)
@@ -24,12 +25,26 @@ for (sheet in sheet_names) {
 # names(sheets_list) <- sheet_names
 
 # Filter to only include the sheets you want to process
-target_sheets <- c(
-  "results_CF_mid_PAF_day",
-  "results_CF_end_PDF_year", 
-  "results_CF_end_species_year",
-  "results_CF_end_PDF_m2_year"
-)
+
+if (file == "results/results_FF_CF_CI_time_horizon.xlsx") {
+  target_sheets <- c(
+    "CF_mid_PAF_d_20_yrs",
+    "CF_mid_PAF_d_100_yrs",
+    "CF_species_yr_20_yrs",
+    "CF_end_PDF_yr_100_yrs",
+    "CF_end_species_yr_100_yrs",
+    "CF_end_PDF_m2_yr_100_yrs"
+  )
+} else {
+  target_sheets <- c(
+    "CF_mid_PAF_d",
+    "CF_end_PDF_yr", 
+    "CF_end_species_yr",
+    "CF_end_PDF_m2_yr"
+  )
+}
+
+
 
 # Optional: Filter sheets_list to only include target sheets
 sheets_list <- sheets_list[names(sheets_list) %in% target_sheets]
@@ -156,7 +171,7 @@ for (sheet_name in names(sheets_list)) {
 ###########
 
 # Read data 
-weightings_data <- read_excel("SI_B.xlsx", 
+weightings_data <- read_excel("input/SI_B.xlsx", 
                               sheet = "4.3.polymer_emissions")
 
 # Remove rows where polymer is NA
@@ -612,7 +627,15 @@ for (sheet in names(sheets_list)) {
   message("  Final row count: ", nrow(df_out))
 }
 
-file_out <- "results_FF_CF_World_Default.xlsx"
+if (file == "results/results_FF_CF_CI_time_horizon.xlsx") {
+  file_out <- "results/SI_D.xlsx"
+} else {
+  file_out <- "results/SI_C.xlsx"
+}
+
+
+
+
 # save workbook after loop
 saveWorkbook(wb, file_out, overwrite = TRUE)
 
