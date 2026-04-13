@@ -19,7 +19,7 @@ setwd("SimpleBox/SBooScripts")
 
 plastic_values <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.2.polymer_list") 
 regions <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.1.regional_data") 
-trackmpd <- read.xlsx("../../input/SI_B.xlsx", sheet = "3.5.trackmpd_input") 
+trackmpd <- read.xlsx("../../input/trackmpd_data/Velocities_all_weighted.xlsx", sheet = "LongFormat") 
 colnames(regions) <- regions[3,]
 regions_rows = nrow(regions)
 degradation_CI_all <- readxl::read_xlsx("../../input/SI_B.xlsx", 
