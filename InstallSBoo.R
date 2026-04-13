@@ -123,5 +123,5 @@ InstallSBoo <- function(Release = "2025.04.0", # tag for release use NA for bran
 }
 
 InstallSBoo(Release = NA,
-            devBranch = "marine_currents_clean_1",
+            devBranch = "marine_currents_clean",
             Temp_Folder = NA)
