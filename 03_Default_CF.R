@@ -5,8 +5,8 @@ library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-#file <- "results/results_FF_CF_CI_9.xlsx"
-file <- "results/results_FF_CF_CI_time_horizon.xlsx"
+#file <- "../../results/results_FF_CF_CI_9.xlsx"
+file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
 
 # Load workbook
 wb <- loadWorkbook(file)
@@ -26,7 +26,7 @@ for (sheet in sheet_names) {
 
 # Filter to only include the sheets you want to process
 
-if (file == "results/results_FF_CF_CI_time_horizon.xlsx") {
+if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
   target_sheets <- c(
     "CF_mid_PAF_d_20_yrs",
     "CF_mid_PAF_d_100_yrs",
@@ -53,7 +53,7 @@ sheets_list <- sheets_list[names(sheets_list) %in% target_sheets]
 # World average CFs
 ###########
 
-# Region weights
+# Region weights - based on regional emissions (Louvet et al., 2026)
 weights <- c(
   "North America"        = 0.00,
   "Latin America"        = 0.09,
@@ -113,6 +113,11 @@ for (sheet_name in names(sheets_list)) {
   # Assign region "World"
   df_world[[region_col]] <- "World"
   
+  # Remove n_samples column from world average calculation only
+  if("n_samples" %in% names(df_world)) {
+    df_world$n_samples <- NULL
+  }
+  
   # Handle elementary_flowname (nomenclature)
   if ("elementary_flowname" %in% orig_names) {
     flow_col <- tmp_names[orig_names == "elementary_flowname"]
@@ -171,7 +176,7 @@ for (sheet_name in names(sheets_list)) {
 ###########
 
 # Read data 
-weightings_data <- read_excel("input/SI_B.xlsx", 
+weightings_data <- read_excel("../../input/SI_B.xlsx", 
                               sheet = "4.3.polymer_emissions")
 
 # Remove rows where polymer is NA
@@ -356,6 +361,11 @@ for (sheet in names(sheets_list)) {
             ),
             .groups = "drop"
           )
+        
+        # Remove n_samples column from aggregated defaults
+        if("n_samples" %in% names(df_agg)) {
+          df_agg$n_samples <- NULL
+        }
         
         # Check if we got any rows
         if (nrow(df_agg) == 0) {
@@ -627,10 +637,10 @@ for (sheet in names(sheets_list)) {
   message("  Final row count: ", nrow(df_out))
 }
 
-if (file == "results/results_FF_CF_CI_time_horizon.xlsx") {
-  file_out <- "results/SI_D.xlsx"
+if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
+  file_out <- "../../results/SI_D.xlsx"
 } else {
-  file_out <- "results/SI_C.xlsx"
+  file_out <- "../../results/SI_C.xlsx"
 }
 
 

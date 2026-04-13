@@ -98,11 +98,22 @@ World$UpdateDirty(unique(current_df$varName))
 ## Adjust SBoo variables  ------------------------------------------------
 
 # Set the interception in soil
-intercept_df <- data.frame(varName = c("VegInterceptFrac"), 
-                           Waarde = c(0.975,0.975,0.975)) 
+intercept_df <- data.frame(varName = c("VegInterceptFrac","SizeRunoff"), 
+                           Waarde = c(0.9715,50)) #SizeRunoff should be based on radius = 50 (ab)
 
 World$mutateVars(intercept_df)
 World$UpdateDirty(unique(intercept_df$varName))
+
+# Set the netsedrate in deepocean
+sedrate_df <- data.frame(varName = c("NETsedrate"), 
+                         Scale = c("Continental"),
+                         SubCompart = c("sea"),
+                           Waarde = c(6.34e-11)) #same as regional "sea"
+
+World$mutateVars(sedrate_df)
+World$UpdateDirty(unique(sedrate_df$varName))
+
+
 
 # Change the drag method to Dioguardi 2018
 DragMethod_df <- data.frame(varName = "DragMethod",
@@ -875,11 +886,11 @@ pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
 # Variables to test -------------------------------------------------------
-reg = "Southeast Asia"
-pol = "PA_Nylon"
+reg = "Northern regions"
+pol = "EPS"
 size = 100
-shape = "Film"
-emission_compartment = "aRS"
+shape = "Sphere"
+emission_compartment = "s1RS"
 
 # Calculation of fate factors ---------------------------------------------
 for(reg in region_names){
@@ -1182,7 +1193,7 @@ for(reg in region_names){
         #Masses <- World$Masses()
         #k_matrix = World$exportEngineR()
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
-        #k_detailed = World$fetchData("kaas")
+        k_detailed = World$fetchData("kaas")
         #k_matrix_1 = k_matrix[[1]]
         
         # Setup on first iteration (only structure)
