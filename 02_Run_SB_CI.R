@@ -37,7 +37,7 @@ regions <- regions |>
 
 
 ## Initialize World -----------------------------------------------------
-
+use_scenario_data <- TRUE # Use the scenario-specific data in marilca-cfs-mps/data
 
 source("baseScripts/initWorld.R")
 
