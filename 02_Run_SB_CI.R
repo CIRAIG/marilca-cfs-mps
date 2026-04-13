@@ -886,9 +886,9 @@ pb <- txtProgressBar(min = 0, max = n, style = 3)
 count <- 0
 
 # Variables to test -------------------------------------------------------
-reg = "Northern regions"
+reg = "North America"
 pol = "EPS"
-size = 100
+size = 1
 shape = "Sphere"
 emission_compartment = "s1RS"
 
@@ -1182,7 +1182,7 @@ for(reg in region_names){
         
         #UpdateDirty with the names of all variables that were changed, in all the loops
         World$UpdateDirty(vars_to_update)
-        k_detailed = World$fetchData("kaas")
+        #k_detailed = World$fetchData("kaas")
         
         #solve
         #emissions <- data.frame(Abbr = c("aRS"), Emis = 1/3600/24) #emission of 1kg/d input in kg/s - resulting steady state masses (kg) can be divided by 1 (kg/d) to get FF (d)
@@ -1193,7 +1193,7 @@ for(reg in region_names){
         #Masses <- World$Masses()
         #k_matrix = World$exportEngineR()
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
-        k_detailed = World$fetchData("kaas")
+        #k_detailed_eps_1 = World$fetchData("kaas")
         #k_matrix_1 = k_matrix[[1]]
         
         # Setup on first iteration (only structure)
