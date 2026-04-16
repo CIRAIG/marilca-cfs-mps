@@ -31,7 +31,7 @@ regions <- regions |>
   slice(4:regions_rows)|>
   filter(!is.na(Variable)) |>
   dplyr::select(Variable, Scale, SubCompart, `North America`, `Latin America`, `Europe`, 
-                `Africa & Middle East`, `Central Asia`, `Southeast Asia`, `Northern regions`, `Oceania`,`Default USEtox`) |>
+                `Africa & Middle East`, `Central Asia`, `Southeast Asia`, `Northern regions`, `Oceania`) |>
   #dplyr::select(Variable, Scale, SubCompart, `Southeast Asia`, `Northern regions`,`Central Asia`) |> #test with SEA and NR only
   rename(varName = Variable)
 
@@ -139,7 +139,7 @@ vars_to_update = c()
 
 ## Set up FF variables --------------------------------------------------
 
-region_names <- colnames(regions)[4:12]
+region_names <- colnames(regions)[4:11]
 region_names <- region_names[!is.na(region_names)]
 polymer_names <- colnames(plastic_values)[3:ncol(plastic_values)]
 

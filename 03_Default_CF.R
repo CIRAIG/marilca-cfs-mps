@@ -5,11 +5,11 @@ library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-#file <- "../../results/results_FF_CF_CI_9.xlsx"
-file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
+file <- "../../results/results_FF_CF_CI_9.xlsx"
+#file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
 
 # Load workbook
-wb <- loadWorkbook(file)
+wb_in <- loadWorkbook(file)
 
 # Get sheet names from the workbook
 sheet_names <- getSheetNames(file)
@@ -17,8 +17,16 @@ sheet_names <- getSheetNames(file)
 # Read all sheets into a list of data frames
 sheets_list <- list()
 for (sheet in sheet_names) {
-  sheets_list[[sheet]] <- readWorkbook(wb, sheet = sheet, detectDates = TRUE)
+  sheets_list[[sheet]] <- readWorkbook(wb_in, sheet = sheet, detectDates = TRUE)
 }
+
+
+if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
+  file_out <- "../../results/SI_D.xlsx"
+} else {
+  file_out <- "../../results/SI_C.xlsx"
+}
+wb_out <- loadWorkbook(file_out) #load SI_D or SI_C to get the cover page and not remove it
 
 # OR using lapply for a more concise approach:
 # sheets_list <- lapply(sheet_names, function(x) readWorkbook(wb, sheet = x, detectDates = TRUE))
@@ -159,13 +167,13 @@ for (sheet_name in names(sheets_list)) {
 df_out <- bind_rows(df, df_world)
   
   # Write updated sheet
-  if (sheet_name %in% names(wb)) removeWorksheet(wb, sheet_name)
-  addWorksheet(wb, sheet_name)
-  writeData(wb, sheet_name, df_out, withFilter = TRUE)
+  if (sheet_name %in% names(wb_out)) removeWorksheet(wb_out, sheet_name)
+  addWorksheet(wb_out, sheet_name)
+  writeData(wb_out, sheet_name, df_out, withFilter = TRUE)
 }
 
 for (sheet_name in names(sheets_list)) {
-  sheets_list[[sheet_name]] <- readWorkbook(wb, sheet = sheet_name, detectDates = TRUE)
+  sheets_list[[sheet_name]] <- readWorkbook(wb_out, sheet = sheet_name, detectDates = TRUE)
 }
 # Save workbook
 #saveWorkbook(wb, file, overwrite = TRUE)
@@ -630,23 +638,31 @@ for (sheet in names(sheets_list)) {
   }
   
   # Write back
-  if (sheet %in% names(wb)) removeWorksheet(wb, sheet)
-  addWorksheet(wb, sheet)
-  writeData(wb, sheet, df_out, withFilter = TRUE)
+  if (sheet %in% names(wb_out)) removeWorksheet(wb_out, sheet)
+  addWorksheet(wb_out, sheet)
+  writeData(wb_out, sheet, df_out, withFilter = TRUE)
   
   message("  Final row count: ", nrow(df_out))
 }
 
-if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
-  file_out <- "../../results/SI_D.xlsx"
-} else {
-  file_out <- "../../results/SI_C.xlsx"
+# Identify sheets that were not processed: FF_d
+extra_sheets <- setdiff(sheet_names, target_sheets)
+
+for (sheet in extra_sheets) {
+  
+  df_extra <- readWorkbook(wb_in, sheet = sheet, detectDates = TRUE)
+  
+  if (sheet %in% names(wb_out)) {
+    removeWorksheet(wb_out, sheet)
+  }
+  
+  addWorksheet(wb_out, sheet)
+  writeData(wb_out, sheet, df_extra, withFilter = TRUE)
 }
 
-
-
+#wb <- loadWorkbook(file_out) #load the output file, to get the cover page and not remove it
 
 # save workbook after loop
-saveWorkbook(wb, file_out, overwrite = TRUE)
+saveWorkbook(wb_out, file_out, overwrite = TRUE)
 
 message("\n=== Processing complete ===")
