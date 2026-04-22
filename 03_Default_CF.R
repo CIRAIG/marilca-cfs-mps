@@ -28,10 +28,105 @@ if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
 }
 wb_out <- loadWorkbook(file_out) #load SI_D or SI_C to get the cover page and not remove it
 
-# OR using lapply for a more concise approach:
-# sheets_list <- lapply(sheet_names, function(x) readWorkbook(wb, sheet = x, detectDates = TRUE))
-# names(sheets_list) <- sheet_names
-
+create_modified_from_original <- function(df_orig, shape_mappings) {
+  # df_orig: cleaned original data (no default rows)
+  # shape_mappings: named vector mapping shape -> target size (numeric)
+  
+  orig_names <- names(df_orig)
+  tmp_names <- make.names(orig_names, unique = TRUE)
+  df <- df_orig
+  names(df) <- tmp_names
+  
+  polymer_col <- tmp_names[which(orig_names == "polymer")[1]]
+  region_col <- tmp_names[which(orig_names == "region")[1]]
+  elem_col <- tmp_names[which(orig_names == "elementary_flowname")[1]]
+  shape_col <- tmp_names[which(orig_names == "shape")[1]]
+  size_col <- tmp_names[which(orig_names == "size")[1]]
+  
+  if (any(is.na(c(polymer_col, region_col, elem_col, shape_col, size_col)))) {
+    message("    Missing required columns for original modification")
+    return(data.frame())
+  }
+  
+  modified_rows <- list()
+  
+  for (shape_pattern in names(shape_mappings)) {
+    target_size_num <- shape_mappings[[shape_pattern]]
+    
+    # Find rows with this shape (case-insensitive)
+    shape_rows <- df %>%
+      filter(tolower(.data[[shape_col]]) == tolower(shape_pattern))
+    
+    if (nrow(shape_rows) == 0) next
+    
+    #Keep only rows with the target size
+    shape_rows <- shape_rows %>%
+      filter(.data[[size_col]] == target_size_num)
+    
+    if (nrow(shape_rows) == 0) next
+    
+    # Determine replacement text
+    replacement_text <- ifelse(
+      tolower(shape_pattern) %in% c("film", "Film"),
+      "default thickness",
+      "default diameter"
+    )
+    
+    # Group by ALL columns except size and elementary_flowname
+    group_cols <- setdiff(names(shape_rows), c(elem_col))   # keep size_col in grouping 
+    
+    shape_rows_unique <- shape_rows %>%
+      group_by(across(all_of(group_cols))) %>%
+      slice(1) %>%
+      ungroup()
+    
+    message("    Creating modified rows from original polymers for shape: ", shape_pattern,
+            " (", nrow(shape_rows_unique), " unique combinations)")
+    
+    for (i in 1:nrow(shape_rows_unique)) {
+      new_row <- shape_rows_unique[i, , drop = FALSE]
+      new_row[[size_col]] <- target_size_num
+      
+      elem_name <- new_row[[elem_col]][1]
+      
+      # Skip if already has default marker
+      if (grepl("default (diameter|thickness)", elem_name, ignore.case = TRUE)) {
+        next
+      }
+      
+      # Expected original format: "Microfiber/cylinder - PA_Nylon (10 µm diameter), Southeast Asia"
+      # Desired output:       "Microfiber/cylinder - PA_Nylon (default diameter), Southeast Asia"
+      
+      # Replace the content inside the parentheses that contains a number and "µm"
+      # This pattern matches "(anything with digits and µm)" and replaces it with "(default diameter/thickness)"
+      new_elem <- gsub(
+        "\\([^)]*\\d+\\s*µm[^)]*\\)",
+        paste0("(", replacement_text, ")"),
+        elem_name
+      )
+      
+      # If no such pattern found (e.g., no parentheses), insert before the first comma
+      if (new_elem == elem_name && grepl(",", elem_name)) {
+        new_elem <- sub("\\s*,", paste0(" (", replacement_text, "),"), elem_name)
+      } else if (new_elem == elem_name) {
+        new_elem <- paste0(elem_name, " (", replacement_text, ")")
+      }
+      
+      new_row[[elem_col]] <- new_elem
+      modified_rows[[length(modified_rows) + 1]] <- new_row
+    }
+  }
+  
+  if (length(modified_rows) == 0) {
+    return(data.frame())
+  }
+  
+  result <- bind_rows(modified_rows)
+  # Ensure no duplicates (by all columns)
+  result <- result %>% distinct()
+  names(result) <- orig_names
+  return(result)
+}
 # Filter to only include the sheets you want to process
 
 if (file == "../../results/results_FF_CF_CI_time_horizon.xlsx") {
@@ -453,6 +548,9 @@ for (sheet in names(sheets_list)) {
           shape_rows <- default_df %>%
             filter(tolower(.data[[shape_tmp]]) == tolower(shape_pattern))
           
+          #shape_rows <- shape_rows %>%
+          #  filter(.data[[size_col]] == target_size_num)
+          
           if (nrow(shape_rows) > 0) {
             message("      Found ", nrow(shape_rows), " rows with shape '", shape_pattern, "'")
             
@@ -633,6 +731,13 @@ for (sheet in names(sheets_list)) {
         # No defaults created, use cleaned original
         df_out <- df_orig_no_defaults
         message("  No new defaults added")
+        
+      }
+      df_modified_original <- create_modified_from_original(df_orig_no_defaults, size_mappings)
+      
+      if (nrow(df_modified_original) > 0) {
+        df_out <- bind_rows(df_out, df_modified_original)
+        message("  Added ", nrow(df_modified_original), " modified rows from original polymers")
       }
     }
   }
@@ -659,6 +764,8 @@ for (sheet in extra_sheets) {
   addWorksheet(wb_out, sheet)
   writeData(wb_out, sheet, df_extra, withFilter = TRUE)
 }
+
+
 
 #wb <- loadWorkbook(file_out) #load the output file, to get the cover page and not remove it
 
