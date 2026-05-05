@@ -346,7 +346,7 @@ process_single_matrix_time_horizon <- function(k_mat, setup, time_horizon_second
 
 # Nested loops structure
 setup <- NULL
-n_samples <- 10
+n_samples <- 100
 
 fill_X <- function(prefix) {
   free <- paste0(prefix, "S")
