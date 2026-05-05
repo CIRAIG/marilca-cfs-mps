@@ -1331,7 +1331,7 @@ close(pb)
 
 # Path
 ####Save steady state FFs and CFs
-out_file <- "../../results/results_FF_CF_CI_9.xlsx"
+out_file <- "../../results/results_FF_CF_CI.xlsx"
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
