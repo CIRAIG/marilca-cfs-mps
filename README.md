@@ -4,12 +4,11 @@ DOI: TBD
 
 This repository provides the code and data used to compute fate factores (FFs) and characterization factors (CFs) based on SimpleBox object-oriented (SBoo). So far, SBoo Version 2026.3.1 was used (https://doi.org/10.5281/zenodo.19388881) 
 
-This repository provides all scripts, input data, and workflows required to:
+This repository provides all scripts and input data required to:
 
 - Compute steady-state and dynamic CFs
-- Reproduce default CFs
-- Run custom scenarios
-- Compare modeling outcomes
+- Retrieve default CFs
+- Generate graphs and figure
 
 If you use the CFs, please cite:
 - The publication (preprint: TBD)
