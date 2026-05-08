@@ -1,6 +1,6 @@
 # MarILCA Characterization Factors for Microplastics, Tire Particles and Cellulosic Fibers in Life Cycle Assessment: Regionalized impacts in marine, freshwater and terrestrial ecosystems
 
-DOI: TBD
+DOI: v1.0.0 [![DOI](https://zenodo.org/badge/1165898289.svg)](https://doi.org/10.5281/zenodo.20087936)
 
 This repository provides the code and data used to compute fate factores (FFs) and characterization factors (CFs) based on SimpleBox object-oriented (SBoo). So far, SBoo Version 2026.3.1 was used (https://doi.org/10.5281/zenodo.19388881) 
 
@@ -11,7 +11,7 @@ This repository provides all scripts and input data required to:
 - Generate graphs and figure
 
 If you use the CFs, please cite:
-- The publication (preprint: TBD)
+- The publication (preprint: https://dx.doi.org/10.2139/ssrn.6727270)
 - The version used (with the DOI corresponding to the release used)
 
 ---
