@@ -5,8 +5,8 @@ library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-file <- "../../results/results_FF_CF_CI_9.xlsx"
-#file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
+#file <- "../../results/results_FF_CF_CI.xlsx"
+file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
 
 # Load workbook
 wb_in <- loadWorkbook(file)
