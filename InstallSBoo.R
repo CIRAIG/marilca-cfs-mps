@@ -21,7 +21,7 @@ SBInstallFolder <- NULL
 
 source("installRequirements.R")
 
-InstallSBoo <- function(Release = "2025.04.0", # tag for release use NA for branch
+InstallSBoo <- function(Release = "2026.4.0", # tag for release use NA for branch
                         devBranch = "development",
                         Temp_Folder = "C:/Temp" # an existing folder where SimpleBox is to be installed
 ){

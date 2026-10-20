@@ -1,0 +1,2392 @@
+12:24:57  North America|EPS|1|Sphere  12.9 s
+12:24:58  North America|PP|1|Sphere  13.8 s
+12:24:58  North America|LDPE|1|Sphere  13.9 s
+12:24:58  North America|PS|1|Sphere  13.9 s
+12:24:58  North America|PA_Nylon|1|Sphere  14.0 s
+12:24:59  North America|HDPE|1|Sphere  14.5 s
+12:24:59  North America|PET|1|Sphere  15.0 s
+12:25:11  North America|EPS|1|Fiber  13.8 s
+12:25:12  North America|PA_Nylon|1|Fiber  14.2 s
+12:25:13  North America|PS|1|Fiber  14.8 s
+12:25:13  North America|PP|1|Fiber  14.9 s
+12:25:13  North America|LDPE|1|Fiber  14.9 s
+12:25:13  North America|HDPE|1|Fiber  14.7 s
+12:25:14  North America|PET|1|Fiber  15.0 s
+12:25:25  North America|EPS|1|Film  13.8 s
+12:25:28  North America|PA_Nylon|1|Film  15.4 s
+12:25:28  North America|PP|1|Film  15.2 s
+12:25:28  North America|PS|1|Film  15.3 s
+12:25:28  North America|LDPE|1|Film  15.3 s
+12:25:29  North America|HDPE|1|Film  15.5 s
+12:25:30  North America|PET|1|Film  15.7 s
+12:25:40  North America|EPS|10|Sphere  15.5 s
+12:25:43  North America|PA_Nylon|10|Sphere  15.3 s
+12:25:44  North America|PS|10|Sphere  16.3 s
+12:25:45  North America|PP|10|Sphere  16.9 s
+12:25:45  North America|LDPE|10|Sphere  16.9 s
+12:25:45  North America|HDPE|10|Sphere  16.7 s
+12:25:47  North America|PET|10|Sphere  17.4 s
+12:25:55  North America|EPS|10|Fiber  14.6 s
+12:25:59  North America|PA_Nylon|10|Fiber  15.8 s
+12:26:00  North America|PP|10|Fiber  14.9 s
+12:26:00  North America|PS|10|Fiber  15.5 s
+12:26:00  North America|LDPE|10|Fiber  14.9 s
+12:26:00  North America|HDPE|10|Fiber  14.7 s
+12:26:03  North America|PET|10|Fiber  15.5 s
+12:26:09  North America|EPS|10|Film  14.3 s
+12:26:14  North America|PA_Nylon|10|Film  15.5 s
+12:26:16  North America|PP|10|Film  15.8 s
+12:26:16  North America|PS|10|Film  15.9 s
+12:26:16  North America|LDPE|10|Film  16.0 s
+12:26:16  North America|HDPE|10|Film  15.9 s
+12:26:19  North America|PET|10|Film  16.2 s
+12:26:24  North America|EPS|100|Sphere  14.4 s
+12:26:29  North America|PA_Nylon|100|Sphere  14.6 s
+12:26:30  North America|PP|100|Sphere  14.7 s
+12:26:31  North America|PS|100|Sphere  14.8 s
+12:26:31  North America|LDPE|100|Sphere  14.9 s
+12:26:31  North America|HDPE|100|Sphere  15.0 s
+12:26:35  North America|PET|100|Sphere  15.7 s
+12:26:38  North America|EPS|100|Fiber  14.3 s
+12:26:45  North America|PA_Nylon|100|Fiber  16.1 s
+12:26:47  North America|PP|100|Fiber  16.5 s
+12:26:47  North America|HDPE|100|Fiber  16.3 s
+12:26:47  North America|PS|100|Fiber  16.8 s
+12:26:48  North America|LDPE|100|Fiber  16.9 s
+12:26:53  North America|PET|100|Fiber  18.5 s
+12:26:55  North America|EPS|100|Film  17.6 s
+12:27:02  North America|PA_Nylon|100|Film  16.8 s
+12:27:04  North America|PP|100|Film  17.2 s
+12:27:04  North America|HDPE|100|Film  17.0 s
+12:27:05  North America|PS|100|Film  17.3 s
+12:27:05  North America|LDPE|100|Film  17.1 s
+12:27:09  North America|PET|100|Film  15.5 s
+12:27:09  North America|EPS|1000|Sphere  13.8 s
+12:27:16  North America|PA_Nylon|1000|Sphere  14.3 s
+12:27:20  North America|PP|1000|Sphere  16.0 s
+12:27:20  North America|HDPE|1000|Sphere  15.9 s
+12:27:20  North America|PS|1000|Sphere  15.8 s
+12:27:21  North America|LDPE|1000|Sphere  15.9 s
+12:27:25  North America|EPS|1000|Fiber  15.4 s
+12:27:26  North America|PET|1000|Sphere  17.0 s
+12:27:32  North America|PA_Nylon|1000|Fiber  16.1 s
+12:27:36  North America|HDPE|1000|Fiber  15.8 s
+12:27:36  North America|PP|1000|Fiber  15.9 s
+12:27:36  North America|PS|1000|Fiber  15.8 s
+12:27:37  North America|LDPE|1000|Fiber  15.8 s
+12:27:40  North America|EPS|5000|Sphere  15.0 s
+12:27:42  North America|PET|1000|Fiber  16.2 s
+12:27:48  North America|PA_Nylon|5000|Sphere  15.6 s
+12:27:52  North America|PP|5000|Sphere  15.5 s
+12:27:52  North America|HDPE|5000|Sphere  15.6 s
+12:27:52  North America|PS|5000|Sphere  15.7 s
+12:27:52  North America|LDPE|5000|Sphere  15.7 s
+12:27:54  North America|EPS|5000|Fiber  14.0 s
+12:27:58  North America|PET|5000|Sphere  16.1 s
+12:28:03  North America|PA_Nylon|5000|Fiber  15.3 s
+12:28:08  North America|HDPE|5000|Fiber  15.9 s
+12:28:08  North America|PP|5000|Fiber  16.2 s
+12:28:08  North America|PS|5000|Fiber  15.9 s
+12:28:08  North America|LDPE|5000|Fiber  16.1 s
+12:28:09  North America|PVC|1|Sphere  15.0 s
+12:28:14  North America|PET|5000|Fiber  15.9 s
+12:28:18  North America|PU|1|Sphere  15.1 s
+12:28:23  North America|TRWP|1|Sphere  14.7 s
+12:28:23  North America|PAN|1|Sphere  14.9 s
+12:28:23  North America|PHA|1|Sphere  14.7 s
+12:28:23  North America|PVC|1|Fiber  14.0 s
+12:28:24  North America|PLA|1|Sphere  15.0 s
+12:28:29  North America|PCL|1|Sphere  14.7 s
+12:28:33  North America|PU|1|Fiber  14.4 s
+12:28:37  North America|PAN|1|Fiber  14.4 s
+12:28:37  North America|TRWP|1|Fiber  14.5 s
+12:28:37  North America|PVC|1|Film  14.1 s
+12:28:37  North America|PHA|1|Fiber  14.6 s
+12:28:38  North America|PLA|1|Fiber  14.3 s
+12:28:44  North America|PCL|1|Fiber  15.6 s
+12:28:48  North America|PU|1|Film  15.5 s
+12:28:52  North America|PVC|10|Sphere  15.2 s
+12:28:53  North America|TRWP|1|Film  15.9 s
+12:28:53  North America|PAN|1|Film  15.9 s
+12:28:53  North America|PHA|1|Film  15.7 s
+12:28:54  North America|PLA|1|Film  15.7 s
+12:29:01  North America|PCL|1|Film  16.6 s
+12:29:06  North America|PU|10|Sphere  17.7 s
+12:29:09  North America|PVC|10|Fiber  16.9 s
+12:29:10  North America|TRWP|10|Sphere  17.6 s
+12:29:11  North America|PAN|10|Sphere  17.7 s
+12:29:11  North America|PHA|10|Sphere  18.4 s
+12:29:12  North America|PLA|10|Sphere  18.2 s
+12:29:18  North America|PCL|10|Sphere  16.8 s
+12:29:23  North America|PU|10|Fiber  16.7 s
+12:29:25  North America|PVC|10|Film  16.1 s
+12:29:27  North America|TRWP|10|Fiber  16.8 s
+12:29:28  North America|PAN|10|Fiber  17.1 s
+12:29:28  North America|PHA|10|Fiber  16.8 s
+12:29:29  North America|PLA|10|Fiber  16.8 s
+12:29:35  North America|PCL|10|Fiber  17.2 s
+12:29:40  North America|PU|10|Film  17.3 s
+12:29:42  North America|PVC|100|Sphere  16.6 s
+12:29:45  North America|TRWP|10|Film  17.3 s
+12:29:45  North America|PAN|10|Film  17.2 s
+12:29:45  North America|PHA|10|Film  17.0 s
+12:29:45  North America|PLA|10|Film  16.9 s
+12:29:52  North America|PCL|10|Film  17.2 s
+12:29:57  North America|PU|100|Sphere  17.4 s
+12:29:59  North America|PVC|100|Fiber  16.9 s
+12:30:02  North America|TRWP|100|Sphere  17.5 s
+12:30:03  North America|PAN|100|Sphere  17.8 s
+12:30:03  North America|PLA|100|Sphere  17.9 s
+12:30:03  North America|PHA|100|Sphere  18.1 s
+12:30:11  North America|PCL|100|Sphere  19.3 s
+12:30:18  North America|PU|100|Fiber  20.3 s
+12:30:19  North America|PVC|100|Film  20.3 s
+12:30:25  North America|TRWP|100|Fiber  22.5 s
+12:30:25  North America|PAN|100|Fiber  22.6 s
+12:30:26  North America|PHA|100|Fiber  22.2 s
+12:30:26  North America|PLA|100|Fiber  22.4 s
+12:30:32  North America|PCL|100|Fiber  21.2 s
+12:30:39  North America|PU|100|Film  21.5 s
+12:30:39  North America|PVC|1000|Sphere  20.4 s
+12:30:45  North America|TRWP|100|Film  20.5 s
+12:30:47  North America|PAN|100|Film  21.6 s
+12:30:47  North America|PLA|100|Film  21.6 s
+12:30:47  North America|PHA|100|Film  21.7 s
+12:30:55  North America|PCL|100|Film  22.6 s
+12:31:03  North America|PVC|1000|Fiber  23.1 s
+12:31:03  North America|PU|1000|Sphere  24.0 s
+12:31:08  North America|TRWP|1000|Sphere  23.0 s
+12:31:10  North America|PHA|1000|Sphere  22.5 s
+12:31:10  North America|PAN|1000|Sphere  23.0 s
+12:31:10  North America|PLA|1000|Sphere  23.0 s
+12:31:17  North America|PCL|1000|Sphere  22.5 s
+12:31:23  North America|PVC|5000|Sphere  20.2 s
+12:31:24  North America|PU|1000|Fiber  20.7 s
+12:31:28  North America|TRWP|1000|Fiber  19.6 s
+12:31:29  North America|PAN|1000|Fiber  19.2 s
+12:31:29  North America|PLA|1000|Fiber  18.9 s
+12:31:29  North America|PHA|1000|Fiber  19.5 s
+12:31:37  North America|PCL|1000|Fiber  19.1 s
+12:31:42  North America|PVC|5000|Fiber  19.0 s
+12:31:43  North America|PU|5000|Sphere  19.3 s
+12:31:47  North America|TRWP|5000|Sphere  19.3 s
+12:31:48  North America|PHA|5000|Sphere  18.9 s
+12:31:48  North America|PAN|5000|Sphere  19.1 s
+12:31:48  North America|PLA|5000|Sphere  19.3 s
+12:31:55  North America|PCL|5000|Sphere  18.1 s
+12:32:00  North America|PBSA|1|Sphere  18.3 s
+12:32:01  North America|PU|5000|Fiber  18.2 s
+12:32:05  North America|TRWP|5000|Fiber  17.7 s
+12:32:06  North America|PHA|5000|Fiber  18.1 s
+12:32:06  North America|PAN|5000|Fiber  18.1 s
+12:32:06  North America|PLA|5000|Fiber  18.0 s
+12:32:12  North America|PCL|5000|Fiber  17.8 s
+12:32:17  North America|PBSA|1|Fiber  17.1 s
+12:32:19  North America|starch_blend|1|Sphere  17.0 s
+12:32:22  North America|PBAT|1|Sphere  17.2 s
+12:32:23  North America|Linen|1|Sphere  16.9 s
+12:32:24  North America|Cotton|1|Sphere  17.1 s
+12:32:24  North America|Viscose|1|Sphere  17.2 s
+12:32:30  North America|Rayon|1|Sphere  16.9 s
+12:32:34  North America|PBSA|1|Film  16.9 s
+12:32:35  North America|starch_blend|1|Fiber  16.7 s
+12:32:39  North America|PBAT|1|Fiber  16.4 s
+12:32:40  North America|Linen|1|Fiber  16.7 s
+12:32:40  North America|Cotton|1|Fiber  16.7 s
+12:32:40  North America|Viscose|1|Fiber  16.6 s
+12:32:46  North America|Rayon|1|Fiber  16.6 s
+12:32:51  North America|PBSA|10|Sphere  16.3 s
+12:32:52  North America|starch_blend|1|Film  16.6 s
+12:32:55  North America|PBAT|1|Film  16.6 s
+12:32:57  North America|Linen|1|Film  16.5 s
+12:32:57  North America|Cotton|1|Film  16.6 s
+12:32:57  North America|Viscose|1|Film  16.5 s
+12:33:03  North America|Rayon|1|Film  16.8 s
+12:33:07  North America|PBSA|10|Fiber  16.7 s
+12:33:08  North America|starch_blend|10|Sphere  16.5 s
+12:33:12  North America|PBAT|10|Sphere  16.9 s
+12:33:13  North America|Linen|10|Sphere  16.6 s
+12:33:13  North America|Cotton|10|Sphere  16.7 s
+12:33:14  North America|Viscose|10|Sphere  16.7 s
+12:33:20  North America|Rayon|10|Sphere  16.6 s
+12:33:24  North America|PBSA|10|Film  16.8 s
+12:33:25  North America|starch_blend|10|Fiber  16.9 s
+12:33:29  North America|PBAT|10|Fiber  16.5 s
+12:33:30  North America|Linen|10|Fiber  16.9 s
+12:33:30  North America|Cotton|10|Fiber  16.9 s
+12:33:30  North America|Viscose|10|Fiber  17.0 s
+12:33:36  North America|Rayon|10|Fiber  16.8 s
+12:33:41  North America|PBSA|100|Sphere  16.6 s
+12:33:42  North America|starch_blend|10|Film  16.6 s
+12:33:45  North America|PBAT|10|Film  16.8 s
+12:33:47  North America|Linen|10|Film  16.6 s
+12:33:47  North America|Cotton|10|Film  16.5 s
+12:33:47  North America|Viscose|10|Film  16.5 s
+12:33:53  North America|Rayon|10|Film  16.5 s
+12:33:57  North America|PBSA|100|Fiber  16.7 s
+12:33:59  North America|starch_blend|100|Sphere  17.0 s
+12:34:02  North America|PBAT|100|Sphere  17.0 s
+12:34:04  North America|Linen|100|Sphere  17.2 s
+12:34:04  North America|Cotton|100|Sphere  17.2 s
+12:34:04  North America|Viscose|100|Sphere  17.4 s
+12:34:10  North America|Rayon|100|Sphere  17.4 s
+12:34:15  North America|PBSA|100|Film  17.1 s
+12:34:16  North America|starch_blend|100|Fiber  17.0 s
+12:34:19  North America|PBAT|100|Fiber  16.9 s
+12:34:21  North America|Cotton|100|Fiber  16.7 s
+12:34:21  North America|Linen|100|Fiber  16.9 s
+12:34:21  North America|Viscose|100|Fiber  16.7 s
+12:34:27  North America|Rayon|100|Fiber  16.7 s
+12:34:32  North America|PBSA|1000|Sphere  16.9 s
+12:34:33  North America|starch_blend|100|Film  16.8 s
+12:34:36  North America|PBAT|100|Film  16.7 s
+12:34:38  North America|Linen|100|Film  16.7 s
+12:34:38  North America|Cotton|100|Film  16.9 s
+12:34:38  North America|Viscose|100|Film  17.0 s
+12:34:44  North America|Rayon|100|Film  16.9 s
+12:34:48  North America|PBSA|1000|Fiber  16.7 s
+12:34:49  North America|starch_blend|1000|Sphere  16.7 s
+12:34:53  North America|PBAT|1000|Sphere  17.0 s
+12:34:54  North America|Cotton|1000|Sphere  16.8 s
+12:34:55  North America|Linen|1000|Sphere  17.0 s
+12:34:55  North America|Viscose|1000|Sphere  16.9 s
+12:35:01  North America|Rayon|1000|Sphere  17.0 s
+12:35:05  North America|PBSA|5000|Sphere  16.9 s
+12:35:06  North America|starch_blend|1000|Fiber  17.0 s
+12:35:10  North America|PBAT|1000|Fiber  16.9 s
+12:35:11  North America|Linen|1000|Fiber  16.8 s
+12:35:11  North America|Cotton|1000|Fiber  17.0 s
+12:35:12  North America|Viscose|1000|Fiber  16.7 s
+12:35:18  North America|Rayon|1000|Fiber  16.7 s
+12:35:22  North America|PBSA|5000|Fiber  16.8 s
+12:35:23  North America|starch_blend|5000|Sphere  17.0 s
+12:35:27  North America|PBAT|5000|Sphere  16.7 s
+12:35:28  North America|Cotton|5000|Sphere  17.0 s
+12:35:28  North America|Linen|5000|Sphere  17.0 s
+12:35:29  North America|Viscose|5000|Sphere  16.9 s
+12:35:35  North America|Rayon|5000|Sphere  16.9 s
+12:35:40  North America|Lyocell|1|Sphere  17.5 s
+12:35:40  North America|starch_blend|5000|Fiber  16.7 s
+12:35:44  North America|PBAT|5000|Fiber  17.1 s
+12:35:45  North America|Cotton|5000|Fiber  16.7 s
+12:35:45  North America|Viscose|5000|Fiber  16.6 s
+12:35:45  North America|Linen|5000|Fiber  16.8 s
+12:35:49  North America|Rayon|5000|Fiber  14.6 s
+12:35:52  North America|Lyocell|1|Fiber  12.4 s
+12:35:53  North America|Modal|1|Sphere  12.3 s
+12:36:01  North America|Lyocell|1|Film  9.3 s
+12:36:02  North America|Modal|1|Fiber  9.4 s
+12:36:11  North America|Lyocell|10|Sphere  9.2 s
+12:36:11  North America|Modal|1|Film  9.1 s
+12:36:20  North America|Lyocell|10|Fiber  9.0 s
+12:36:20  North America|Modal|10|Sphere  9.1 s
+12:36:29  North America|Lyocell|10|Film  9.3 s
+12:36:30  North America|Modal|10|Fiber  9.3 s
+12:36:38  North America|Lyocell|100|Sphere  8.8 s
+12:36:38  North America|Modal|10|Film  8.7 s
+12:36:46  North America|Lyocell|100|Fiber  8.8 s
+12:36:47  North America|Modal|100|Sphere  8.8 s
+12:36:55  North America|Lyocell|100|Film  8.6 s
+12:36:56  North America|Modal|100|Fiber  8.6 s
+12:37:04  North America|Lyocell|1000|Sphere  8.7 s
+12:37:04  North America|Modal|100|Film  8.7 s
+12:37:13  North America|Lyocell|1000|Fiber  9.0 s
+12:37:13  North America|Modal|1000|Sphere  8.9 s
+12:37:21  North America|Lyocell|5000|Sphere  8.6 s
+12:37:22  North America|Modal|1000|Fiber  8.7 s
+12:37:30  North America|Lyocell|5000|Fiber  8.7 s
+12:37:31  North America|Modal|5000|Sphere  8.7 s
+12:37:39  North America|Modal|5000|Fiber  7.8 s
+12:37:54  Latin America|EPS|1|Sphere  14.7 s
+12:37:55  Latin America|PA_Nylon|1|Sphere  15.4 s
+12:37:55  Latin America|PP|1|Sphere  15.6 s
+12:37:55  Latin America|PS|1|Sphere  15.6 s
+12:37:55  Latin America|HDPE|1|Sphere  15.9 s
+12:37:55  Latin America|LDPE|1|Sphere  16.1 s
+12:37:56  Latin America|PET|1|Sphere  16.4 s
+12:38:10  Latin America|EPS|1|Fiber  15.8 s
+12:38:11  Latin America|PA_Nylon|1|Fiber  16.4 s
+12:38:12  Latin America|PS|1|Fiber  16.9 s
+12:38:12  Latin America|PP|1|Fiber  16.9 s
+12:38:12  Latin America|HDPE|1|Fiber  16.9 s
+12:38:12  Latin America|LDPE|1|Fiber  16.8 s
+12:38:13  Latin America|PET|1|Fiber  17.5 s
+12:38:26  Latin America|EPS|1|Film  16.7 s
+12:38:28  Latin America|PA_Nylon|1|Film  17.4 s
+12:38:30  Latin America|PP|1|Film  17.9 s
+12:38:30  Latin America|PS|1|Film  18.2 s
+12:38:30  Latin America|HDPE|1|Film  18.1 s
+12:38:30  Latin America|LDPE|1|Film  18.0 s
+12:38:32  Latin America|PET|1|Film  18.7 s
+12:38:45  Latin America|EPS|10|Sphere  18.8 s
+12:38:48  Latin America|PA_Nylon|10|Sphere  19.5 s
+12:38:50  Latin America|PP|10|Sphere  19.9 s
+12:38:50  Latin America|PS|10|Sphere  20.0 s
+12:38:50  Latin America|HDPE|10|Sphere  19.9 s
+12:38:50  Latin America|LDPE|10|Sphere  20.1 s
+12:38:52  Latin America|PET|10|Sphere  20.5 s
+12:39:03  Latin America|EPS|10|Fiber  17.7 s
+12:39:07  Latin America|PA_Nylon|10|Fiber  18.6 s
+12:39:09  Latin America|PP|10|Fiber  18.9 s
+12:39:09  Latin America|PS|10|Fiber  19.0 s
+12:39:09  Latin America|HDPE|10|Fiber  18.9 s
+12:39:09  Latin America|LDPE|10|Fiber  19.0 s
+12:39:12  Latin America|PET|10|Fiber  19.9 s
+12:39:21  Latin America|EPS|10|Film  18.4 s
+12:39:25  Latin America|PA_Nylon|10|Film  18.7 s
+12:39:28  Latin America|PP|10|Film  19.3 s
+12:39:28  Latin America|HDPE|10|Film  19.4 s
+12:39:28  Latin America|PS|10|Film  19.5 s
+12:39:29  Latin America|LDPE|10|Film  19.4 s
+12:39:32  Latin America|PET|10|Film  19.6 s
+12:39:39  Latin America|EPS|100|Sphere  18.0 s
+12:39:44  Latin America|PA_Nylon|100|Sphere  18.2 s
+12:39:47  Latin America|PP|100|Sphere  19.0 s
+12:39:47  Latin America|HDPE|100|Sphere  19.0 s
+12:39:47  Latin America|PS|100|Sphere  18.9 s
+12:39:48  Latin America|LDPE|100|Sphere  19.0 s
+12:39:51  Latin America|PET|100|Sphere  19.7 s
+12:39:57  Latin America|EPS|100|Fiber  17.8 s
+12:40:02  Latin America|PA_Nylon|100|Fiber  18.8 s
+12:40:06  Latin America|PP|100|Fiber  18.9 s
+12:40:06  Latin America|HDPE|100|Fiber  19.0 s
+12:40:07  Latin America|PS|100|Fiber  19.1 s
+12:40:07  Latin America|LDPE|100|Fiber  19.0 s
+12:40:11  Latin America|PET|100|Fiber  19.8 s
+12:40:15  Latin America|EPS|100|Film  18.2 s
+12:40:21  Latin America|PA_Nylon|100|Film  18.5 s
+12:40:25  Latin America|PP|100|Film  19.5 s
+12:40:26  Latin America|HDPE|100|Film  19.6 s
+12:40:26  Latin America|PS|100|Film  19.5 s
+12:40:26  Latin America|LDPE|100|Film  19.7 s
+12:40:32  Latin America|PET|100|Film  20.4 s
+12:40:35  Latin America|EPS|1000|Sphere  19.6 s
+12:40:43  Latin America|PA_Nylon|1000|Sphere  22.1 s
+12:40:48  Latin America|PP|1000|Sphere  22.6 s
+12:40:48  Latin America|HDPE|1000|Sphere  22.4 s
+12:40:49  Latin America|PS|1000|Sphere  22.8 s
+12:40:49  Latin America|LDPE|1000|Sphere  22.8 s
+12:40:55  Latin America|PET|1000|Sphere  22.9 s
+12:40:55  Latin America|EPS|1000|Fiber  20.4 s
+12:41:02  Latin America|PA_Nylon|1000|Fiber  19.1 s
+12:41:07  Latin America|PP|1000|Fiber  19.6 s
+12:41:08  Latin America|HDPE|1000|Fiber  19.6 s
+12:41:08  Latin America|PS|1000|Fiber  19.3 s
+12:41:09  Latin America|LDPE|1000|Fiber  19.4 s
+12:41:13  Latin America|EPS|5000|Sphere  18.2 s
+12:41:14  Latin America|PET|1000|Fiber  19.9 s
+12:41:21  Latin America|PA_Nylon|5000|Sphere  18.7 s
+12:41:27  Latin America|PP|5000|Sphere  19.3 s
+12:41:27  Latin America|HDPE|5000|Sphere  19.3 s
+12:41:27  Latin America|PS|5000|Sphere  19.2 s
+12:41:28  Latin America|LDPE|5000|Sphere  19.2 s
+12:41:31  Latin America|EPS|5000|Fiber  17.8 s
+12:41:34  Latin America|PET|5000|Sphere  19.5 s
+12:41:39  Latin America|PA_Nylon|5000|Fiber  18.6 s
+12:41:46  Latin America|PP|5000|Fiber  19.3 s
+12:41:47  Latin America|HDPE|5000|Fiber  19.3 s
+12:41:47  Latin America|PS|5000|Fiber  19.8 s
+12:41:47  Latin America|LDPE|5000|Fiber  19.4 s
+12:41:51  Latin America|PVC|1|Sphere  19.2 s
+12:41:54  Latin America|PET|5000|Fiber  20.4 s
+12:41:59  Latin America|PU|1|Sphere  19.9 s
+12:42:06  Latin America|PAN|1|Sphere  20.0 s
+12:42:07  Latin America|TRWP|1|Sphere  19.8 s
+12:42:07  Latin America|PHA|1|Sphere  19.7 s
+12:42:07  Latin America|PLA|1|Sphere  19.7 s
+12:42:09  Latin America|PVC|1|Fiber  18.6 s
+12:42:16  Latin America|PCL|1|Sphere  21.4 s
+12:42:21  Latin America|PU|1|Fiber  21.3 s
+12:42:27  Latin America|PAN|1|Fiber  20.6 s
+12:42:28  Latin America|TRWP|1|Fiber  21.1 s
+12:42:28  Latin America|PLA|1|Fiber  20.9 s
+12:42:28  Latin America|PHA|1|Fiber  21.0 s
+12:42:29  Latin America|PVC|1|Film  19.9 s
+12:42:35  Latin America|PCL|1|Fiber  18.7 s
+12:42:39  Latin America|PU|1|Film  18.1 s
+12:42:44  Latin America|PAN|1|Film  17.4 s
+12:42:45  Latin America|TRWP|1|Film  17.3 s
+12:42:45  Latin America|PHA|1|Film  17.1 s
+12:42:45  Latin America|PLA|1|Film  17.4 s
+12:42:46  Latin America|PVC|10|Sphere  16.6 s
+12:42:51  Latin America|PCL|1|Film  16.6 s
+12:42:55  Latin America|PU|10|Sphere  16.4 s
+12:43:00  Latin America|PAN|10|Sphere  16.1 s
+12:43:01  Latin America|TRWP|10|Sphere  15.9 s
+12:43:01  Latin America|PHA|10|Sphere  16.2 s
+12:43:01  Latin America|PLA|10|Sphere  15.9 s
+12:43:01  Latin America|PVC|10|Fiber  15.7 s
+12:43:07  Latin America|PCL|10|Sphere  15.7 s
+12:43:11  Latin America|PU|10|Fiber  15.7 s
+12:43:16  Latin America|PAN|10|Fiber  16.1 s
+12:43:17  Latin America|PVC|10|Film  15.1 s
+12:43:17  Latin America|TRWP|10|Fiber  16.0 s
+12:43:17  Latin America|PHA|10|Fiber  16.1 s
+12:43:17  Latin America|PLA|10|Fiber  16.1 s
+12:43:23  Latin America|PCL|10|Fiber  16.2 s
+12:43:27  Latin America|PU|10|Film  16.4 s
+12:43:32  Latin America|PVC|100|Sphere  15.7 s
+12:43:33  Latin America|PAN|10|Film  16.2 s
+12:43:33  Latin America|TRWP|10|Film  15.9 s
+12:43:33  Latin America|PHA|10|Film  16.0 s
+12:43:34  Latin America|PLA|10|Film  16.2 s
+12:43:39  Latin America|PCL|10|Film  16.2 s
+12:43:44  Latin America|PU|100|Sphere  16.2 s
+12:43:48  Latin America|PVC|100|Fiber  15.4 s
+12:43:49  Latin America|PAN|100|Sphere  16.1 s
+12:43:49  Latin America|TRWP|100|Sphere  16.1 s
+12:43:50  Latin America|PHA|100|Sphere  16.2 s
+12:43:50  Latin America|PLA|100|Sphere  16.1 s
+12:43:56  Latin America|PCL|100|Sphere  16.2 s
+12:44:00  Latin America|PU|100|Fiber  16.1 s
+12:44:08  Latin America|PVC|100|Film  20.0 s
+12:44:10  Latin America|PAN|100|Fiber  21.0 s
+12:44:10  Latin America|TRWP|100|Fiber  21.1 s
+12:44:11  Latin America|PHA|100|Fiber  21.2 s
+12:44:11  Latin America|PLA|100|Fiber  21.3 s
+12:44:18  Latin America|PCL|100|Fiber  22.1 s
+12:44:23  Latin America|PU|100|Film  23.4 s
+12:44:27  Latin America|PVC|1000|Sphere  19.2 s
+12:44:30  Latin America|TRWP|100|Film  19.5 s
+12:44:30  Latin America|PAN|100|Film  19.9 s
+12:44:31  Latin America|PHA|100|Film  20.1 s
+12:44:31  Latin America|PLA|100|Film  19.9 s
+12:44:38  Latin America|PCL|100|Film  20.4 s
+12:44:44  Latin America|PU|1000|Sphere  20.9 s
+12:44:47  Latin America|PVC|1000|Fiber  20.0 s
+12:44:50  Latin America|PAN|1000|Sphere  20.5 s
+12:44:50  Latin America|TRWP|1000|Sphere  20.7 s
+12:44:51  Latin America|PHA|1000|Sphere  20.5 s
+12:44:52  Latin America|PLA|1000|Sphere  21.2 s
+12:45:00  Latin America|PCL|1000|Sphere  21.7 s
+12:45:05  Latin America|PU|1000|Fiber  20.8 s
+12:45:07  Latin America|PVC|5000|Sphere  20.5 s
+12:45:11  Latin America|TRWP|1000|Fiber  20.9 s
+12:45:11  Latin America|PAN|1000|Fiber  21.0 s
+12:45:12  Latin America|PHA|1000|Fiber  20.8 s
+12:45:13  Latin America|PLA|1000|Fiber  20.5 s
+12:45:19  Latin America|PCL|1000|Fiber  19.3 s
+12:45:24  Latin America|PU|5000|Sphere  19.3 s
+12:45:26  Latin America|PVC|5000|Fiber  18.4 s
+12:45:30  Latin America|TRWP|5000|Sphere  18.8 s
+12:45:30  Latin America|PAN|5000|Sphere  18.9 s
+12:45:31  Latin America|PHA|5000|Sphere  19.2 s
+12:45:32  Latin America|PLA|5000|Sphere  18.9 s
+12:45:38  Latin America|PCL|5000|Sphere  18.9 s
+12:45:42  Latin America|PU|5000|Fiber  18.3 s
+12:45:45  Latin America|PBSA|1|Sphere  19.0 s
+12:45:48  Latin America|TRWP|5000|Fiber  18.4 s
+12:45:48  Latin America|PAN|5000|Fiber  18.4 s
+12:45:49  Latin America|PHA|5000|Fiber  18.0 s
+12:45:50  Latin America|PLA|5000|Fiber  18.3 s
+12:45:56  Latin America|PCL|5000|Fiber  18.0 s
+12:46:01  Latin America|starch_blend|1|Sphere  18.7 s
+12:46:03  Latin America|PBSA|1|Fiber  18.1 s
+12:46:07  Latin America|PBAT|1|Sphere  18.5 s
+12:46:07  Latin America|Cotton|1|Sphere  18.5 s
+12:46:08  Latin America|Linen|1|Sphere  18.5 s
+12:46:09  Latin America|Viscose|1|Sphere  18.7 s
+12:46:15  Latin America|Rayon|1|Sphere  18.4 s
+12:46:20  Latin America|starch_blend|1|Fiber  18.2 s
+12:46:21  Latin America|PBSA|1|Film  18.0 s
+12:46:25  Latin America|PBAT|1|Fiber  18.0 s
+12:46:25  Latin America|Cotton|1|Fiber  18.1 s
+12:46:26  Latin America|Linen|1|Fiber  18.0 s
+12:46:27  Latin America|Viscose|1|Fiber  17.8 s
+12:46:33  Latin America|Rayon|1|Fiber  17.8 s
+12:46:37  Latin America|starch_blend|1|Film  17.8 s
+12:46:39  Latin America|PBSA|10|Sphere  17.5 s
+12:46:43  Latin America|PBAT|1|Film  17.8 s
+12:46:43  Latin America|Cotton|1|Film  17.9 s
+12:46:44  Latin America|Linen|1|Film  17.8 s
+12:46:44  Latin America|Viscose|1|Film  17.8 s
+12:46:51  Latin America|Rayon|1|Film  17.9 s
+12:46:55  Latin America|starch_blend|10|Sphere  17.9 s
+12:46:57  Latin America|PBSA|10|Fiber  18.2 s
+12:47:01  Latin America|PBAT|10|Sphere  18.2 s
+12:47:01  Latin America|Cotton|10|Sphere  18.1 s
+12:47:02  Latin America|Linen|10|Sphere  18.1 s
+12:47:03  Latin America|Viscose|10|Sphere  18.4 s
+12:47:09  Latin America|Rayon|10|Sphere  18.2 s
+12:47:14  Latin America|starch_blend|10|Fiber  18.4 s
+12:47:15  Latin America|PBSA|10|Film  18.3 s
+12:47:19  Latin America|PBAT|10|Fiber  18.4 s
+12:47:20  Latin America|Cotton|10|Fiber  18.4 s
+12:47:20  Latin America|Linen|10|Fiber  18.4 s
+12:47:21  Latin America|Viscose|10|Fiber  18.2 s
+12:47:27  Latin America|Rayon|10|Fiber  18.6 s
+12:47:32  Latin America|starch_blend|10|Film  18.2 s
+12:47:34  Latin America|PBSA|100|Sphere  18.4 s
+12:47:38  Latin America|PBAT|10|Film  18.1 s
+12:47:38  Latin America|Cotton|10|Film  18.0 s
+12:47:38  Latin America|Linen|10|Film  18.0 s
+12:47:39  Latin America|Viscose|10|Film  18.2 s
+12:47:45  Latin America|Rayon|10|Film  17.8 s
+12:47:50  Latin America|starch_blend|100|Sphere  17.9 s
+12:47:51  Latin America|PBSA|100|Fiber  17.6 s
+12:47:55  Latin America|PBAT|100|Sphere  18.0 s
+12:47:56  Latin America|Cotton|100|Sphere  17.9 s
+12:47:56  Latin America|Linen|100|Sphere  17.9 s
+12:47:57  Latin America|Viscose|100|Sphere  17.7 s
+12:48:03  Latin America|Rayon|100|Sphere  17.9 s
+12:48:07  Latin America|starch_blend|100|Fiber  17.6 s
+12:48:09  Latin America|PBSA|100|Film  17.9 s
+12:48:13  Latin America|PBAT|100|Fiber  17.6 s
+12:48:13  Latin America|Cotton|100|Fiber  17.6 s
+12:48:14  Latin America|Linen|100|Fiber  17.6 s
+12:48:15  Latin America|Viscose|100|Fiber  17.8 s
+12:48:21  Latin America|Rayon|100|Fiber  18.3 s
+12:48:26  Latin America|starch_blend|100|Film  18.7 s
+12:48:28  Latin America|PBSA|1000|Sphere  18.5 s
+12:48:32  Latin America|PBAT|100|Film  18.8 s
+12:48:32  Latin America|Cotton|100|Film  18.9 s
+12:48:33  Latin America|Linen|100|Film  18.9 s
+12:48:33  Latin America|Viscose|100|Film  18.8 s
+12:48:42  Latin America|Rayon|100|Film  20.5 s
+12:48:47  Latin America|starch_blend|1000|Sphere  20.9 s
+12:48:49  Latin America|PBSA|1000|Fiber  21.3 s
+12:48:55  Latin America|PBAT|1000|Sphere  22.7 s
+12:48:55  Latin America|Cotton|1000|Sphere  23.3 s
+12:48:58  Latin America|Linen|1000|Sphere  24.9 s
+12:48:59  Latin America|Viscose|1000|Sphere  25.6 s
+12:49:06  Latin America|Rayon|1000|Sphere  24.2 s
+12:49:11  Latin America|starch_blend|1000|Fiber  23.9 s
+12:49:12  Latin America|PBSA|5000|Sphere  23.5 s
+12:49:17  Latin America|PBAT|1000|Fiber  22.7 s
+12:49:18  Latin America|Cotton|1000|Fiber  22.3 s
+12:49:18  Latin America|Linen|1000|Fiber  20.9 s
+12:49:19  Latin America|Viscose|1000|Fiber  20.0 s
+12:49:26  Latin America|Rayon|1000|Fiber  19.9 s
+12:49:30  Latin America|starch_blend|5000|Sphere  19.4 s
+12:49:32  Latin America|PBSA|5000|Fiber  19.5 s
+12:49:37  Latin America|PBAT|5000|Sphere  19.2 s
+12:49:37  Latin America|Cotton|5000|Sphere  19.3 s
+12:49:38  Latin America|Linen|5000|Sphere  19.1 s
+12:49:39  Latin America|Viscose|5000|Sphere  19.5 s
+12:49:46  Latin America|Rayon|5000|Sphere  20.5 s
+12:49:53  Latin America|starch_blend|5000|Fiber  22.5 s
+12:49:57  Latin America|Lyocell|1|Sphere  24.8 s
+12:50:01  Latin America|PBAT|5000|Fiber  25.0 s
+12:50:02  Latin America|Cotton|5000|Fiber  25.1 s
+12:50:04  Latin America|Linen|5000|Fiber  26.0 s
+12:50:04  Latin America|Viscose|5000|Fiber  25.9 s
+12:50:08  Latin America|Rayon|5000|Fiber  22.1 s
+12:50:12  Latin America|Modal|1|Sphere  18.9 s
+12:50:13  Latin America|Lyocell|1|Fiber  15.8 s
+12:50:22  Latin America|Modal|1|Fiber  10.6 s
+12:50:23  Latin America|Lyocell|1|Film  10.6 s
+12:50:33  Latin America|Modal|1|Film  10.3 s
+12:50:34  Latin America|Lyocell|10|Sphere  10.2 s
+12:50:42  Latin America|Modal|10|Sphere  9.8 s
+12:50:43  Latin America|Lyocell|10|Fiber  9.9 s
+12:50:52  Latin America|Modal|10|Fiber  9.6 s
+12:50:53  Latin America|Lyocell|10|Film  9.4 s
+12:51:02  Latin America|Modal|10|Film  9.4 s
+12:51:02  Latin America|Lyocell|100|Sphere  9.6 s
+12:51:11  Latin America|Modal|100|Sphere  9.2 s
+12:51:12  Latin America|Lyocell|100|Fiber  9.2 s
+12:51:20  Latin America|Modal|100|Fiber  9.1 s
+12:51:21  Latin America|Lyocell|100|Film  8.9 s
+12:51:29  Latin America|Modal|100|Film  8.9 s
+12:51:30  Latin America|Lyocell|1000|Sphere  9.1 s
+12:51:38  Latin America|Modal|1000|Sphere  9.0 s
+12:51:39  Latin America|Lyocell|1000|Fiber  8.8 s
+12:51:47  Latin America|Modal|1000|Fiber  8.8 s
+12:51:47  Latin America|Lyocell|5000|Sphere  9.0 s
+12:51:56  Latin America|Modal|5000|Sphere  9.0 s
+12:51:56  Latin America|Lyocell|5000|Fiber  8.9 s
+12:52:04  Latin America|Modal|5000|Fiber  8.6 s
+12:52:24  Europe|EPS|1|Sphere  18.6 s
+12:52:24  Europe|PA_Nylon|1|Sphere  18.9 s
+12:52:25  Europe|HDPE|1|Sphere  19.7 s
+12:52:25  Europe|LDPE|1|Sphere  20.0 s
+12:52:25  Europe|PS|1|Sphere  20.1 s
+12:52:25  Europe|PP|1|Sphere  20.2 s
+12:52:25  Europe|PET|1|Sphere  20.3 s
+12:52:44  Europe|EPS|1|Fiber  19.9 s
+12:52:45  Europe|PA_Nylon|1|Fiber  20.8 s
+12:52:46  Europe|PS|1|Fiber  20.7 s
+12:52:46  Europe|HDPE|1|Fiber  21.3 s
+12:52:46  Europe|PP|1|Fiber  20.8 s
+12:52:46  Europe|LDPE|1|Fiber  21.3 s
+12:52:47  Europe|PET|1|Fiber  21.7 s
+12:53:03  Europe|EPS|1|Film  19.4 s
+12:53:05  Europe|PA_Nylon|1|Film  20.3 s
+12:53:07  Europe|HDPE|1|Film  20.6 s
+12:53:07  Europe|LDPE|1|Film  20.4 s
+12:53:07  Europe|PS|1|Film  20.8 s
+12:53:07  Europe|PP|1|Film  20.9 s
+12:53:08  Europe|PET|1|Film  21.0 s
+12:53:24  Europe|EPS|10|Sphere  20.6 s
+12:53:26  Europe|PA_Nylon|10|Sphere  21.4 s
+12:53:29  Europe|PS|10|Sphere  22.0 s
+12:53:29  Europe|HDPE|10|Sphere  22.2 s
+12:53:29  Europe|LDPE|10|Sphere  22.2 s
+12:53:29  Europe|PP|10|Sphere  22.2 s
+12:53:31  Europe|PET|10|Sphere  22.5 s
+12:53:43  Europe|EPS|10|Fiber  19.1 s
+12:53:46  Europe|PA_Nylon|10|Fiber  19.7 s
+12:53:49  Europe|HDPE|10|Fiber  20.1 s
+12:53:49  Europe|PS|10|Fiber  20.2 s
+12:53:49  Europe|LDPE|10|Fiber  20.1 s
+12:53:49  Europe|PP|10|Fiber  20.2 s
+12:53:53  Europe|PET|10|Fiber  21.9 s
+12:54:11  Europe|EPS|10|Film  27.9 s
+12:54:17  Europe|PA_Nylon|10|Film  30.8 s
+12:54:21  Europe|LDPE|10|Film  32.0 s
+12:54:21  Europe|PS|10|Film  32.3 s
+12:54:21  Europe|PP|10|Film  32.0 s
+12:54:21  Europe|HDPE|10|Film  32.5 s
+12:54:26  Europe|PET|10|Film  33.1 s
+12:54:34  Europe|EPS|100|Sphere  23.9 s
+12:54:40  Europe|PA_Nylon|100|Sphere  22.5 s
+12:54:44  Europe|LDPE|100|Sphere  22.5 s
+12:54:44  Europe|HDPE|100|Sphere  22.3 s
+12:54:44  Europe|PP|100|Sphere  22.5 s
+12:54:44  Europe|PS|100|Sphere  22.6 s
+12:54:49  Europe|PET|100|Sphere  22.9 s
+12:54:56  Europe|EPS|100|Fiber  21.2 s
+12:55:01  Europe|PA_Nylon|100|Fiber  21.6 s
+12:55:06  Europe|LDPE|100|Fiber  22.1 s
+12:55:06  Europe|HDPE|100|Fiber  22.0 s
+12:55:06  Europe|PP|100|Fiber  22.0 s
+12:55:06  Europe|PS|100|Fiber  22.0 s
+12:55:11  Europe|PET|100|Fiber  22.0 s
+12:55:15  Europe|EPS|100|Film  19.4 s
+12:55:22  Europe|PA_Nylon|100|Film  20.6 s
+12:55:26  Europe|LDPE|100|Film  20.6 s
+12:55:26  Europe|HDPE|100|Film  20.5 s
+12:55:27  Europe|PS|100|Film  20.9 s
+12:55:27  Europe|PP|100|Film  21.0 s
+12:55:32  Europe|PET|100|Film  21.1 s
+12:55:34  Europe|EPS|1000|Sphere  19.3 s
+12:55:41  Europe|PA_Nylon|1000|Sphere  18.9 s
+12:55:47  Europe|LDPE|1000|Sphere  20.3 s
+12:55:47  Europe|HDPE|1000|Sphere  20.3 s
+12:55:47  Europe|PP|1000|Sphere  19.9 s
+12:55:47  Europe|PS|1000|Sphere  20.1 s
+12:55:52  Europe|PET|1000|Sphere  20.7 s
+12:55:53  Europe|EPS|1000|Fiber  18.9 s
+12:56:00  Europe|PA_Nylon|1000|Fiber  19.8 s
+12:56:06  Europe|HDPE|1000|Fiber  19.2 s
+12:56:06  Europe|LDPE|1000|Fiber  19.3 s
+12:56:06  Europe|PP|1000|Fiber  19.6 s
+12:56:07  Europe|PS|1000|Fiber  19.6 s
+12:56:12  Europe|EPS|5000|Sphere  18.2 s
+12:56:12  Europe|PET|1000|Fiber  19.9 s
+12:56:19  Europe|PA_Nylon|5000|Sphere  18.7 s
+12:56:25  Europe|HDPE|5000|Sphere  19.1 s
+12:56:25  Europe|LDPE|5000|Sphere  19.4 s
+12:56:25  Europe|PP|5000|Sphere  19.0 s
+12:56:26  Europe|PS|5000|Sphere  19.1 s
+12:56:29  Europe|EPS|5000|Fiber  17.9 s
+12:56:32  Europe|PET|5000|Sphere  19.5 s
+12:56:38  Europe|PA_Nylon|5000|Fiber  18.6 s
+12:56:44  Europe|HDPE|5000|Fiber  19.3 s
+12:56:45  Europe|LDPE|5000|Fiber  19.3 s
+12:56:45  Europe|PP|5000|Fiber  19.2 s
+12:56:45  Europe|PS|5000|Fiber  19.4 s
+12:56:48  Europe|PVC|1|Sphere  18.6 s
+12:56:52  Europe|PET|5000|Fiber  19.8 s
+12:56:57  Europe|PU|1|Sphere  19.4 s
+12:57:04  Europe|TRWP|1|Sphere  19.4 s
+12:57:04  Europe|PAN|1|Sphere  19.7 s
+12:57:04  Europe|PHA|1|Sphere  19.7 s
+12:57:05  Europe|PLA|1|Sphere  19.6 s
+12:57:07  Europe|PVC|1|Fiber  18.5 s
+12:57:11  Europe|PCL|1|Sphere  19.5 s
+12:57:17  Europe|PU|1|Fiber  19.2 s
+12:57:23  Europe|TRWP|1|Fiber  19.0 s
+12:57:23  Europe|PAN|1|Fiber  19.1 s
+12:57:23  Europe|PHA|1|Fiber  19.0 s
+12:57:24  Europe|PLA|1|Fiber  19.0 s
+12:57:25  Europe|PVC|1|Film  18.4 s
+12:57:31  Europe|PCL|1|Fiber  19.5 s
+12:57:36  Europe|PU|1|Film  19.3 s
+12:57:42  Europe|PAN|1|Film  19.2 s
+12:57:42  Europe|TRWP|1|Film  19.3 s
+12:57:43  Europe|PHA|1|Film  19.5 s
+12:57:43  Europe|PLA|1|Film  19.3 s
+12:57:44  Europe|PVC|10|Sphere  19.0 s
+12:57:50  Europe|PCL|1|Film  19.0 s
+12:57:55  Europe|PU|10|Sphere  19.2 s
+12:58:02  Europe|TRWP|10|Sphere  19.5 s
+12:58:02  Europe|PAN|10|Sphere  19.7 s
+12:58:02  Europe|PHA|10|Sphere  19.4 s
+12:58:03  Europe|PLA|10|Sphere  19.7 s
+12:58:03  Europe|PVC|10|Fiber  18.7 s
+12:58:10  Europe|PCL|10|Sphere  19.7 s
+12:58:14  Europe|PU|10|Fiber  19.2 s
+12:58:20  Europe|TRWP|10|Fiber  18.5 s
+12:58:21  Europe|PAN|10|Fiber  18.6 s
+12:58:21  Europe|PVC|10|Film  18.2 s
+12:58:21  Europe|PHA|10|Fiber  18.8 s
+12:58:21  Europe|PLA|10|Fiber  18.5 s
+12:58:29  Europe|PCL|10|Fiber  19.6 s
+12:58:37  Europe|PU|10|Film  22.3 s
+12:58:44  Europe|PVC|100|Sphere  23.5 s
+12:58:45  Europe|TRWP|10|Film  24.3 s
+12:58:45  Europe|PAN|10|Film  24.3 s
+12:58:46  Europe|PLA|10|Film  24.5 s
+12:58:46  Europe|PHA|10|Film  24.6 s
+12:58:53  Europe|PCL|10|Film  24.2 s
+12:58:59  Europe|PU|100|Sphere  22.1 s
+12:59:04  Europe|PVC|100|Fiber  20.0 s
+12:59:05  Europe|TRWP|100|Sphere  20.4 s
+12:59:05  Europe|PAN|100|Sphere  20.5 s
+12:59:06  Europe|PHA|100|Sphere  20.4 s
+12:59:06  Europe|PLA|100|Sphere  20.4 s
+12:59:14  Europe|PCL|100|Sphere  20.3 s
+12:59:19  Europe|PU|100|Fiber  20.3 s
+12:59:24  Europe|PVC|100|Film  19.3 s
+12:59:25  Europe|TRWP|100|Fiber  20.1 s
+12:59:26  Europe|PAN|100|Fiber  20.2 s
+12:59:26  Europe|PLA|100|Fiber  20.1 s
+12:59:26  Europe|PHA|100|Fiber  20.2 s
+12:59:34  Europe|PCL|100|Fiber  19.9 s
+12:59:38  Europe|PU|100|Film  19.5 s
+12:59:43  Europe|PVC|1000|Sphere  19.1 s
+12:59:45  Europe|TRWP|100|Film  19.4 s
+12:59:45  Europe|PAN|100|Film  19.5 s
+12:59:46  Europe|PHA|100|Film  19.6 s
+12:59:46  Europe|PLA|100|Film  19.7 s
+12:59:53  Europe|PCL|100|Film  19.7 s
+13:00:00  Europe|PU|1000|Sphere  21.1 s
+13:00:03  Europe|PVC|1000|Fiber  20.3 s
+13:00:06  Europe|TRWP|1000|Sphere  21.4 s
+13:00:07  Europe|PAN|1000|Sphere  21.3 s
+13:00:07  Europe|PLA|1000|Sphere  21.0 s
+13:00:07  Europe|PHA|1000|Sphere  21.5 s
+13:00:16  Europe|PCL|1000|Sphere  22.5 s
+13:00:22  Europe|PU|1000|Fiber  22.3 s
+13:00:25  Europe|PVC|5000|Sphere  22.2 s
+13:00:31  Europe|TRWP|1000|Fiber  24.8 s
+13:00:32  Europe|PAN|1000|Fiber  25.7 s
+13:00:33  Europe|PHA|1000|Fiber  25.5 s
+13:00:33  Europe|PLA|1000|Fiber  25.9 s
+13:00:42  Europe|PCL|1000|Fiber  26.6 s
+13:00:49  Europe|PU|5000|Sphere  26.8 s
+13:00:51  Europe|PVC|5000|Fiber  25.6 s
+13:00:56  Europe|TRWP|5000|Sphere  25.2 s
+13:00:57  Europe|PAN|5000|Sphere  24.3 s
+13:00:58  Europe|PHA|5000|Sphere  24.8 s
+13:00:58  Europe|PLA|5000|Sphere  24.8 s
+13:01:05  Europe|PCL|5000|Sphere  22.8 s
+13:01:11  Europe|PU|5000|Fiber  21.9 s
+13:01:13  Europe|PBSA|1|Sphere  22.1 s
+13:01:17  Europe|TRWP|5000|Fiber  20.7 s
+13:01:18  Europe|PAN|5000|Fiber  21.3 s
+13:01:18  Europe|PHA|5000|Fiber  20.7 s
+13:01:18  Europe|PLA|5000|Fiber  20.6 s
+13:01:26  Europe|PCL|5000|Fiber  21.2 s
+13:01:32  Europe|starch_blend|1|Sphere  21.5 s
+13:01:35  Europe|PBSA|1|Fiber  21.3 s
+13:01:39  Europe|PBAT|1|Sphere  21.6 s
+13:01:40  Europe|Cotton|1|Sphere  21.6 s
+13:01:40  Europe|Linen|1|Sphere  21.7 s
+13:01:41  Europe|Viscose|1|Sphere  22.0 s
+13:01:50  Europe|Rayon|1|Sphere  23.2 s
+13:01:55  Europe|starch_blend|1|Fiber  23.0 s
+13:01:57  Europe|PBSA|1|Film  22.4 s
+13:02:02  Europe|PBAT|1|Fiber  23.1 s
+13:02:03  Europe|Cotton|1|Fiber  23.0 s
+13:02:03  Europe|Linen|1|Fiber  23.1 s
+13:02:03  Europe|Viscose|1|Fiber  22.8 s
+13:02:11  Europe|Rayon|1|Fiber  21.5 s
+13:02:16  Europe|starch_blend|1|Film  20.7 s
+13:02:18  Europe|PBSA|10|Sphere  21.2 s
+13:02:24  Europe|PBAT|1|Film  21.9 s
+13:02:24  Europe|Cotton|1|Film  21.5 s
+13:02:25  Europe|Viscose|1|Film  21.6 s
+13:02:25  Europe|Linen|1|Film  21.6 s
+13:02:33  Europe|Rayon|1|Film  22.0 s
+13:02:39  Europe|starch_blend|10|Sphere  23.1 s
+13:02:41  Europe|PBSA|10|Fiber  22.9 s
+13:02:46  Europe|PBAT|10|Sphere  22.3 s
+13:02:47  Europe|Cotton|10|Sphere  22.3 s
+13:02:47  Europe|Viscose|10|Sphere  22.2 s
+13:02:47  Europe|Linen|10|Sphere  22.2 s
+13:02:55  Europe|Rayon|10|Sphere  21.7 s
+13:03:00  Europe|starch_blend|10|Fiber  20.5 s
+13:03:02  Europe|PBSA|10|Film  20.8 s
+13:03:06  Europe|PBAT|10|Fiber  20.5 s
+13:03:07  Europe|Cotton|10|Fiber  20.9 s
+13:03:08  Europe|Viscose|10|Fiber  20.9 s
+13:03:08  Europe|Linen|10|Fiber  21.0 s
+13:03:17  Europe|Rayon|10|Fiber  22.0 s
+13:03:22  Europe|starch_blend|10|Film  22.0 s
+13:03:24  Europe|PBSA|100|Sphere  21.8 s
+13:03:28  Europe|PBAT|10|Film  22.1 s
+13:03:29  Europe|Cotton|10|Film  21.8 s
+13:03:30  Europe|Viscose|10|Film  21.8 s
+13:03:30  Europe|Linen|10|Film  21.8 s
+13:03:38  Europe|Rayon|10|Film  21.0 s
+13:03:45  Europe|starch_blend|100|Sphere  23.0 s
+13:03:47  Europe|PBSA|100|Fiber  23.5 s
+13:03:54  Europe|PBAT|100|Sphere  25.5 s
+13:03:55  Europe|Cotton|100|Sphere  26.0 s
+13:03:56  Europe|Viscose|100|Sphere  25.9 s
+13:03:56  Europe|Linen|100|Sphere  25.9 s
+13:04:06  Europe|Rayon|100|Sphere  27.9 s
+13:04:12  Europe|starch_blend|100|Fiber  27.2 s
+13:04:14  Europe|PBSA|100|Film  27.2 s
+13:04:19  Europe|PBAT|100|Fiber  24.8 s
+13:04:20  Europe|Cotton|100|Fiber  24.4 s
+13:04:20  Europe|Viscose|100|Fiber  24.4 s
+13:04:20  Europe|Linen|100|Fiber  24.3 s
+13:04:28  Europe|Rayon|100|Fiber  21.9 s
+13:04:32  Europe|starch_blend|100|Film  20.6 s
+13:04:35  Europe|PBSA|1000|Sphere  20.1 s
+13:04:39  Europe|PBAT|100|Film  19.8 s
+13:04:39  Europe|Cotton|100|Film  19.9 s
+13:04:40  Europe|Viscose|100|Film  19.9 s
+13:04:40  Europe|Linen|100|Film  19.8 s
+13:04:49  Europe|Rayon|100|Film  20.8 s
+13:04:53  Europe|starch_blend|1000|Sphere  20.7 s
+13:04:56  Europe|PBSA|1000|Fiber  21.0 s
+13:05:00  Europe|PBAT|1000|Sphere  21.0 s
+13:05:01  Europe|Cotton|1000|Sphere  21.4 s
+13:05:01  Europe|Viscose|1000|Sphere  21.3 s
+13:05:02  Europe|Linen|1000|Sphere  21.5 s
+13:05:10  Europe|Rayon|1000|Sphere  20.7 s
+13:05:14  Europe|starch_blend|1000|Fiber  20.7 s
+13:05:16  Europe|PBSA|5000|Sphere  20.5 s
+13:05:21  Europe|PBAT|1000|Fiber  20.9 s
+13:05:21  Europe|Cotton|1000|Fiber  20.4 s
+13:05:22  Europe|Viscose|1000|Fiber  20.5 s
+13:05:22  Europe|Linen|1000|Fiber  20.5 s
+13:05:30  Europe|Rayon|1000|Fiber  20.7 s
+13:05:34  Europe|starch_blend|5000|Sphere  20.4 s
+13:05:37  Europe|PBSA|5000|Fiber  20.5 s
+13:05:41  Europe|PBAT|5000|Sphere  20.1 s
+13:05:42  Europe|Cotton|5000|Sphere  20.5 s
+13:05:42  Europe|Viscose|5000|Sphere  20.7 s
+13:05:43  Europe|Linen|5000|Sphere  20.6 s
+13:05:50  Europe|Rayon|5000|Sphere  20.1 s
+13:05:55  Europe|starch_blend|5000|Fiber  20.4 s
+13:05:59  Europe|Lyocell|1|Sphere  22.7 s
+13:06:05  Europe|PBAT|5000|Fiber  24.4 s
+13:06:06  Europe|Cotton|5000|Fiber  24.0 s
+13:06:07  Europe|Linen|5000|Fiber  24.0 s
+13:06:07  Europe|Viscose|5000|Fiber  24.2 s
+13:06:12  Europe|Rayon|5000|Fiber  21.5 s
+13:06:15  Europe|Modal|1|Sphere  19.7 s
+13:06:16  Europe|Lyocell|1|Fiber  16.3 s
+13:06:25  Europe|Modal|1|Fiber  10.5 s
+13:06:26  Europe|Lyocell|1|Film  10.3 s
+13:06:35  Europe|Modal|1|Film  9.9 s
+13:06:36  Europe|Lyocell|10|Sphere  10.0 s
+13:06:45  Europe|Modal|10|Sphere  9.8 s
+13:06:46  Europe|Lyocell|10|Fiber  9.9 s
+13:06:54  Europe|Modal|10|Fiber  9.7 s
+13:06:55  Europe|Lyocell|10|Film  9.5 s
+13:07:04  Europe|Modal|10|Film  9.2 s
+13:07:05  Europe|Lyocell|100|Sphere  9.3 s
+13:07:13  Europe|Modal|100|Sphere  9.4 s
+13:07:14  Europe|Lyocell|100|Fiber  9.3 s
+13:07:22  Europe|Modal|100|Fiber  9.3 s
+13:07:23  Europe|Lyocell|100|Film  9.5 s
+13:07:32  Europe|Modal|100|Film  10.0 s
+13:07:33  Europe|Lyocell|1000|Sphere  9.8 s
+13:07:42  Europe|Modal|1000|Sphere  9.3 s
+13:07:43  Europe|Lyocell|1000|Fiber  9.2 s
+13:07:51  Europe|Modal|1000|Fiber  9.0 s
+13:07:52  Europe|Lyocell|5000|Sphere  9.0 s
+13:08:00  Europe|Modal|5000|Sphere  9.3 s
+13:08:01  Europe|Lyocell|5000|Fiber  9.3 s
+13:08:08  Europe|Modal|5000|Fiber  8.3 s
+13:08:26  Africa & Middle East|EPS|1|Sphere  17.0 s
+13:08:26  Africa & Middle East|PA_Nylon|1|Sphere  17.5 s
+13:08:27  Africa & Middle East|LDPE|1|Sphere  18.1 s
+13:08:27  Africa & Middle East|HDPE|1|Sphere  18.3 s
+13:08:27  Africa & Middle East|PP|1|Sphere  18.3 s
+13:08:27  Africa & Middle East|PS|1|Sphere  18.4 s
+13:08:28  Africa & Middle East|PET|1|Sphere  18.8 s
+13:08:46  Africa & Middle East|EPS|1|Fiber  19.8 s
+13:08:47  Africa & Middle East|PA_Nylon|1|Fiber  20.7 s
+13:08:48  Africa & Middle East|HDPE|1|Fiber  21.1 s
+13:08:48  Africa & Middle East|LDPE|1|Fiber  21.2 s
+13:08:49  Africa & Middle East|PP|1|Fiber  21.5 s
+13:08:49  Africa & Middle East|PS|1|Fiber  21.6 s
+13:08:51  Africa & Middle East|PET|1|Fiber  23.3 s
+13:09:06  Africa & Middle East|EPS|1|Film  20.3 s
+13:09:08  Africa & Middle East|PA_Nylon|1|Film  21.2 s
+13:09:10  Africa & Middle East|HDPE|1|Film  21.6 s
+13:09:10  Africa & Middle East|LDPE|1|Film  21.6 s
+13:09:10  Africa & Middle East|PP|1|Film  21.5 s
+13:09:10  Africa & Middle East|PS|1|Film  21.4 s
+13:09:12  Africa & Middle East|PET|1|Film  21.0 s
+13:09:26  Africa & Middle East|EPS|10|Sphere  19.5 s
+13:09:28  Africa & Middle East|PA_Nylon|10|Sphere  20.2 s
+13:09:30  Africa & Middle East|HDPE|10|Sphere  20.6 s
+13:09:30  Africa & Middle East|LDPE|10|Sphere  20.6 s
+13:09:31  Africa & Middle East|PP|10|Sphere  20.5 s
+13:09:31  Africa & Middle East|PS|10|Sphere  20.6 s
+13:09:33  Africa & Middle East|PET|10|Sphere  21.2 s
+13:09:45  Africa & Middle East|EPS|10|Fiber  19.0 s
+13:09:48  Africa & Middle East|PA_Nylon|10|Fiber  19.7 s
+13:09:51  Africa & Middle East|HDPE|10|Fiber  20.2 s
+13:09:51  Africa & Middle East|LDPE|10|Fiber  20.2 s
+13:09:51  Africa & Middle East|PP|10|Fiber  20.2 s
+13:09:51  Africa & Middle East|PS|10|Fiber  20.3 s
+13:09:54  Africa & Middle East|PET|10|Fiber  20.7 s
+13:10:03  Africa & Middle East|EPS|10|Film  18.8 s
+13:10:08  Africa & Middle East|PA_Nylon|10|Film  19.5 s
+13:10:10  Africa & Middle East|LDPE|10|Film  19.5 s
+13:10:10  Africa & Middle East|HDPE|10|Film  19.6 s
+13:10:11  Africa & Middle East|PP|10|Film  19.5 s
+13:10:11  Africa & Middle East|PS|10|Film  19.6 s
+13:10:14  Africa & Middle East|PET|10|Film  20.5 s
+13:10:22  Africa & Middle East|EPS|100|Sphere  19.2 s
+13:10:27  Africa & Middle East|PA_Nylon|100|Sphere  19.6 s
+13:10:31  Africa & Middle East|HDPE|100|Sphere  20.5 s
+13:10:31  Africa & Middle East|LDPE|100|Sphere  20.6 s
+13:10:31  Africa & Middle East|PP|100|Sphere  20.5 s
+13:10:31  Africa & Middle East|PS|100|Sphere  20.5 s
+13:10:35  Africa & Middle East|PET|100|Sphere  20.9 s
+13:10:41  Africa & Middle East|EPS|100|Fiber  18.4 s
+13:10:46  Africa & Middle East|PA_Nylon|100|Fiber  19.0 s
+13:10:50  Africa & Middle East|HDPE|100|Fiber  19.2 s
+13:10:50  Africa & Middle East|LDPE|100|Fiber  19.2 s
+13:10:50  Africa & Middle East|PP|100|Fiber  19.1 s
+13:10:51  Africa & Middle East|PS|100|Fiber  19.2 s
+13:10:56  Africa & Middle East|PET|100|Fiber  20.3 s
+13:11:00  Africa & Middle East|EPS|100|Film  18.8 s
+13:11:05  Africa & Middle East|PA_Nylon|100|Film  19.1 s
+13:11:10  Africa & Middle East|HDPE|100|Film  19.8 s
+13:11:10  Africa & Middle East|LDPE|100|Film  19.9 s
+13:11:10  Africa & Middle East|PP|100|Film  19.8 s
+13:11:10  Africa & Middle East|PS|100|Film  19.8 s
+13:11:15  Africa & Middle East|PET|100|Film  19.9 s
+13:11:18  Africa & Middle East|EPS|1000|Sphere  18.2 s
+13:11:25  Africa & Middle East|PA_Nylon|1000|Sphere  19.2 s
+13:11:30  Africa & Middle East|HDPE|1000|Sphere  19.8 s
+13:11:30  Africa & Middle East|LDPE|1000|Sphere  19.9 s
+13:11:30  Africa & Middle East|PP|1000|Sphere  19.9 s
+13:11:31  Africa & Middle East|PS|1000|Sphere  20.2 s
+13:11:36  Africa & Middle East|PET|1000|Sphere  20.8 s
+13:11:37  Africa & Middle East|EPS|1000|Fiber  19.1 s
+13:11:44  Africa & Middle East|PA_Nylon|1000|Fiber  19.7 s
+13:11:50  Africa & Middle East|HDPE|1000|Fiber  20.1 s
+13:11:50  Africa & Middle East|LDPE|1000|Fiber  20.2 s
+13:11:50  Africa & Middle East|PP|1000|Fiber  20.3 s
+13:11:51  Africa & Middle East|PS|1000|Fiber  19.9 s
+13:11:56  Africa & Middle East|EPS|5000|Sphere  18.9 s
+13:11:57  Africa & Middle East|PET|1000|Fiber  20.8 s
+13:12:04  Africa & Middle East|PA_Nylon|5000|Sphere  19.5 s
+13:12:10  Africa & Middle East|HDPE|5000|Sphere  19.7 s
+13:12:10  Africa & Middle East|LDPE|5000|Sphere  19.8 s
+13:12:10  Africa & Middle East|PP|5000|Sphere  19.7 s
+13:12:11  Africa & Middle East|PS|5000|Sphere  20.1 s
+13:12:14  Africa & Middle East|EPS|5000|Fiber  18.7 s
+13:12:17  Africa & Middle East|PET|5000|Sphere  20.4 s
+13:12:23  Africa & Middle East|PA_Nylon|5000|Fiber  19.3 s
+13:12:30  Africa & Middle East|HDPE|5000|Fiber  20.3 s
+13:12:30  Africa & Middle East|PP|5000|Fiber  20.2 s
+13:12:30  Africa & Middle East|LDPE|5000|Fiber  20.3 s
+13:12:31  Africa & Middle East|PS|5000|Fiber  20.0 s
+13:12:34  Africa & Middle East|PVC|1|Sphere  19.3 s
+13:12:38  Africa & Middle East|PET|5000|Fiber  20.4 s
+13:12:43  Africa & Middle East|PU|1|Sphere  19.9 s
+13:12:50  Africa & Middle East|PAN|1|Sphere  19.8 s
+13:12:50  Africa & Middle East|TRWP|1|Sphere  19.8 s
+13:12:50  Africa & Middle East|PHA|1|Sphere  19.8 s
+13:12:51  Africa & Middle East|PLA|1|Sphere  19.8 s
+13:12:53  Africa & Middle East|PVC|1|Fiber  18.9 s
+13:12:58  Africa & Middle East|PCL|1|Sphere  20.1 s
+13:13:03  Africa & Middle East|PU|1|Fiber  20.1 s
+13:13:10  Africa & Middle East|PAN|1|Fiber  20.0 s
+13:13:10  Africa & Middle East|TRWP|1|Fiber  19.9 s
+13:13:10  Africa & Middle East|PHA|1|Fiber  19.9 s
+13:13:10  Africa & Middle East|PLA|1|Fiber  19.9 s
+13:13:12  Africa & Middle East|PVC|1|Film  19.4 s
+13:13:18  Africa & Middle East|PCL|1|Fiber  19.6 s
+13:13:23  Africa & Middle East|PU|1|Film  19.4 s
+13:13:30  Africa & Middle East|PAN|1|Film  20.0 s
+13:13:30  Africa & Middle East|PHA|1|Film  19.9 s
+13:13:30  Africa & Middle East|TRWP|1|Film  20.0 s
+13:13:30  Africa & Middle East|PLA|1|Film  19.9 s
+13:13:31  Africa & Middle East|PVC|10|Sphere  18.9 s
+13:13:38  Africa & Middle East|PCL|1|Film  20.1 s
+13:13:44  Africa & Middle East|PU|10|Sphere  21.1 s
+13:13:51  Africa & Middle East|PAN|10|Sphere  21.6 s
+13:13:52  Africa & Middle East|TRWP|10|Sphere  21.7 s
+13:13:52  Africa & Middle East|PHA|10|Sphere  21.7 s
+13:13:52  Africa & Middle East|PLA|10|Sphere  21.5 s
+13:13:53  Africa & Middle East|PVC|10|Fiber  21.3 s
+13:14:00  Africa & Middle East|PCL|10|Sphere  21.9 s
+13:14:05  Africa & Middle East|PU|10|Fiber  21.4 s
+13:14:12  Africa & Middle East|TRWP|10|Fiber  20.1 s
+13:14:12  Africa & Middle East|PVC|10|Film  19.2 s
+13:14:12  Africa & Middle East|PAN|10|Fiber  20.4 s
+13:14:12  Africa & Middle East|PHA|10|Fiber  20.3 s
+13:14:12  Africa & Middle East|PLA|10|Fiber  20.2 s
+13:14:20  Africa & Middle East|PCL|10|Fiber  20.9 s
+13:14:26  Africa & Middle East|PU|10|Film  20.7 s
+13:14:32  Africa & Middle East|PVC|100|Sphere  20.6 s
+13:14:32  Africa & Middle East|TRWP|10|Film  20.8 s
+13:14:33  Africa & Middle East|PAN|10|Film  20.9 s
+13:14:33  Africa & Middle East|PHA|10|Film  20.9 s
+13:14:33  Africa & Middle East|PLA|10|Film  20.9 s
+13:14:41  Africa & Middle East|PCL|10|Film  20.9 s
+13:14:48  Africa & Middle East|PU|100|Sphere  21.4 s
+13:14:53  Africa & Middle East|PVC|100|Fiber  21.0 s
+13:14:54  Africa & Middle East|TRWP|100|Sphere  21.7 s
+13:14:55  Africa & Middle East|PAN|100|Sphere  22.1 s
+13:14:55  Africa & Middle East|PHA|100|Sphere  22.2 s
+13:14:55  Africa & Middle East|PLA|100|Sphere  22.3 s
+13:15:03  Africa & Middle East|PCL|100|Sphere  21.4 s
+13:15:09  Africa & Middle East|PU|100|Fiber  21.1 s
+13:15:14  Africa & Middle East|PVC|100|Film  20.6 s
+13:15:15  Africa & Middle East|TRWP|100|Fiber  21.3 s
+13:15:16  Africa & Middle East|PAN|100|Fiber  20.7 s
+13:15:16  Africa & Middle East|PHA|100|Fiber  21.0 s
+13:15:16  Africa & Middle East|PLA|100|Fiber  20.8 s
+13:15:24  Africa & Middle East|PCL|100|Fiber  21.0 s
+13:15:29  Africa & Middle East|PU|100|Film  20.7 s
+13:15:34  Africa & Middle East|PVC|1000|Sphere  20.3 s
+13:15:37  Africa & Middle East|TRWP|100|Film  21.3 s
+13:15:37  Africa & Middle East|PAN|100|Film  21.7 s
+13:15:38  Africa & Middle East|PHA|100|Film  21.8 s
+13:15:38  Africa & Middle East|PLA|100|Film  21.9 s
+13:15:45  Africa & Middle East|PCL|100|Film  21.7 s
+13:15:50  Africa & Middle East|PU|1000|Sphere  21.2 s
+13:15:54  Africa & Middle East|PVC|1000|Fiber  20.0 s
+13:15:57  Africa & Middle East|TRWP|1000|Sphere  20.3 s
+13:15:57  Africa & Middle East|PAN|1000|Sphere  20.0 s
+13:15:58  Africa & Middle East|PHA|1000|Sphere  19.9 s
+13:15:58  Africa & Middle East|PLA|1000|Sphere  19.9 s
+13:16:06  Africa & Middle East|PCL|1000|Sphere  20.2 s
+13:16:11  Africa & Middle East|PU|1000|Fiber  20.6 s
+13:16:14  Africa & Middle East|PVC|5000|Sphere  19.7 s
+13:16:17  Africa & Middle East|TRWP|1000|Fiber  20.4 s
+13:16:18  Africa & Middle East|PAN|1000|Fiber  20.7 s
+13:16:18  Africa & Middle East|PHA|1000|Fiber  20.6 s
+13:16:19  Africa & Middle East|PLA|1000|Fiber  20.6 s
+13:16:26  Africa & Middle East|PCL|1000|Fiber  20.5 s
+13:16:32  Africa & Middle East|PU|5000|Sphere  20.7 s
+13:16:34  Africa & Middle East|PVC|5000|Fiber  20.2 s
+13:16:39  Africa & Middle East|TRWP|5000|Sphere  21.2 s
+13:16:39  Africa & Middle East|PAN|5000|Sphere  21.3 s
+13:16:40  Africa & Middle East|PHA|5000|Sphere  21.5 s
+13:16:40  Africa & Middle East|PLA|5000|Sphere  21.5 s
+13:16:49  Africa & Middle East|PCL|5000|Sphere  22.6 s
+13:16:54  Africa & Middle East|PU|5000|Fiber  22.5 s
+13:16:58  Africa & Middle East|PBSA|1|Sphere  23.4 s
+13:17:01  Africa & Middle East|TRWP|5000|Fiber  22.6 s
+13:17:02  Africa & Middle East|PAN|5000|Fiber  22.6 s
+13:17:03  Africa & Middle East|PHA|5000|Fiber  22.7 s
+13:17:03  Africa & Middle East|PLA|5000|Fiber  22.7 s
+13:17:11  Africa & Middle East|PCL|5000|Fiber  21.9 s
+13:17:17  Africa & Middle East|starch_blend|1|Sphere  22.2 s
+13:17:19  Africa & Middle East|PBSA|1|Fiber  21.5 s
+13:17:23  Africa & Middle East|PBAT|1|Sphere  21.0 s
+13:17:23  Africa & Middle East|Cotton|1|Sphere  21.4 s
+13:17:24  Africa & Middle East|Linen|1|Sphere  21.3 s
+13:17:24  Africa & Middle East|Viscose|1|Sphere  21.3 s
+13:17:32  Africa & Middle East|Rayon|1|Sphere  21.0 s
+13:17:37  Africa & Middle East|starch_blend|1|Fiber  20.1 s
+13:17:40  Africa & Middle East|PBSA|1|Film  20.2 s
+13:17:43  Africa & Middle East|PBAT|1|Fiber  20.5 s
+13:17:44  Africa & Middle East|Cotton|1|Fiber  20.0 s
+13:17:44  Africa & Middle East|Linen|1|Fiber  19.7 s
+13:17:44  Africa & Middle East|Viscose|1|Fiber  19.6 s
+13:17:51  Africa & Middle East|Rayon|1|Fiber  18.9 s
+13:17:56  Africa & Middle East|starch_blend|1|Film  18.9 s
+13:17:58  Africa & Middle East|PBSA|10|Sphere  18.9 s
+13:18:02  Africa & Middle East|PBAT|1|Film  19.3 s
+13:18:03  Africa & Middle East|Linen|1|Film  19.2 s
+13:18:03  Africa & Middle East|Cotton|1|Film  19.4 s
+13:18:03  Africa & Middle East|Viscose|1|Film  19.3 s
+13:18:10  Africa & Middle East|Rayon|1|Film  19.4 s
+13:18:15  Africa & Middle East|starch_blend|10|Sphere  19.3 s
+13:18:18  Africa & Middle East|PBSA|10|Fiber  19.2 s
+13:18:21  Africa & Middle East|PBAT|10|Sphere  19.0 s
+13:18:22  Africa & Middle East|Cotton|10|Sphere  18.9 s
+13:18:22  Africa & Middle East|Linen|10|Sphere  18.9 s
+13:18:22  Africa & Middle East|Viscose|10|Sphere  19.1 s
+13:18:30  Africa & Middle East|Rayon|10|Sphere  19.9 s
+13:18:35  Africa & Middle East|starch_blend|10|Fiber  19.7 s
+13:18:37  Africa & Middle East|PBSA|10|Film  19.8 s
+13:18:42  Africa & Middle East|PBAT|10|Fiber  20.8 s
+13:18:43  Africa & Middle East|Linen|10|Fiber  20.8 s
+13:18:43  Africa & Middle East|Cotton|10|Fiber  20.9 s
+13:18:43  Africa & Middle East|Viscose|10|Fiber  20.5 s
+13:18:52  Africa & Middle East|Rayon|10|Fiber  21.7 s
+13:18:58  Africa & Middle East|starch_blend|10|Film  23.4 s
+13:19:01  Africa & Middle East|PBSA|100|Sphere  23.6 s
+13:19:05  Africa & Middle East|PBAT|10|Film  22.4 s
+13:19:05  Africa & Middle East|Cotton|10|Film  22.5 s
+13:19:05  Africa & Middle East|Linen|10|Film  22.6 s
+13:19:06  Africa & Middle East|Viscose|10|Film  23.0 s
+13:19:13  Africa & Middle East|Rayon|10|Film  21.4 s
+13:19:18  Africa & Middle East|starch_blend|100|Sphere  20.1 s
+13:19:21  Africa & Middle East|PBSA|100|Fiber  19.8 s
+13:19:25  Africa & Middle East|PBAT|100|Sphere  20.0 s
+13:19:25  Africa & Middle East|Cotton|100|Sphere  20.2 s
+13:19:25  Africa & Middle East|Linen|100|Sphere  20.2 s
+13:19:26  Africa & Middle East|Viscose|100|Sphere  19.8 s
+13:19:35  Africa & Middle East|Rayon|100|Sphere  21.7 s
+13:19:40  Africa & Middle East|starch_blend|100|Fiber  21.5 s
+13:19:43  Africa & Middle East|PBSA|100|Film  22.4 s
+13:19:47  Africa & Middle East|PBAT|100|Fiber  22.4 s
+13:19:48  Africa & Middle East|Linen|100|Fiber  22.6 s
+13:19:48  Africa & Middle East|Cotton|100|Fiber  22.8 s
+13:19:48  Africa & Middle East|Viscose|100|Fiber  22.8 s
+13:19:59  Africa & Middle East|Rayon|100|Fiber  23.7 s
+13:20:04  Africa & Middle East|starch_blend|100|Film  24.3 s
+13:20:07  Africa & Middle East|PBSA|1000|Sphere  23.5 s
+13:20:11  Africa & Middle East|PBAT|100|Film  23.6 s
+13:20:11  Africa & Middle East|Linen|100|Film  22.9 s
+13:20:11  Africa & Middle East|Cotton|100|Film  22.8 s
+13:20:11  Africa & Middle East|Viscose|100|Film  22.8 s
+13:20:20  Africa & Middle East|Rayon|100|Film  20.9 s
+13:20:25  Africa & Middle East|starch_blend|1000|Sphere  21.1 s
+13:20:29  Africa & Middle East|PBSA|1000|Fiber  22.1 s
+13:20:32  Africa & Middle East|PBAT|1000|Sphere  21.5 s
+13:20:33  Africa & Middle East|Linen|1000|Sphere  21.9 s
+13:20:33  Africa & Middle East|Viscose|1000|Sphere  21.9 s
+13:20:33  Africa & Middle East|Cotton|1000|Sphere  22.1 s
+13:20:41  Africa & Middle East|Rayon|1000|Sphere  21.1 s
+13:20:45  Africa & Middle East|starch_blend|1000|Fiber  20.2 s
+13:20:48  Africa & Middle East|PBSA|5000|Sphere  19.3 s
+13:20:52  Africa & Middle East|PBAT|1000|Fiber  19.5 s
+13:20:52  Africa & Middle East|Linen|1000|Fiber  19.2 s
+13:20:52  Africa & Middle East|Viscose|1000|Fiber  19.2 s
+13:20:52  Africa & Middle East|Cotton|1000|Fiber  19.1 s
+13:21:01  Africa & Middle East|Rayon|1000|Fiber  20.3 s
+13:21:06  Africa & Middle East|starch_blend|5000|Sphere  20.3 s
+13:21:09  Africa & Middle East|PBSA|5000|Fiber  20.8 s
+13:21:12  Africa & Middle East|PBAT|5000|Sphere  20.8 s
+13:21:13  Africa & Middle East|Linen|5000|Sphere  20.7 s
+13:21:13  Africa & Middle East|Viscose|5000|Sphere  20.8 s
+13:21:13  Africa & Middle East|Cotton|5000|Sphere  20.8 s
+13:21:22  Africa & Middle East|Rayon|5000|Sphere  20.6 s
+13:21:27  Africa & Middle East|starch_blend|5000|Fiber  20.9 s
+13:21:31  Africa & Middle East|Lyocell|1|Sphere  21.7 s
+13:21:34  Africa & Middle East|PBAT|5000|Fiber  21.6 s
+13:21:34  Africa & Middle East|Linen|5000|Fiber  21.7 s
+13:21:35  Africa & Middle East|Viscose|5000|Fiber  21.7 s
+13:21:35  Africa & Middle East|Cotton|5000|Fiber  21.7 s
+13:21:39  Africa & Middle East|Rayon|5000|Fiber  17.9 s
+13:21:43  Africa & Middle East|Modal|1|Sphere  15.8 s
+13:21:44  Africa & Middle East|Lyocell|1|Fiber  13.2 s
+13:21:53  Africa & Middle East|Modal|1|Fiber  10.2 s
+13:21:54  Africa & Middle East|Lyocell|1|Film  10.3 s
+13:22:03  Africa & Middle East|Modal|1|Film  10.0 s
+13:22:04  Africa & Middle East|Lyocell|10|Sphere  10.0 s
+13:22:13  Africa & Middle East|Modal|10|Sphere  9.8 s
+13:22:14  Africa & Middle East|Lyocell|10|Fiber  9.6 s
+13:22:22  Africa & Middle East|Modal|10|Fiber  9.5 s
+13:22:24  Africa & Middle East|Lyocell|10|Film  9.6 s
+13:22:32  Africa & Middle East|Modal|10|Film  9.8 s
+13:22:33  Africa & Middle East|Lyocell|100|Sphere  9.6 s
+13:22:41  Africa & Middle East|Modal|100|Sphere  9.4 s
+13:22:43  Africa & Middle East|Lyocell|100|Fiber  9.5 s
+13:22:50  Africa & Middle East|Modal|100|Fiber  9.2 s
+13:22:52  Africa & Middle East|Lyocell|100|Film  9.0 s
+13:22:59  Africa & Middle East|Modal|100|Film  9.0 s
+13:23:01  Africa & Middle East|Lyocell|1000|Sphere  9.1 s
+13:23:08  Africa & Middle East|Modal|1000|Sphere  9.0 s
+13:23:10  Africa & Middle East|Lyocell|1000|Fiber  8.8 s
+13:23:17  Africa & Middle East|Modal|1000|Fiber  8.8 s
+13:23:18  Africa & Middle East|Lyocell|5000|Sphere  8.8 s
+13:23:26  Africa & Middle East|Modal|5000|Sphere  9.3 s
+13:23:28  Africa & Middle East|Lyocell|5000|Fiber  9.3 s
+13:23:35  Africa & Middle East|Modal|5000|Fiber  8.3 s
+13:23:56  Central Asia|EPS|1|Sphere  20.8 s
+13:23:57  Central Asia|PA_Nylon|1|Sphere  21.4 s
+13:23:58  Central Asia|PP|1|Sphere  22.3 s
+13:23:58  Central Asia|HDPE|1|Sphere  22.4 s
+13:23:58  Central Asia|LDPE|1|Sphere  22.5 s
+13:23:58  Central Asia|PS|1|Sphere  22.6 s
+13:23:59  Central Asia|PET|1|Sphere  23.1 s
+13:24:14  Central Asia|EPS|1|Fiber  17.2 s
+13:24:15  Central Asia|PA_Nylon|1|Fiber  17.4 s
+13:24:16  Central Asia|PP|1|Fiber  18.1 s
+13:24:16  Central Asia|HDPE|1|Fiber  18.1 s
+13:24:16  Central Asia|PS|1|Fiber  18.0 s
+13:24:16  Central Asia|LDPE|1|Fiber  18.2 s
+13:24:18  Central Asia|PET|1|Fiber  18.7 s
+13:24:42  Central Asia|EPS|1|Film  27.9 s
+13:24:46  Central Asia|PA_Nylon|1|Film  31.1 s
+13:24:48  Central Asia|LDPE|1|Film  31.5 s
+13:24:49  Central Asia|HDPE|1|Film  32.5 s
+13:24:49  Central Asia|PP|1|Film  32.8 s
+13:24:49  Central Asia|PS|1|Film  32.8 s
+13:24:53  Central Asia|PET|1|Film  35.5 s
+13:25:18  Central Asia|EPS|10|Sphere  36.5 s
+13:25:21  Central Asia|PA_Nylon|10|Sphere  35.2 s
+13:25:24  Central Asia|LDPE|10|Sphere  35.9 s
+13:25:24  Central Asia|HDPE|10|Sphere  35.3 s
+13:25:24  Central Asia|PP|10|Sphere  35.5 s
+13:25:25  Central Asia|PS|10|Sphere  35.5 s
+13:25:27  Central Asia|PET|10|Sphere  34.4 s
+13:25:46  Central Asia|EPS|10|Fiber  27.6 s
+13:25:57  Central Asia|PA_Nylon|10|Fiber  36.1 s
+13:26:04  Central Asia|LDPE|10|Fiber  39.7 s
+13:26:04  Central Asia|HDPE|10|Fiber  39.9 s
+13:26:05  Central Asia|PP|10|Fiber  40.2 s
+13:26:05  Central Asia|PS|10|Fiber  40.7 s
+13:26:10  Central Asia|PET|10|Fiber  42.6 s
+13:26:26  Central Asia|EPS|10|Film  40.5 s
+13:26:31  Central Asia|PA_Nylon|10|Film  34.1 s
+13:26:36  Central Asia|LDPE|10|Film  32.2 s
+13:26:36  Central Asia|PP|10|Film  31.7 s
+13:26:36  Central Asia|HDPE|10|Film  32.5 s
+13:26:37  Central Asia|PS|10|Film  31.8 s
+13:26:44  Central Asia|PET|10|Film  34.2 s
+13:26:55  Central Asia|EPS|100|Sphere  28.5 s
+13:27:01  Central Asia|PA_Nylon|100|Sphere  29.4 s
+13:27:05  Central Asia|LDPE|100|Sphere  29.3 s
+13:27:05  Central Asia|HDPE|100|Sphere  28.8 s
+13:27:05  Central Asia|PP|100|Sphere  29.2 s
+13:27:06  Central Asia|PS|100|Sphere  29.3 s
+13:27:11  Central Asia|PET|100|Sphere  27.2 s
+13:27:18  Central Asia|EPS|100|Fiber  23.6 s
+13:27:25  Central Asia|PA_Nylon|100|Fiber  24.6 s
+13:27:30  Central Asia|LDPE|100|Fiber  24.8 s
+13:27:30  Central Asia|HDPE|100|Fiber  24.9 s
+13:27:30  Central Asia|PP|100|Fiber  24.7 s
+13:27:31  Central Asia|PS|100|Fiber  24.8 s
+13:27:37  Central Asia|PET|100|Fiber  25.8 s
+13:27:41  Central Asia|EPS|100|Film  22.8 s
+13:27:49  Central Asia|PA_Nylon|100|Film  24.2 s
+13:27:54  Central Asia|HDPE|100|Film  24.2 s
+13:27:55  Central Asia|PP|100|Film  24.5 s
+13:27:55  Central Asia|LDPE|100|Film  25.2 s
+13:27:56  Central Asia|PS|100|Film  24.5 s
+13:28:02  Central Asia|PET|100|Film  24.8 s
+13:28:06  Central Asia|EPS|1000|Sphere  24.5 s
+13:28:14  Central Asia|PA_Nylon|1000|Sphere  24.5 s
+13:28:20  Central Asia|LDPE|1000|Sphere  25.0 s
+13:28:20  Central Asia|HDPE|1000|Sphere  25.9 s
+13:28:21  Central Asia|PP|1000|Sphere  25.9 s
+13:28:22  Central Asia|PS|1000|Sphere  26.0 s
+13:28:30  Central Asia|PET|1000|Sphere  28.1 s
+13:28:30  Central Asia|EPS|1000|Fiber  24.5 s
+13:28:40  Central Asia|PA_Nylon|1000|Fiber  25.7 s
+13:28:47  Central Asia|HDPE|1000|Fiber  26.7 s
+13:28:47  Central Asia|PP|1000|Fiber  26.3 s
+13:28:47  Central Asia|LDPE|1000|Fiber  26.9 s
+13:28:48  Central Asia|PS|1000|Fiber  26.2 s
+13:28:54  Central Asia|EPS|5000|Sphere  24.3 s
+13:28:56  Central Asia|PET|1000|Fiber  25.9 s
+13:29:03  Central Asia|PA_Nylon|5000|Sphere  23.8 s
+13:29:09  Central Asia|HDPE|5000|Sphere  22.6 s
+13:29:10  Central Asia|LDPE|5000|Sphere  22.9 s
+13:29:10  Central Asia|PP|5000|Sphere  23.2 s
+13:29:11  Central Asia|PS|5000|Sphere  23.3 s
+13:29:15  Central Asia|EPS|5000|Fiber  20.4 s
+13:29:18  Central Asia|PET|5000|Sphere  22.3 s
+13:29:24  Central Asia|PA_Nylon|5000|Fiber  20.2 s
+13:29:30  Central Asia|HDPE|5000|Fiber  20.6 s
+13:29:30  Central Asia|PP|5000|Fiber  20.2 s
+13:29:30  Central Asia|LDPE|5000|Fiber  20.5 s
+13:29:31  Central Asia|PS|5000|Fiber  20.0 s
+13:29:34  Central Asia|PVC|1|Sphere  19.3 s
+13:29:38  Central Asia|PET|5000|Fiber  20.0 s
+13:29:43  Central Asia|PU|1|Sphere  19.2 s
+13:29:49  Central Asia|PAN|1|Sphere  18.7 s
+13:29:49  Central Asia|PHA|1|Sphere  18.6 s
+13:29:49  Central Asia|TRWP|1|Sphere  18.8 s
+13:29:50  Central Asia|PLA|1|Sphere  18.6 s
+13:29:52  Central Asia|PVC|1|Fiber  17.6 s
+13:29:59  Central Asia|PCL|1|Sphere  20.4 s
+13:30:03  Central Asia|PU|1|Fiber  20.4 s
+13:30:10  Central Asia|PAN|1|Fiber  21.4 s
+13:30:10  Central Asia|TRWP|1|Fiber  21.1 s
+13:30:10  Central Asia|PHA|1|Fiber  21.3 s
+13:30:11  Central Asia|PLA|1|Fiber  21.4 s
+13:30:13  Central Asia|PVC|1|Film  20.9 s
+13:30:18  Central Asia|PCL|1|Fiber  19.5 s
+13:30:22  Central Asia|PU|1|Film  19.1 s
+13:30:29  Central Asia|PAN|1|Film  18.7 s
+13:30:29  Central Asia|TRWP|1|Film  18.7 s
+13:30:29  Central Asia|PHA|1|Film  18.8 s
+13:30:30  Central Asia|PLA|1|Film  18.6 s
+13:30:31  Central Asia|PVC|10|Sphere  17.7 s
+13:30:37  Central Asia|PCL|1|Film  18.3 s
+13:30:41  Central Asia|PU|10|Sphere  18.1 s
+13:30:48  Central Asia|PAN|10|Sphere  19.2 s
+13:30:48  Central Asia|TRWP|10|Sphere  19.1 s
+13:30:48  Central Asia|PHA|10|Sphere  19.2 s
+13:30:49  Central Asia|PLA|10|Sphere  19.3 s
+13:30:50  Central Asia|PVC|10|Fiber  19.1 s
+13:30:57  Central Asia|PCL|10|Sphere  20.0 s
+13:31:01  Central Asia|PU|10|Fiber  20.9 s
+13:31:08  Central Asia|TRWP|10|Fiber  19.8 s
+13:31:08  Central Asia|PAN|10|Fiber  19.9 s
+13:31:08  Central Asia|PHA|10|Fiber  19.7 s
+13:31:08  Central Asia|PVC|10|Film  18.7 s
+13:31:09  Central Asia|PLA|10|Fiber  19.6 s
+13:31:16  Central Asia|PCL|10|Fiber  19.8 s
+13:31:20  Central Asia|PU|10|Film  18.9 s
+13:31:27  Central Asia|PAN|10|Film  19.3 s
+13:31:27  Central Asia|PVC|100|Sphere  19.1 s
+13:31:27  Central Asia|PHA|10|Film  19.4 s
+13:31:28  Central Asia|TRWP|10|Film  19.8 s
+13:31:28  Central Asia|PLA|10|Film  19.3 s
+13:31:36  Central Asia|PCL|10|Film  19.1 s
+13:31:40  Central Asia|PU|100|Sphere  19.5 s
+13:31:46  Central Asia|PVC|100|Fiber  18.3 s
+13:31:46  Central Asia|PAN|100|Sphere  19.2 s
+13:31:47  Central Asia|TRWP|100|Sphere  18.9 s
+13:31:47  Central Asia|PHA|100|Sphere  19.2 s
+13:31:47  Central Asia|PLA|100|Sphere  19.1 s
+13:31:54  Central Asia|PCL|100|Sphere  18.8 s
+13:31:58  Central Asia|PU|100|Fiber  18.4 s
+13:32:04  Central Asia|PVC|100|Film  18.0 s
+13:32:05  Central Asia|PAN|100|Fiber  18.5 s
+13:32:05  Central Asia|PHA|100|Fiber  18.6 s
+13:32:05  Central Asia|TRWP|100|Fiber  18.8 s
+13:32:06  Central Asia|PLA|100|Fiber  18.5 s
+13:32:14  Central Asia|PCL|100|Fiber  19.2 s
+13:32:19  Central Asia|PU|100|Film  20.3 s
+13:32:24  Central Asia|PVC|1000|Sphere  20.8 s
+13:32:27  Central Asia|TRWP|100|Film  21.3 s
+13:32:27  Central Asia|PAN|100|Film  21.8 s
+13:32:27  Central Asia|PHA|100|Film  21.6 s
+13:32:28  Central Asia|PLA|100|Film  21.9 s
+13:32:36  Central Asia|PCL|100|Film  22.4 s
+13:32:41  Central Asia|PU|1000|Sphere  22.3 s
+13:32:45  Central Asia|PVC|1000|Fiber  21.0 s
+13:32:49  Central Asia|TRWP|1000|Sphere  22.2 s
+13:32:49  Central Asia|PAN|1000|Sphere  22.2 s
+13:32:49  Central Asia|PHA|1000|Sphere  22.4 s
+13:32:50  Central Asia|PLA|1000|Sphere  22.4 s
+13:32:58  Central Asia|PCL|1000|Sphere  22.1 s
+13:33:03  Central Asia|PU|1000|Fiber  22.4 s
+13:33:09  Central Asia|PVC|5000|Sphere  23.5 s
+13:33:13  Central Asia|TRWP|1000|Fiber  23.6 s
+13:33:13  Central Asia|PAN|1000|Fiber  23.5 s
+13:33:13  Central Asia|PHA|1000|Fiber  23.5 s
+13:33:14  Central Asia|PLA|1000|Fiber  23.5 s
+13:33:21  Central Asia|PCL|1000|Fiber  23.3 s
+13:33:26  Central Asia|PU|5000|Sphere  22.9 s
+13:33:29  Central Asia|PVC|5000|Fiber  20.0 s
+13:33:33  Central Asia|TRWP|5000|Sphere  20.3 s
+13:33:33  Central Asia|PAN|5000|Sphere  20.5 s
+13:33:33  Central Asia|PHA|5000|Sphere  20.4 s
+13:33:34  Central Asia|PLA|5000|Sphere  20.3 s
+13:33:41  Central Asia|PCL|5000|Sphere  19.6 s
+13:33:45  Central Asia|PU|5000|Fiber  19.4 s
+13:33:49  Central Asia|PBSA|1|Sphere  20.0 s
+13:33:52  Central Asia|TRWP|5000|Fiber  19.3 s
+13:33:52  Central Asia|PAN|5000|Fiber  19.3 s
+13:33:53  Central Asia|PHA|5000|Fiber  19.3 s
+13:33:53  Central Asia|PLA|5000|Fiber  19.2 s
+13:34:00  Central Asia|PCL|5000|Fiber  19.5 s
+13:34:05  Central Asia|starch_blend|1|Sphere  19.6 s
+13:34:09  Central Asia|PBSA|1|Fiber  19.5 s
+13:34:13  Central Asia|Cotton|1|Sphere  20.0 s
+13:34:13  Central Asia|PBAT|1|Sphere  20.2 s
+13:34:13  Central Asia|Linen|1|Sphere  20.1 s
+13:34:14  Central Asia|Viscose|1|Sphere  20.2 s
+13:34:21  Central Asia|Rayon|1|Sphere  20.2 s
+13:34:25  Central Asia|starch_blend|1|Fiber  20.2 s
+13:34:28  Central Asia|PBSA|1|Film  19.8 s
+13:34:32  Central Asia|Cotton|1|Fiber  19.9 s
+13:34:32  Central Asia|PBAT|1|Fiber  20.0 s
+13:34:33  Central Asia|Linen|1|Fiber  20.0 s
+13:34:33  Central Asia|Viscose|1|Fiber  19.8 s
+13:34:41  Central Asia|Rayon|1|Fiber  19.8 s
+13:34:45  Central Asia|starch_blend|1|Film  19.3 s
+13:34:48  Central Asia|PBSA|10|Sphere  19.6 s
+13:34:52  Central Asia|Cotton|1|Film  19.6 s
+13:34:52  Central Asia|PBAT|1|Film  19.6 s
+13:34:52  Central Asia|Linen|1|Film  19.6 s
+13:34:53  Central Asia|Viscose|1|Film  19.5 s
+13:35:00  Central Asia|Rayon|1|Film  19.3 s
+13:35:04  Central Asia|starch_blend|10|Sphere  19.3 s
+13:35:07  Central Asia|PBSA|10|Fiber  19.2 s
+13:35:11  Central Asia|PBAT|10|Sphere  18.7 s
+13:35:11  Central Asia|Cotton|10|Sphere  18.8 s
+13:35:11  Central Asia|Linen|10|Sphere  18.7 s
+13:35:11  Central Asia|Viscose|10|Sphere  18.7 s
+13:35:19  Central Asia|Rayon|10|Sphere  18.6 s
+13:35:23  Central Asia|starch_blend|10|Fiber  18.9 s
+13:35:26  Central Asia|PBSA|10|Film  18.7 s
+13:35:30  Central Asia|PBAT|10|Fiber  19.1 s
+13:35:30  Central Asia|Cotton|10|Fiber  19.2 s
+13:35:30  Central Asia|Linen|10|Fiber  19.2 s
+13:35:31  Central Asia|Viscose|10|Fiber  19.2 s
+13:35:38  Central Asia|Rayon|10|Fiber  19.1 s
+13:35:42  Central Asia|starch_blend|10|Film  18.7 s
+13:35:45  Central Asia|PBSA|100|Sphere  19.5 s
+13:35:49  Central Asia|PBAT|10|Film  19.1 s
+13:35:49  Central Asia|Cotton|10|Film  19.2 s
+13:35:49  Central Asia|Linen|10|Film  19.1 s
+13:35:50  Central Asia|Viscose|10|Film  19.0 s
+13:35:57  Central Asia|Rayon|10|Film  18.9 s
+13:36:02  Central Asia|starch_blend|100|Sphere  20.1 s
+13:36:04  Central Asia|PBSA|100|Fiber  19.1 s
+13:36:09  Central Asia|PBAT|100|Sphere  19.5 s
+13:36:09  Central Asia|Cotton|100|Sphere  19.5 s
+13:36:09  Central Asia|Linen|100|Sphere  19.4 s
+13:36:09  Central Asia|Viscose|100|Sphere  19.4 s
+13:36:16  Central Asia|Rayon|100|Sphere  19.4 s
+13:36:20  Central Asia|starch_blend|100|Fiber  18.3 s
+13:36:23  Central Asia|PBSA|100|Film  18.8 s
+13:36:27  Central Asia|Cotton|100|Fiber  18.2 s
+13:36:27  Central Asia|PBAT|100|Fiber  18.3 s
+13:36:27  Central Asia|Linen|100|Fiber  18.3 s
+13:36:27  Central Asia|Viscose|100|Fiber  18.2 s
+13:36:34  Central Asia|Rayon|100|Fiber  18.2 s
+13:36:39  Central Asia|starch_blend|100|Film  18.7 s
+13:36:42  Central Asia|PBSA|1000|Sphere  18.4 s
+13:36:47  Central Asia|Cotton|100|Film  20.4 s
+13:36:47  Central Asia|PBAT|100|Film  20.5 s
+13:36:47  Central Asia|Linen|100|Film  20.3 s
+13:36:48  Central Asia|Viscose|100|Film  20.3 s
+13:36:55  Central Asia|Rayon|100|Film  20.8 s
+13:37:01  Central Asia|starch_blend|1000|Sphere  21.9 s
+13:37:04  Central Asia|PBSA|1000|Fiber  22.7 s
+13:37:10  Central Asia|Cotton|1000|Sphere  23.0 s
+13:37:10  Central Asia|Linen|1000|Sphere  23.0 s
+13:37:11  Central Asia|PBAT|1000|Sphere  23.2 s
+13:37:11  Central Asia|Viscose|1000|Sphere  23.1 s
+13:37:19  Central Asia|Rayon|1000|Sphere  23.5 s
+13:37:25  Central Asia|starch_blend|1000|Fiber  24.1 s
+13:37:28  Central Asia|PBSA|5000|Sphere  24.0 s
+13:37:33  Central Asia|Cotton|1000|Fiber  23.2 s
+13:37:34  Central Asia|Linen|1000|Fiber  23.1 s
+13:37:34  Central Asia|PBAT|1000|Fiber  23.2 s
+13:37:34  Central Asia|Viscose|1000|Fiber  23.1 s
+13:37:42  Central Asia|Rayon|1000|Fiber  23.2 s
+13:37:47  Central Asia|starch_blend|5000|Sphere  22.5 s
+13:37:51  Central Asia|PBSA|5000|Fiber  22.5 s
+13:37:56  Central Asia|Cotton|5000|Sphere  22.4 s
+13:37:56  Central Asia|Linen|5000|Sphere  22.4 s
+13:37:56  Central Asia|PBAT|5000|Sphere  22.5 s
+13:37:56  Central Asia|Viscose|5000|Sphere  22.4 s
+13:38:03  Central Asia|Rayon|5000|Sphere  21.7 s
+13:38:13  Central Asia|starch_blend|5000|Fiber  26.3 s
+13:38:22  Central Asia|Lyocell|1|Sphere  31.1 s
+13:38:29  Central Asia|Cotton|5000|Fiber  33.4 s
+13:38:29  Central Asia|Linen|5000|Fiber  33.4 s
+13:38:30  Central Asia|Viscose|5000|Fiber  33.9 s
+13:38:30  Central Asia|PBAT|5000|Fiber  34.2 s
+13:38:36  Central Asia|Rayon|5000|Fiber  32.5 s
+13:38:40  Central Asia|Modal|1|Sphere  26.4 s
+13:38:42  Central Asia|Lyocell|1|Fiber  19.7 s
+13:38:52  Central Asia|Modal|1|Fiber  11.7 s
+13:38:54  Central Asia|Lyocell|1|Film  11.9 s
+13:39:06  Central Asia|Modal|1|Film  14.6 s
+13:39:08  Central Asia|Lyocell|10|Sphere  14.4 s
+13:39:17  Central Asia|Modal|10|Sphere  11.1 s
+13:39:20  Central Asia|Lyocell|10|Fiber  11.4 s
+13:39:29  Central Asia|Modal|10|Fiber  11.6 s
+13:39:31  Central Asia|Lyocell|10|Film  11.5 s
+13:39:42  Central Asia|Modal|10|Film  12.8 s
+13:39:44  Central Asia|Lyocell|100|Sphere  12.8 s
+13:39:55  Central Asia|Modal|100|Sphere  13.6 s
+13:39:58  Central Asia|Lyocell|100|Fiber  14.3 s
+13:40:09  Central Asia|Modal|100|Fiber  13.2 s
+13:40:11  Central Asia|Lyocell|100|Film  12.9 s
+13:40:23  Central Asia|Modal|100|Film  13.9 s
+13:40:25  Central Asia|Lyocell|1000|Sphere  14.0 s
+13:40:34  Central Asia|Modal|1000|Sphere  11.6 s
+13:40:36  Central Asia|Lyocell|1000|Fiber  10.8 s
+13:40:44  Central Asia|Modal|1000|Fiber  9.9 s
+13:40:46  Central Asia|Lyocell|5000|Sphere  9.9 s
+13:40:54  Central Asia|Modal|5000|Sphere  9.7 s
+13:40:56  Central Asia|Lyocell|5000|Fiber  9.9 s
+13:41:03  Central Asia|Modal|5000|Fiber  9.0 s
+13:41:26  Southeast Asia|EPS|1|Sphere  21.7 s
+13:41:27  Southeast Asia|PA_Nylon|1|Sphere  22.8 s
+13:41:27  Southeast Asia|LDPE|1|Sphere  23.3 s
+13:41:27  Southeast Asia|HDPE|1|Sphere  23.3 s
+13:41:27  Southeast Asia|PS|1|Sphere  23.2 s
+13:41:28  Southeast Asia|PP|1|Sphere  23.5 s
+13:41:28  Southeast Asia|PET|1|Sphere  24.3 s
+13:41:50  Southeast Asia|EPS|1|Fiber  24.0 s
+13:41:51  Southeast Asia|PA_Nylon|1|Fiber  24.5 s
+13:41:52  Southeast Asia|LDPE|1|Fiber  24.7 s
+13:41:52  Southeast Asia|HDPE|1|Fiber  24.9 s
+13:41:52  Southeast Asia|PS|1|Fiber  24.9 s
+13:41:53  Southeast Asia|PP|1|Fiber  24.8 s
+13:41:54  Southeast Asia|PET|1|Fiber  25.2 s
+13:42:14  Southeast Asia|EPS|1|Film  24.5 s
+13:42:17  Southeast Asia|PA_Nylon|1|Film  25.4 s
+13:42:19  Southeast Asia|PS|1|Film  26.2 s
+13:42:19  Southeast Asia|HDPE|1|Film  26.3 s
+13:42:19  Southeast Asia|LDPE|1|Film  26.6 s
+13:42:19  Southeast Asia|PP|1|Film  26.3 s
+13:42:21  Southeast Asia|PET|1|Film  27.0 s
+13:42:37  Southeast Asia|EPS|10|Sphere  22.5 s
+13:42:40  Southeast Asia|PA_Nylon|10|Sphere  23.1 s
+13:42:43  Southeast Asia|PS|10|Sphere  24.7 s
+13:42:44  Southeast Asia|HDPE|10|Sphere  24.9 s
+13:42:44  Southeast Asia|LDPE|10|Sphere  24.8 s
+13:42:44  Southeast Asia|PP|10|Sphere  24.8 s
+13:42:46  Southeast Asia|PET|10|Sphere  25.6 s
+13:43:03  Southeast Asia|EPS|10|Fiber  26.6 s
+13:43:08  Southeast Asia|PA_Nylon|10|Fiber  27.6 s
+13:43:10  Southeast Asia|HDPE|10|Fiber  26.7 s
+13:43:10  Southeast Asia|LDPE|10|Fiber  26.7 s
+13:43:10  Southeast Asia|PS|10|Fiber  27.1 s
+13:43:11  Southeast Asia|PP|10|Fiber  26.8 s
+13:43:13  Southeast Asia|PET|10|Fiber  27.1 s
+13:43:26  Southeast Asia|EPS|10|Film  22.7 s
+13:43:33  Southeast Asia|PA_Nylon|10|Film  25.4 s
+13:43:43  Southeast Asia|HDPE|10|Film  33.1 s
+13:43:44  Southeast Asia|LDPE|10|Film  33.3 s
+13:43:44  Southeast Asia|PP|10|Film  33.1 s
+13:43:44  Southeast Asia|PS|10|Film  33.4 s
+13:43:49  Southeast Asia|PET|10|Film  35.1 s
+13:44:00  Southeast Asia|EPS|100|Sphere  33.6 s
+13:44:07  Southeast Asia|PA_Nylon|100|Sphere  34.4 s
+13:44:12  Southeast Asia|HDPE|100|Sphere  28.3 s
+13:44:12  Southeast Asia|PP|100|Sphere  28.1 s
+13:44:12  Southeast Asia|LDPE|100|Sphere  28.3 s
+13:44:12  Southeast Asia|PS|100|Sphere  28.6 s
+13:44:21  Southeast Asia|PET|100|Sphere  32.4 s
+13:44:31  Southeast Asia|EPS|100|Fiber  30.8 s
+13:44:39  Southeast Asia|PA_Nylon|100|Fiber  31.3 s
+13:44:45  Southeast Asia|HDPE|100|Fiber  33.0 s
+13:44:45  Southeast Asia|PP|100|Fiber  32.9 s
+13:44:45  Southeast Asia|LDPE|100|Fiber  33.1 s
+13:44:45  Southeast Asia|PS|100|Fiber  32.9 s
+13:44:53  Southeast Asia|PET|100|Fiber  32.3 s
+13:44:59  Southeast Asia|EPS|100|Film  28.5 s
+13:45:08  Southeast Asia|PA_Nylon|100|Film  29.1 s
+13:45:14  Southeast Asia|HDPE|100|Film  28.9 s
+13:45:14  Southeast Asia|PP|100|Film  28.9 s
+13:45:14  Southeast Asia|PS|100|Film  28.8 s
+13:45:14  Southeast Asia|LDPE|100|Film  29.2 s
+13:45:21  Southeast Asia|PET|100|Film  27.4 s
+13:45:25  Southeast Asia|EPS|1000|Sphere  25.6 s
+13:45:33  Southeast Asia|PA_Nylon|1000|Sphere  25.1 s
+13:45:39  Southeast Asia|HDPE|1000|Sphere  25.8 s
+13:45:40  Southeast Asia|PP|1000|Sphere  26.0 s
+13:45:40  Southeast Asia|PS|1000|Sphere  26.0 s
+13:45:40  Southeast Asia|LDPE|1000|Sphere  25.9 s
+13:45:46  Southeast Asia|PET|1000|Sphere  25.3 s
+13:45:47  Southeast Asia|EPS|1000|Fiber  22.0 s
+13:45:55  Southeast Asia|PA_Nylon|1000|Fiber  21.8 s
+13:46:01  Southeast Asia|HDPE|1000|Fiber  21.4 s
+13:46:01  Southeast Asia|PP|1000|Fiber  21.4 s
+13:46:01  Southeast Asia|PS|1000|Fiber  21.2 s
+13:46:01  Southeast Asia|LDPE|1000|Fiber  21.2 s
+13:46:07  Southeast Asia|EPS|5000|Sphere  20.0 s
+13:46:08  Southeast Asia|PET|1000|Fiber  22.0 s
+13:46:16  Southeast Asia|PA_Nylon|5000|Sphere  20.9 s
+13:46:22  Southeast Asia|HDPE|5000|Sphere  21.7 s
+13:46:23  Southeast Asia|PP|5000|Sphere  21.7 s
+13:46:23  Southeast Asia|LDPE|5000|Sphere  21.5 s
+13:46:23  Southeast Asia|PS|5000|Sphere  21.7 s
+13:46:27  Southeast Asia|EPS|5000|Fiber  19.9 s
+13:46:29  Southeast Asia|PET|5000|Sphere  21.3 s
+13:46:35  Southeast Asia|PA_Nylon|5000|Fiber  19.9 s
+13:46:42  Southeast Asia|HDPE|5000|Fiber  20.1 s
+13:46:43  Southeast Asia|PP|5000|Fiber  20.1 s
+13:46:43  Southeast Asia|LDPE|5000|Fiber  20.1 s
+13:46:43  Southeast Asia|PS|5000|Fiber  20.1 s
+13:46:46  Southeast Asia|PVC|1|Sphere  19.5 s
+13:46:50  Southeast Asia|PET|5000|Fiber  20.9 s
+13:46:56  Southeast Asia|PU|1|Sphere  20.0 s
+13:47:03  Southeast Asia|PAN|1|Sphere  20.3 s
+13:47:03  Southeast Asia|TRWP|1|Sphere  20.3 s
+13:47:04  Southeast Asia|PLA|1|Sphere  20.3 s
+13:47:04  Southeast Asia|PHA|1|Sphere  20.4 s
+13:47:06  Southeast Asia|PVC|1|Fiber  19.2 s
+13:47:11  Southeast Asia|PCL|1|Sphere  20.4 s
+13:47:16  Southeast Asia|PU|1|Fiber  20.0 s
+13:47:23  Southeast Asia|PAN|1|Fiber  20.4 s
+13:47:24  Southeast Asia|TRWP|1|Fiber  20.6 s
+13:47:24  Southeast Asia|PHA|1|Fiber  20.7 s
+13:47:24  Southeast Asia|PLA|1|Fiber  20.8 s
+13:47:28  Southeast Asia|PVC|1|Film  22.1 s
+13:47:35  Southeast Asia|PCL|1|Fiber  23.9 s
+13:47:41  Southeast Asia|PU|1|Film  25.9 s
+13:47:51  Southeast Asia|PAN|1|Film  27.8 s
+13:47:52  Southeast Asia|TRWP|1|Film  27.7 s
+13:47:52  Southeast Asia|PLA|1|Film  27.6 s
+13:47:52  Southeast Asia|PHA|1|Film  27.9 s
+13:47:53  Southeast Asia|PVC|10|Sphere  25.3 s
+13:48:02  Southeast Asia|PCL|1|Film  27.2 s
+13:48:10  Southeast Asia|PU|10|Sphere  28.9 s
+13:48:21  Southeast Asia|PAN|10|Sphere  29.7 s
+13:48:21  Southeast Asia|PLA|10|Sphere  29.1 s
+13:48:21  Southeast Asia|TRWP|10|Sphere  29.5 s
+13:48:21  Southeast Asia|PVC|10|Fiber  28.4 s
+13:48:22  Southeast Asia|PHA|10|Sphere  29.3 s
+13:48:28  Southeast Asia|PCL|10|Sphere  26.5 s
+13:48:35  Southeast Asia|PU|10|Fiber  25.0 s
+13:48:48  Southeast Asia|PAN|10|Fiber  27.1 s
+13:48:48  Southeast Asia|TRWP|10|Fiber  26.9 s
+13:48:48  Southeast Asia|PLA|10|Fiber  27.0 s
+13:48:48  Southeast Asia|PVC|10|Film  26.9 s
+13:48:49  Southeast Asia|PHA|10|Fiber  27.1 s
+13:48:56  Southeast Asia|PCL|10|Fiber  27.9 s
+13:49:03  Southeast Asia|PU|10|Film  27.7 s
+13:49:11  Southeast Asia|PVC|100|Sphere  23.2 s
+13:49:12  Southeast Asia|PAN|10|Film  24.5 s
+13:49:13  Southeast Asia|TRWP|10|Film  24.5 s
+13:49:13  Southeast Asia|PLA|10|Film  24.7 s
+13:49:13  Southeast Asia|PHA|10|Film  24.6 s
+13:49:22  Southeast Asia|PCL|10|Film  26.1 s
+13:49:29  Southeast Asia|PU|100|Sphere  26.1 s
+13:49:36  Southeast Asia|PVC|100|Fiber  24.9 s
+13:49:38  Southeast Asia|TRWP|100|Sphere  25.1 s
+13:49:38  Southeast Asia|PAN|100|Sphere  25.4 s
+13:49:38  Southeast Asia|PLA|100|Sphere  25.1 s
+13:49:38  Southeast Asia|PHA|100|Sphere  25.1 s
+13:49:47  Southeast Asia|PCL|100|Sphere  24.9 s
+13:49:53  Southeast Asia|PU|100|Fiber  24.0 s
+13:50:00  Southeast Asia|PVC|100|Film  23.5 s
+13:50:02  Southeast Asia|TRWP|100|Fiber  24.7 s
+13:50:03  Southeast Asia|PAN|100|Fiber  24.8 s
+13:50:03  Southeast Asia|PLA|100|Fiber  24.8 s
+13:50:03  Southeast Asia|PHA|100|Fiber  24.9 s
+13:50:10  Southeast Asia|PCL|100|Fiber  23.3 s
+13:50:16  Southeast Asia|PU|100|Film  22.3 s
+13:50:22  Southeast Asia|PVC|1000|Sphere  22.0 s
+13:50:25  Southeast Asia|TRWP|100|Film  22.2 s
+13:50:25  Southeast Asia|PAN|100|Film  22.4 s
+13:50:25  Southeast Asia|PLA|100|Film  22.6 s
+13:50:26  Southeast Asia|PHA|100|Film  22.7 s
+13:50:34  Southeast Asia|PCL|100|Film  23.1 s
+13:50:39  Southeast Asia|PU|1000|Sphere  23.1 s
+13:50:43  Southeast Asia|PVC|1000|Fiber  21.4 s
+13:50:47  Southeast Asia|TRWP|1000|Sphere  22.2 s
+13:50:47  Southeast Asia|PAN|1000|Sphere  22.2 s
+13:50:48  Southeast Asia|PLA|1000|Sphere  22.4 s
+13:50:48  Southeast Asia|PHA|1000|Sphere  22.0 s
+13:50:55  Southeast Asia|PCL|1000|Sphere  21.8 s
+13:51:00  Southeast Asia|PU|1000|Fiber  21.3 s
+13:51:04  Southeast Asia|PVC|5000|Sphere  20.9 s
+13:51:08  Southeast Asia|TRWP|1000|Fiber  20.8 s
+13:51:08  Southeast Asia|PAN|1000|Fiber  20.7 s
+13:51:09  Southeast Asia|PLA|1000|Fiber  20.9 s
+13:51:09  Southeast Asia|PHA|1000|Fiber  20.9 s
+13:51:18  Southeast Asia|PCL|1000|Fiber  22.9 s
+13:51:25  Southeast Asia|PU|5000|Sphere  25.4 s
+13:51:30  Southeast Asia|PVC|5000|Fiber  25.8 s
+13:51:36  Southeast Asia|TRWP|5000|Sphere  28.2 s
+13:51:36  Southeast Asia|PAN|5000|Sphere  28.5 s
+13:51:37  Southeast Asia|PLA|5000|Sphere  28.5 s
+13:51:37  Southeast Asia|PHA|5000|Sphere  28.4 s
+13:51:44  Southeast Asia|PCL|5000|Sphere  26.1 s
+13:51:49  Southeast Asia|PU|5000|Fiber  23.9 s
+13:51:54  Southeast Asia|PBSA|1|Sphere  24.1 s
+13:51:58  Southeast Asia|TRWP|5000|Fiber  22.2 s
+13:51:59  Southeast Asia|PAN|5000|Fiber  22.5 s
+13:52:00  Southeast Asia|PLA|5000|Fiber  22.5 s
+13:52:00  Southeast Asia|PHA|5000|Fiber  22.5 s
+13:52:07  Southeast Asia|PCL|5000|Fiber  22.3 s
+13:52:12  Southeast Asia|starch_blend|1|Sphere  22.3 s
+13:52:15  Southeast Asia|PBSA|1|Fiber  20.9 s
+13:52:19  Southeast Asia|PBAT|1|Sphere  21.2 s
+13:52:20  Southeast Asia|Cotton|1|Sphere  21.1 s
+13:52:21  Southeast Asia|Linen|1|Sphere  21.4 s
+13:52:21  Southeast Asia|Viscose|1|Sphere  21.4 s
+13:52:28  Southeast Asia|Rayon|1|Sphere  21.7 s
+13:52:32  Southeast Asia|starch_blend|1|Fiber  20.7 s
+13:52:36  Southeast Asia|PBSA|1|Film  20.9 s
+13:52:40  Southeast Asia|PBAT|1|Fiber  20.6 s
+13:52:41  Southeast Asia|Cotton|1|Fiber  20.6 s
+13:52:42  Southeast Asia|Linen|1|Fiber  20.7 s
+13:52:43  Southeast Asia|Viscose|1|Fiber  21.3 s
+13:52:49  Southeast Asia|Rayon|1|Fiber  20.2 s
+13:52:54  Southeast Asia|starch_blend|1|Film  21.8 s
+13:52:59  Southeast Asia|PBSA|10|Sphere  22.8 s
+13:53:04  Southeast Asia|PBAT|1|Film  23.8 s
+13:53:05  Southeast Asia|Cotton|1|Film  24.3 s
+13:53:07  Southeast Asia|Linen|1|Film  25.6 s
+13:53:08  Southeast Asia|Viscose|1|Film  25.0 s
+13:53:15  Southeast Asia|Rayon|1|Film  26.2 s
+13:53:20  Southeast Asia|starch_blend|10|Sphere  25.7 s
+13:53:23  Southeast Asia|PBSA|10|Fiber  24.4 s
+13:53:28  Southeast Asia|PBAT|10|Sphere  24.3 s
+13:53:29  Southeast Asia|Cotton|10|Sphere  23.7 s
+13:53:30  Southeast Asia|Linen|10|Sphere  22.5 s
+13:53:30  Southeast Asia|Viscose|10|Sphere  22.6 s
+13:53:37  Southeast Asia|Rayon|10|Sphere  21.8 s
+13:53:41  Southeast Asia|starch_blend|10|Fiber  20.9 s
+13:53:44  Southeast Asia|PBSA|10|Film  21.0 s
+13:53:48  Southeast Asia|PBAT|10|Fiber  20.2 s
+13:53:49  Southeast Asia|Cotton|10|Fiber  20.3 s
+13:53:50  Southeast Asia|Linen|10|Fiber  20.3 s
+13:53:51  Southeast Asia|Viscose|10|Fiber  20.3 s
+13:53:57  Southeast Asia|Rayon|10|Fiber  20.4 s
+13:54:02  Southeast Asia|starch_blend|10|Film  21.0 s
+13:54:06  Southeast Asia|PBSA|100|Sphere  21.5 s
+13:54:15  Southeast Asia|PBAT|10|Film  26.5 s
+13:54:17  Southeast Asia|Cotton|10|Film  27.6 s
+13:54:19  Southeast Asia|Linen|10|Film  28.4 s
+13:54:19  Southeast Asia|Viscose|10|Film  28.7 s
+13:54:31  Southeast Asia|Rayon|10|Film  33.5 s
+13:54:35  Southeast Asia|starch_blend|100|Sphere  33.4 s
+13:54:39  Southeast Asia|PBSA|100|Fiber  33.2 s
+13:54:44  Southeast Asia|PBAT|100|Sphere  29.7 s
+13:54:45  Southeast Asia|Cotton|100|Sphere  28.6 s
+13:54:47  Southeast Asia|Linen|100|Sphere  27.9 s
+13:54:47  Southeast Asia|Viscose|100|Sphere  27.7 s
+13:54:55  Southeast Asia|Rayon|100|Sphere  24.0 s
+13:55:00  Southeast Asia|starch_blend|100|Fiber  24.4 s
+13:55:03  Southeast Asia|PBSA|100|Film  23.7 s
+13:55:08  Southeast Asia|PBAT|100|Fiber  23.4 s
+13:55:09  Southeast Asia|Cotton|100|Fiber  23.3 s
+13:55:10  Southeast Asia|Linen|100|Fiber  23.5 s
+13:55:10  Southeast Asia|Viscose|100|Fiber  23.4 s
+13:55:17  Southeast Asia|Rayon|100|Fiber  22.7 s
+13:55:23  Southeast Asia|starch_blend|100|Film  23.0 s
+13:55:26  Southeast Asia|PBSA|1000|Sphere  23.9 s
+13:55:31  Southeast Asia|PBAT|100|Film  22.9 s
+13:55:31  Southeast Asia|Cotton|100|Film  22.8 s
+13:55:33  Southeast Asia|Linen|100|Film  22.8 s
+13:55:33  Southeast Asia|Viscose|100|Film  23.0 s
+13:55:41  Southeast Asia|Rayon|100|Film  23.4 s
+13:55:47  Southeast Asia|starch_blend|1000|Sphere  24.0 s
+13:55:51  Southeast Asia|PBSA|1000|Fiber  24.6 s
+13:55:55  Southeast Asia|PBAT|1000|Sphere  24.5 s
+13:55:56  Southeast Asia|Cotton|1000|Sphere  24.8 s
+13:55:58  Southeast Asia|Linen|1000|Sphere  24.7 s
+13:55:58  Southeast Asia|Viscose|1000|Sphere  24.7 s
+13:56:05  Southeast Asia|Rayon|1000|Sphere  24.2 s
+13:56:09  Southeast Asia|starch_blend|1000|Fiber  22.7 s
+13:56:13  Southeast Asia|PBSA|5000|Sphere  21.4 s
+13:56:17  Southeast Asia|PBAT|1000|Fiber  21.5 s
+13:56:18  Southeast Asia|Cotton|1000|Fiber  21.4 s
+13:56:19  Southeast Asia|Linen|1000|Fiber  21.3 s
+13:56:19  Southeast Asia|Viscose|1000|Fiber  21.3 s
+13:56:26  Southeast Asia|Rayon|1000|Fiber  20.5 s
+13:56:30  Southeast Asia|starch_blend|5000|Sphere  20.7 s
+13:56:34  Southeast Asia|PBSA|5000|Fiber  21.2 s
+13:56:37  Southeast Asia|PBAT|5000|Sphere  20.4 s
+13:56:38  Southeast Asia|Cotton|5000|Sphere  20.5 s
+13:56:39  Southeast Asia|Linen|5000|Sphere  20.4 s
+13:56:40  Southeast Asia|Viscose|5000|Sphere  20.7 s
+13:56:46  Southeast Asia|Rayon|5000|Sphere  20.9 s
+13:56:51  Southeast Asia|starch_blend|5000|Fiber  21.0 s
+13:56:56  Southeast Asia|Lyocell|1|Sphere  21.8 s
+13:56:58  Southeast Asia|PBAT|5000|Fiber  21.2 s
+13:56:59  Southeast Asia|Cotton|5000|Fiber  21.2 s
+13:57:00  Southeast Asia|Linen|5000|Fiber  21.0 s
+13:57:01  Southeast Asia|Viscose|5000|Fiber  20.7 s
+13:57:05  Southeast Asia|Rayon|5000|Fiber  18.2 s
+13:57:07  Southeast Asia|Modal|1|Sphere  15.9 s
+13:57:09  Southeast Asia|Lyocell|1|Fiber  13.1 s
+13:57:18  Southeast Asia|Modal|1|Fiber  10.3 s
+13:57:19  Southeast Asia|Lyocell|1|Film  10.5 s
+13:57:27  Southeast Asia|Modal|1|Film  9.9 s
+13:57:29  Southeast Asia|Lyocell|10|Sphere  9.8 s
+13:57:37  Southeast Asia|Modal|10|Sphere  9.7 s
+13:57:39  Southeast Asia|Lyocell|10|Fiber  9.7 s
+13:57:47  Southeast Asia|Modal|10|Fiber  9.5 s
+13:57:48  Southeast Asia|Lyocell|10|Film  9.4 s
+13:57:56  Southeast Asia|Modal|10|Film  9.3 s
+13:57:58  Southeast Asia|Lyocell|100|Sphere  9.3 s
+13:58:05  Southeast Asia|Modal|100|Sphere  9.4 s
+13:58:07  Southeast Asia|Lyocell|100|Fiber  9.4 s
+13:58:15  Southeast Asia|Modal|100|Fiber  9.6 s
+13:58:16  Southeast Asia|Lyocell|100|Film  9.4 s
+13:58:24  Southeast Asia|Modal|100|Film  9.0 s
+13:58:26  Southeast Asia|Lyocell|1000|Sphere  9.2 s
+13:58:33  Southeast Asia|Modal|1000|Sphere  9.2 s
+13:58:35  Southeast Asia|Lyocell|1000|Fiber  9.0 s
+13:58:43  Southeast Asia|Modal|1000|Fiber  9.7 s
+13:58:44  Southeast Asia|Lyocell|5000|Sphere  9.9 s
+13:58:52  Southeast Asia|Modal|5000|Sphere  9.2 s
+13:58:53  Southeast Asia|Lyocell|5000|Fiber  9.0 s
+13:59:00  Southeast Asia|Modal|5000|Fiber  8.1 s
+13:59:16  Northern regions|EPS|1|Sphere  15.2 s
+13:59:17  Northern regions|PA_Nylon|1|Sphere  15.8 s
+13:59:17  Northern regions|LDPE|1|Sphere  16.3 s
+13:59:17  Northern regions|HDPE|1|Sphere  16.3 s
+13:59:17  Northern regions|PS|1|Sphere  16.3 s
+13:59:18  Northern regions|PP|1|Sphere  16.7 s
+13:59:18  Northern regions|PET|1|Sphere  16.7 s
+13:59:36  Northern regions|EPS|1|Fiber  19.6 s
+13:59:37  Northern regions|PA_Nylon|1|Fiber  20.2 s
+13:59:38  Northern regions|PP|1|Fiber  19.9 s
+13:59:38  Northern regions|HDPE|1|Fiber  20.7 s
+13:59:38  Northern regions|LDPE|1|Fiber  20.8 s
+13:59:38  Northern regions|PS|1|Fiber  20.7 s
+13:59:39  Northern regions|PET|1|Fiber  21.4 s
+13:59:54  Northern regions|EPS|1|Film  18.5 s
+13:59:57  Northern regions|PA_Nylon|1|Film  20.2 s
+13:59:58  Northern regions|PP|1|Film  20.3 s
+13:59:58  Northern regions|HDPE|1|Film  20.5 s
+13:59:59  Northern regions|LDPE|1|Film  20.6 s
+13:59:59  Northern regions|PS|1|Film  20.7 s
+14:00:00  Northern regions|PET|1|Film  21.4 s
+14:00:20  Northern regions|EPS|10|Sphere  25.7 s
+14:00:23  Northern regions|PA_Nylon|10|Sphere  26.1 s
+14:00:25  Northern regions|PP|10|Sphere  26.7 s
+14:00:25  Northern regions|HDPE|10|Sphere  26.8 s
+14:00:25  Northern regions|LDPE|10|Sphere  26.8 s
+14:00:26  Northern regions|PS|10|Sphere  27.0 s
+14:00:29  Northern regions|PET|10|Sphere  28.1 s
+14:00:42  Northern regions|EPS|10|Fiber  22.5 s
+14:00:46  Northern regions|PA_Nylon|10|Fiber  22.8 s
+14:00:48  Northern regions|PP|10|Fiber  23.6 s
+14:00:49  Northern regions|HDPE|10|Fiber  23.3 s
+14:00:49  Northern regions|LDPE|10|Fiber  23.5 s
+14:00:50  Northern regions|PS|10|Fiber  23.7 s
+14:00:52  Northern regions|PET|10|Fiber  23.0 s
+14:01:03  Northern regions|EPS|10|Film  20.2 s
+14:01:08  Northern regions|PA_Nylon|10|Film  21.5 s
+14:01:11  Northern regions|HDPE|10|Film  22.0 s
+14:01:11  Northern regions|PP|10|Film  22.4 s
+14:01:11  Northern regions|LDPE|10|Film  21.7 s
+14:01:12  Northern regions|PS|10|Film  22.0 s
+14:01:15  Northern regions|PET|10|Film  23.4 s
+14:01:26  Northern regions|EPS|100|Sphere  23.2 s
+14:01:31  Northern regions|PA_Nylon|100|Sphere  23.4 s
+14:01:34  Northern regions|PP|100|Sphere  23.6 s
+14:01:35  Northern regions|HDPE|100|Sphere  24.0 s
+14:01:35  Northern regions|LDPE|100|Sphere  24.1 s
+14:01:36  Northern regions|PS|100|Sphere  24.1 s
+14:01:39  Northern regions|PET|100|Sphere  23.6 s
+14:01:46  Northern regions|EPS|100|Fiber  20.1 s
+14:01:52  Northern regions|PA_Nylon|100|Fiber  21.1 s
+14:01:57  Northern regions|LDPE|100|Fiber  22.1 s
+14:01:57  Northern regions|PP|100|Fiber  22.6 s
+14:01:57  Northern regions|HDPE|100|Fiber  22.7 s
+14:01:58  Northern regions|PS|100|Fiber  22.1 s
+14:02:03  Northern regions|PET|100|Fiber  24.2 s
+14:02:09  Northern regions|EPS|100|Film  23.0 s
+14:02:17  Northern regions|PA_Nylon|100|Film  25.2 s
+14:02:22  Northern regions|PP|100|Film  24.7 s
+14:02:22  Northern regions|HDPE|100|Film  24.6 s
+14:02:22  Northern regions|LDPE|100|Film  25.1 s
+14:02:23  Northern regions|PS|100|Film  25.0 s
+14:02:27  Northern regions|PET|100|Film  24.3 s
+14:02:30  Northern regions|EPS|1000|Sphere  21.3 s
+14:02:38  Northern regions|PA_Nylon|1000|Sphere  20.4 s
+14:02:43  Northern regions|PP|1000|Sphere  21.6 s
+14:02:44  Northern regions|HDPE|1000|Sphere  21.7 s
+14:02:44  Northern regions|LDPE|1000|Sphere  21.8 s
+14:02:45  Northern regions|PS|1000|Sphere  21.7 s
+14:02:50  Northern regions|PET|1000|Sphere  22.3 s
+14:02:51  Northern regions|EPS|1000|Fiber  20.3 s
+14:03:02  Northern regions|PA_Nylon|1000|Fiber  24.3 s
+14:03:09  Northern regions|PP|1000|Fiber  25.3 s
+14:03:09  Northern regions|HDPE|1000|Fiber  25.4 s
+14:03:10  Northern regions|LDPE|1000|Fiber  25.7 s
+14:03:10  Northern regions|PS|1000|Fiber  25.5 s
+14:03:16  Northern regions|EPS|5000|Sphere  25.3 s
+14:03:17  Northern regions|PET|1000|Fiber  27.3 s
+14:03:27  Northern regions|PA_Nylon|5000|Sphere  24.9 s
+14:03:33  Northern regions|PP|5000|Sphere  24.5 s
+14:03:33  Northern regions|HDPE|5000|Sphere  24.2 s
+14:03:33  Northern regions|LDPE|5000|Sphere  23.9 s
+14:03:34  Northern regions|PS|5000|Sphere  23.9 s
+14:03:38  Northern regions|EPS|5000|Fiber  21.7 s
+14:03:40  Northern regions|PET|5000|Sphere  23.3 s
+14:03:47  Northern regions|PA_Nylon|5000|Fiber  19.9 s
+14:03:54  Northern regions|HDPE|5000|Fiber  20.6 s
+14:03:54  Northern regions|LDPE|5000|Fiber  20.6 s
+14:03:54  Northern regions|PP|5000|Fiber  21.0 s
+14:03:55  Northern regions|PS|5000|Fiber  20.7 s
+14:03:58  Northern regions|PVC|1|Sphere  19.8 s
+14:04:02  Northern regions|PET|5000|Fiber  21.9 s
+14:04:07  Northern regions|PU|1|Sphere  20.3 s
+14:04:14  Northern regions|PAN|1|Sphere  20.1 s
+14:04:14  Northern regions|TRWP|1|Sphere  20.1 s
+14:04:15  Northern regions|PHA|1|Sphere  20.2 s
+14:04:15  Northern regions|PLA|1|Sphere  20.2 s
+14:04:17  Northern regions|PVC|1|Fiber  19.8 s
+14:04:22  Northern regions|PCL|1|Sphere  20.2 s
+14:04:28  Northern regions|PU|1|Fiber  20.6 s
+14:04:35  Northern regions|PAN|1|Fiber  20.6 s
+14:04:35  Northern regions|TRWP|1|Fiber  20.5 s
+14:04:35  Northern regions|PHA|1|Fiber  20.6 s
+14:04:36  Northern regions|PLA|1|Fiber  20.5 s
+14:04:37  Northern regions|PVC|1|Film  19.6 s
+14:04:43  Northern regions|PCL|1|Fiber  20.9 s
+14:04:49  Northern regions|PU|1|Film  20.9 s
+14:04:56  Northern regions|TRWP|1|Film  20.9 s
+14:04:56  Northern regions|PAN|1|Film  21.0 s
+14:04:56  Northern regions|PHA|1|Film  21.0 s
+14:04:57  Northern regions|PLA|1|Film  21.0 s
+14:04:57  Northern regions|PVC|10|Sphere  20.5 s
+14:05:04  Northern regions|PCL|1|Film  21.1 s
+14:05:09  Northern regions|PU|10|Sphere  20.7 s
+14:05:17  Northern regions|TRWP|10|Sphere  21.0 s
+14:05:17  Northern regions|PAN|10|Sphere  21.0 s
+14:05:17  Northern regions|PHA|10|Sphere  20.9 s
+14:05:18  Northern regions|PLA|10|Sphere  21.0 s
+14:05:18  Northern regions|PVC|10|Fiber  20.5 s
+14:05:25  Northern regions|PCL|10|Sphere  20.9 s
+14:05:31  Northern regions|PU|10|Fiber  21.1 s
+14:05:37  Northern regions|TRWP|10|Fiber  20.7 s
+14:05:38  Northern regions|PAN|10|Fiber  20.9 s
+14:05:38  Northern regions|PVC|10|Film  19.7 s
+14:05:38  Northern regions|PHA|10|Fiber  20.7 s
+14:05:38  Northern regions|PLA|10|Fiber  20.6 s
+14:05:45  Northern regions|PCL|10|Fiber  20.1 s
+14:05:50  Northern regions|PU|10|Film  19.7 s
+14:05:57  Northern regions|TRWP|10|Film  19.8 s
+14:05:57  Northern regions|PVC|100|Sphere  19.7 s
+14:05:58  Northern regions|PAN|10|Film  20.1 s
+14:05:58  Northern regions|PHA|10|Film  20.2 s
+14:05:59  Northern regions|PLA|10|Film  20.8 s
+14:06:06  Northern regions|PCL|10|Film  20.3 s
+14:06:11  Northern regions|PU|100|Sphere  20.4 s
+14:06:16  Northern regions|PVC|100|Fiber  18.8 s
+14:06:17  Northern regions|TRWP|100|Sphere  19.8 s
+14:06:18  Northern regions|PAN|100|Sphere  19.9 s
+14:06:18  Northern regions|PHA|100|Sphere  19.9 s
+14:06:18  Northern regions|PLA|100|Sphere  19.1 s
+14:06:25  Northern regions|PCL|100|Sphere  19.2 s
+14:06:30  Northern regions|PU|100|Fiber  19.5 s
+14:06:36  Northern regions|PVC|100|Film  19.4 s
+14:06:37  Northern regions|TRWP|100|Fiber  19.6 s
+14:06:37  Northern regions|PAN|100|Fiber  19.7 s
+14:06:38  Northern regions|PHA|100|Fiber  19.7 s
+14:06:38  Northern regions|PLA|100|Fiber  20.0 s
+14:06:45  Northern regions|PCL|100|Fiber  20.5 s
+14:06:51  Northern regions|PU|100|Film  20.7 s
+14:06:55  Northern regions|PVC|1000|Sphere  19.5 s
+14:06:57  Northern regions|TRWP|100|Film  20.7 s
+14:06:58  Northern regions|PHA|100|Film  20.7 s
+14:06:58  Northern regions|PAN|100|Film  20.8 s
+14:06:58  Northern regions|PLA|100|Film  20.4 s
+14:07:06  Northern regions|PCL|100|Film  20.4 s
+14:07:12  Northern regions|PU|1000|Sphere  21.2 s
+14:07:17  Northern regions|PVC|1000|Fiber  21.4 s
+14:07:19  Northern regions|TRWP|1000|Sphere  22.1 s
+14:07:21  Northern regions|PHA|1000|Sphere  22.6 s
+14:07:21  Northern regions|PAN|1000|Sphere  22.7 s
+14:07:22  Northern regions|PLA|1000|Sphere  23.4 s
+14:07:31  Northern regions|PCL|1000|Sphere  24.9 s
+14:07:36  Northern regions|PU|1000|Fiber  24.4 s
+14:07:40  Northern regions|PVC|5000|Sphere  23.4 s
+14:07:44  Northern regions|TRWP|1000|Fiber  24.4 s
+14:07:45  Northern regions|PHA|1000|Fiber  24.1 s
+14:07:45  Northern regions|PAN|1000|Fiber  24.1 s
+14:07:45  Northern regions|PLA|1000|Fiber  23.4 s
+14:07:53  Northern regions|PCL|1000|Fiber  22.2 s
+14:07:59  Northern regions|PU|5000|Sphere  22.7 s
+14:08:02  Northern regions|PVC|5000|Fiber  22.1 s
+14:08:06  Northern regions|TRWP|5000|Sphere  22.8 s
+14:08:08  Northern regions|PHA|5000|Sphere  22.9 s
+14:08:08  Northern regions|PAN|5000|Sphere  23.0 s
+14:08:08  Northern regions|PLA|5000|Sphere  22.8 s
+14:08:17  Northern regions|PCL|5000|Sphere  24.2 s
+14:08:23  Northern regions|PU|5000|Fiber  23.7 s
+14:08:26  Northern regions|PBSA|1|Sphere  23.8 s
+14:08:30  Northern regions|TRWP|5000|Fiber  23.4 s
+14:08:31  Northern regions|PHA|5000|Fiber  23.4 s
+14:08:32  Northern regions|PLA|5000|Fiber  23.4 s
+14:08:32  Northern regions|PAN|5000|Fiber  23.5 s
+14:08:41  Northern regions|PCL|5000|Fiber  23.7 s
+14:08:47  Northern regions|starch_blend|1|Sphere  23.9 s
+14:08:50  Northern regions|PBSA|1|Fiber  24.1 s
+14:08:54  Northern regions|PBAT|1|Sphere  24.0 s
+14:08:56  Northern regions|Cotton|1|Sphere  24.9 s
+14:08:56  Northern regions|Viscose|1|Sphere  24.7 s
+14:08:56  Northern regions|Linen|1|Sphere  24.7 s
+14:09:04  Northern regions|Rayon|1|Sphere  23.1 s
+14:09:10  Northern regions|starch_blend|1|Fiber  22.7 s
+14:09:13  Northern regions|PBSA|1|Film  22.9 s
+14:09:17  Northern regions|PBAT|1|Fiber  23.3 s
+14:09:19  Northern regions|Cotton|1|Fiber  22.4 s
+14:09:19  Northern regions|Linen|1|Fiber  22.2 s
+14:09:19  Northern regions|Viscose|1|Fiber  22.4 s
+14:09:27  Northern regions|Rayon|1|Fiber  22.5 s
+14:09:33  Northern regions|starch_blend|1|Film  23.3 s
+14:09:36  Northern regions|PBSA|10|Sphere  22.7 s
+14:09:40  Northern regions|PBAT|1|Film  23.1 s
+14:09:42  Northern regions|Cotton|1|Film  22.9 s
+14:09:42  Northern regions|Linen|1|Film  23.2 s
+14:09:42  Northern regions|Viscose|1|Film  23.2 s
+14:09:50  Northern regions|Rayon|1|Film  23.4 s
+14:09:56  Northern regions|starch_blend|10|Sphere  23.6 s
+14:10:00  Northern regions|PBSA|10|Fiber  24.0 s
+14:10:04  Northern regions|PBAT|10|Sphere  23.7 s
+14:10:05  Northern regions|Cotton|10|Sphere  23.7 s
+14:10:06  Northern regions|Linen|10|Sphere  23.6 s
+14:10:06  Northern regions|Viscose|10|Sphere  23.6 s
+14:10:14  Northern regions|Rayon|10|Sphere  23.7 s
+14:10:21  Northern regions|starch_blend|10|Fiber  24.6 s
+14:10:25  Northern regions|PBSA|10|Film  25.0 s
+14:10:30  Northern regions|PBAT|10|Fiber  25.8 s
+14:10:31  Northern regions|Cotton|10|Fiber  25.8 s
+14:10:31  Northern regions|Linen|10|Fiber  25.8 s
+14:10:32  Northern regions|Viscose|10|Fiber  26.0 s
+14:10:39  Northern regions|Rayon|10|Fiber  25.6 s
+14:10:47  Northern regions|starch_blend|10|Film  25.7 s
+14:10:50  Northern regions|PBSA|100|Sphere  25.7 s
+14:11:01  Northern regions|PBAT|10|Film  31.3 s
+14:11:03  Northern regions|Linen|10|Film  31.3 s
+14:11:03  Northern regions|Viscose|10|Film  31.3 s
+14:11:03  Northern regions|Cotton|10|Film  32.0 s
+14:11:14  Northern regions|Rayon|10|Film  34.4 s
+14:11:21  Northern regions|starch_blend|100|Sphere  34.3 s
+14:11:25  Northern regions|PBSA|100|Fiber  34.5 s
+14:11:30  Northern regions|PBAT|100|Sphere  29.0 s
+14:11:31  Northern regions|Cotton|100|Sphere  28.3 s
+14:11:31  Northern regions|Linen|100|Sphere  28.8 s
+14:11:32  Northern regions|Viscose|100|Sphere  28.6 s
+14:11:40  Northern regions|Rayon|100|Sphere  25.9 s
+14:11:46  Northern regions|starch_blend|100|Fiber  25.1 s
+14:11:49  Northern regions|PBSA|100|Film  24.1 s
+14:11:54  Northern regions|PBAT|100|Fiber  24.0 s
+14:11:56  Northern regions|Cotton|100|Fiber  24.3 s
+14:11:56  Northern regions|Linen|100|Fiber  24.6 s
+14:11:56  Northern regions|Viscose|100|Fiber  24.6 s
+14:12:04  Northern regions|Rayon|100|Fiber  24.5 s
+14:12:10  Northern regions|starch_blend|100|Film  24.0 s
+14:12:14  Northern regions|PBSA|1000|Sphere  24.4 s
+14:12:18  Northern regions|PBAT|100|Film  23.8 s
+14:12:19  Northern regions|Cotton|100|Film  23.2 s
+14:12:19  Northern regions|Linen|100|Film  23.3 s
+14:12:19  Northern regions|Viscose|100|Film  23.1 s
+14:12:27  Northern regions|Rayon|100|Film  22.5 s
+14:12:33  Northern regions|starch_blend|1000|Sphere  23.2 s
+14:12:36  Northern regions|PBSA|1000|Fiber  22.3 s
+14:12:42  Northern regions|PBAT|1000|Sphere  23.8 s
+14:12:43  Northern regions|Cotton|1000|Sphere  24.2 s
+14:12:44  Northern regions|Viscose|1000|Sphere  24.4 s
+14:12:44  Northern regions|Linen|1000|Sphere  24.5 s
+14:12:52  Northern regions|Rayon|1000|Sphere  24.9 s
+14:12:58  Northern regions|starch_blend|1000|Fiber  24.1 s
+14:13:01  Northern regions|PBSA|5000|Sphere  25.0 s
+14:13:06  Northern regions|PBAT|1000|Fiber  24.4 s
+14:13:08  Northern regions|Cotton|1000|Fiber  25.2 s
+14:13:08  Northern regions|Viscose|1000|Fiber  24.8 s
+14:13:09  Northern regions|Linen|1000|Fiber  25.0 s
+14:13:19  Northern regions|Rayon|1000|Fiber  27.4 s
+14:13:26  Northern regions|starch_blend|5000|Sphere  28.5 s
+14:13:30  Northern regions|PBSA|5000|Fiber  28.9 s
+14:13:37  Northern regions|PBAT|5000|Sphere  31.0 s
+14:13:39  Northern regions|Cotton|5000|Sphere  30.2 s
+14:13:39  Northern regions|Viscose|5000|Sphere  30.3 s
+14:13:39  Northern regions|Linen|5000|Sphere  30.2 s
+14:13:46  Northern regions|Rayon|5000|Sphere  27.5 s
+14:13:52  Northern regions|starch_blend|5000|Fiber  26.3 s
+14:13:56  Northern regions|Lyocell|1|Sphere  26.4 s
+14:14:01  Northern regions|PBAT|5000|Fiber  23.4 s
+14:14:02  Northern regions|Cotton|5000|Fiber  23.1 s
+14:14:02  Northern regions|Viscose|5000|Fiber  22.9 s
+14:14:02  Northern regions|Linen|5000|Fiber  22.9 s
+14:14:06  Northern regions|Rayon|5000|Fiber  19.6 s
+14:14:09  Northern regions|Modal|1|Sphere  16.7 s
+14:14:11  Northern regions|Lyocell|1|Fiber  14.3 s
+14:14:21  Northern regions|Modal|1|Fiber  11.7 s
+14:14:23  Northern regions|Lyocell|1|Film  12.0 s
+14:14:33  Northern regions|Modal|1|Film  12.5 s
+14:14:35  Northern regions|Lyocell|10|Sphere  12.2 s
+14:14:44  Northern regions|Modal|10|Sphere  11.0 s
+14:14:46  Northern regions|Lyocell|10|Fiber  11.3 s
+14:14:56  Northern regions|Modal|10|Fiber  11.8 s
+14:14:58  Northern regions|Lyocell|10|Film  11.9 s
+14:15:07  Northern regions|Modal|10|Film  11.0 s
+14:15:09  Northern regions|Lyocell|100|Sphere  11.4 s
+14:15:19  Northern regions|Modal|100|Sphere  11.3 s
+14:15:20  Northern regions|Lyocell|100|Fiber  10.8 s
+14:15:29  Northern regions|Modal|100|Fiber  10.1 s
+14:15:30  Northern regions|Lyocell|100|Film  9.8 s
+14:15:38  Northern regions|Modal|100|Film  9.8 s
+14:15:40  Northern regions|Lyocell|1000|Sphere  10.0 s
+14:15:49  Northern regions|Modal|1000|Sphere  10.1 s
+14:15:50  Northern regions|Lyocell|1000|Fiber  10.4 s
+14:15:59  Northern regions|Modal|1000|Fiber  10.2 s
+14:16:00  Northern regions|Lyocell|5000|Sphere  9.9 s
+14:16:09  Northern regions|Modal|5000|Sphere  9.8 s
+14:16:10  Northern regions|Lyocell|5000|Fiber  9.6 s
+14:16:17  Northern regions|Modal|5000|Fiber  8.2 s
+14:16:36  Oceania|EPS|1|Sphere  18.9 s
+14:16:38  Oceania|PA_Nylon|1|Sphere  20.4 s
+14:16:38  Oceania|PS|1|Sphere  20.7 s
+14:16:38  Oceania|LDPE|1|Sphere  20.7 s
+14:16:38  Oceania|HDPE|1|Sphere  20.8 s
+14:16:38  Oceania|PP|1|Sphere  20.8 s
+14:16:39  Oceania|PET|1|Sphere  21.2 s
+14:16:56  Oceania|EPS|1|Fiber  19.3 s
+14:16:58  Oceania|PA_Nylon|1|Fiber  20.5 s
+14:16:59  Oceania|HDPE|1|Fiber  21.1 s
+14:16:59  Oceania|LDPE|1|Fiber  21.2 s
+14:16:59  Oceania|PS|1|Fiber  21.3 s
+14:17:00  Oceania|PP|1|Fiber  21.3 s
+14:17:01  Oceania|PET|1|Fiber  22.0 s
+14:17:19  Oceania|EPS|1|Film  23.4 s
+14:17:23  Oceania|PA_Nylon|1|Film  24.5 s
+14:17:25  Oceania|LDPE|1|Film  25.4 s
+14:17:25  Oceania|HDPE|1|Film  25.5 s
+14:17:25  Oceania|PS|1|Film  25.4 s
+14:17:25  Oceania|PP|1|Film  25.5 s
+14:17:27  Oceania|PET|1|Film  25.9 s
+14:17:42  Oceania|EPS|10|Sphere  23.2 s
+14:17:48  Oceania|PA_Nylon|10|Sphere  24.7 s
+14:17:52  Oceania|LDPE|10|Sphere  27.0 s
+14:17:52  Oceania|HDPE|10|Sphere  27.1 s
+14:17:52  Oceania|PS|10|Sphere  27.0 s
+14:17:52  Oceania|PP|10|Sphere  26.9 s
+14:17:55  Oceania|PET|10|Sphere  27.9 s
+14:18:08  Oceania|EPS|10|Fiber  25.8 s
+14:18:14  Oceania|PA_Nylon|10|Fiber  26.1 s
+14:18:17  Oceania|HDPE|10|Fiber  25.0 s
+14:18:17  Oceania|LDPE|10|Fiber  25.1 s
+14:18:17  Oceania|PS|10|Fiber  25.3 s
+14:18:17  Oceania|PP|10|Fiber  25.3 s
+14:18:20  Oceania|PET|10|Fiber  25.8 s
+14:18:33  Oceania|EPS|10|Film  24.5 s
+14:18:42  Oceania|PA_Nylon|10|Film  28.0 s
+14:18:46  Oceania|HDPE|10|Film  28.9 s
+14:18:46  Oceania|LDPE|10|Film  29.1 s
+14:18:46  Oceania|PP|10|Film  29.2 s
+14:18:47  Oceania|PS|10|Film  29.4 s
+14:18:50  Oceania|PET|10|Film  30.2 s
+14:19:00  Oceania|EPS|100|Sphere  27.8 s
+14:19:07  Oceania|PA_Nylon|100|Sphere  25.5 s
+14:19:12  Oceania|HDPE|100|Sphere  26.5 s
+14:19:13  Oceania|LDPE|100|Sphere  26.6 s
+14:19:13  Oceania|PP|100|Sphere  26.3 s
+14:19:13  Oceania|PS|100|Sphere  26.5 s
+14:19:18  Oceania|PET|100|Sphere  27.4 s
+14:19:26  Oceania|EPS|100|Fiber  26.0 s
+14:19:34  Oceania|PA_Nylon|100|Fiber  26.8 s
+14:19:40  Oceania|HDPE|100|Fiber  27.1 s
+14:19:40  Oceania|LDPE|100|Fiber  27.1 s
+14:19:40  Oceania|PP|100|Fiber  27.0 s
+14:19:40  Oceania|PS|100|Fiber  27.0 s
+14:19:45  Oceania|PET|100|Fiber  27.1 s
+14:19:50  Oceania|EPS|100|Film  23.8 s
+14:19:58  Oceania|PA_Nylon|100|Film  24.2 s
+14:20:05  Oceania|HDPE|100|Film  25.0 s
+14:20:05  Oceania|LDPE|100|Film  24.9 s
+14:20:05  Oceania|PP|100|Film  24.9 s
+14:20:06  Oceania|PS|100|Film  25.6 s
+14:20:12  Oceania|PET|100|Film  27.1 s
+14:20:15  Oceania|EPS|1000|Sphere  24.4 s
+14:20:23  Oceania|PA_Nylon|1000|Sphere  25.0 s
+14:20:30  Oceania|LDPE|1000|Sphere  25.4 s
+14:20:30  Oceania|HDPE|1000|Sphere  25.5 s
+14:20:30  Oceania|PP|1000|Sphere  25.4 s
+14:20:31  Oceania|PS|1000|Sphere  24.9 s
+14:20:37  Oceania|PET|1000|Sphere  24.6 s
+14:20:37  Oceania|EPS|1000|Fiber  22.4 s
+14:20:47  Oceania|PA_Nylon|1000|Fiber  23.4 s
+14:20:56  Oceania|HDPE|1000|Fiber  26.0 s
+14:20:56  Oceania|LDPE|1000|Fiber  26.1 s
+14:20:56  Oceania|PP|1000|Fiber  26.3 s
+14:20:57  Oceania|PS|1000|Fiber  25.9 s
+14:21:03  Oceania|EPS|5000|Sphere  25.8 s
+14:21:05  Oceania|PET|1000|Fiber  28.1 s
+14:21:13  Oceania|PA_Nylon|5000|Sphere  26.5 s
+14:21:22  Oceania|HDPE|5000|Sphere  25.5 s
+14:21:22  Oceania|LDPE|5000|Sphere  25.6 s
+14:21:22  Oceania|PP|5000|Sphere  25.4 s
+14:21:22  Oceania|PS|5000|Sphere  25.4 s
+14:21:26  Oceania|EPS|5000|Fiber  23.3 s
+14:21:30  Oceania|PET|5000|Sphere  25.1 s
+14:21:38  Oceania|PA_Nylon|5000|Fiber  24.8 s
+14:21:48  Oceania|HDPE|5000|Fiber  26.5 s
+14:21:48  Oceania|LDPE|5000|Fiber  26.4 s
+14:21:48  Oceania|PS|5000|Fiber  26.3 s
+14:21:48  Oceania|PP|5000|Fiber  26.5 s
+14:21:51  Oceania|PVC|1|Sphere  24.8 s
+14:21:57  Oceania|PET|5000|Fiber  27.5 s
+14:22:05  Oceania|PU|1|Sphere  26.8 s
+14:22:15  Oceania|PAN|1|Sphere  26.9 s
+14:22:15  Oceania|TRWP|1|Sphere  27.0 s
+14:22:16  Oceania|PLA|1|Sphere  27.0 s
+14:22:16  Oceania|PHA|1|Sphere  27.2 s
+14:22:17  Oceania|PVC|1|Fiber  25.4 s
+14:22:26  Oceania|PCL|1|Sphere  28.6 s
+14:22:37  Oceania|PU|1|Fiber  31.7 s
+14:22:49  Oceania|PAN|1|Fiber  33.6 s
+14:22:50  Oceania|TRWP|1|Fiber  34.8 s
+14:22:51  Oceania|PHA|1|Fiber  35.3 s
+14:22:51  Oceania|PLA|1|Fiber  35.7 s
+14:22:52  Oceania|PVC|1|Film  35.1 s
+14:23:01  Oceania|PCL|1|Fiber  34.2 s
+14:23:08  Oceania|PU|1|Film  31.5 s
+14:23:19  Oceania|PAN|1|Film  30.5 s
+14:23:20  Oceania|PVC|10|Sphere  28.0 s
+14:23:20  Oceania|TRWP|1|Film  29.9 s
+14:23:20  Oceania|PLA|1|Film  28.9 s
+14:23:21  Oceania|PHA|1|Film  29.6 s
+14:23:31  Oceania|PCL|1|Film  30.3 s
+14:23:38  Oceania|PU|10|Sphere  29.4 s
+14:23:46  Oceania|PAN|10|Sphere  27.1 s
+14:23:47  Oceania|PVC|10|Fiber  26.8 s
+14:23:48  Oceania|TRWP|10|Sphere  27.5 s
+14:23:48  Oceania|PLA|10|Sphere  27.6 s
+14:23:48  Oceania|PHA|10|Sphere  27.5 s
+14:23:56  Oceania|PCL|10|Sphere  24.8 s
+14:24:04  Oceania|PU|10|Fiber  25.9 s
+14:24:13  Oceania|PVC|10|Film  26.1 s
+14:24:15  Oceania|PAN|10|Fiber  28.4 s
+14:24:16  Oceania|TRWP|10|Fiber  28.0 s
+14:24:16  Oceania|PLA|10|Fiber  28.4 s
+14:24:16  Oceania|PHA|10|Fiber  28.4 s
+14:24:25  Oceania|PCL|10|Fiber  28.9 s
+14:24:31  Oceania|PU|10|Film  27.8 s
+14:24:38  Oceania|PVC|100|Sphere  25.4 s
+14:24:40  Oceania|PAN|10|Film  25.4 s
+14:24:40  Oceania|TRWP|10|Film  24.9 s
+14:24:41  Oceania|PLA|10|Film  24.7 s
+14:24:41  Oceania|PHA|10|Film  24.7 s
+14:24:50  Oceania|PCL|10|Film  25.3 s
+14:24:56  Oceania|PU|100|Sphere  24.7 s
+14:25:03  Oceania|PVC|100|Fiber  24.6 s
+14:25:05  Oceania|PAN|100|Sphere  24.8 s
+14:25:05  Oceania|TRWP|100|Sphere  24.8 s
+14:25:06  Oceania|PHA|100|Sphere  25.1 s
+14:25:07  Oceania|PLA|100|Sphere  25.7 s
+14:25:15  Oceania|PCL|100|Sphere  25.5 s
+14:25:23  Oceania|PU|100|Fiber  27.3 s
+14:25:28  Oceania|PVC|100|Film  25.7 s
+14:25:33  Oceania|PAN|100|Fiber  27.5 s
+14:25:33  Oceania|TRWP|100|Fiber  27.6 s
+14:25:33  Oceania|PLA|100|Fiber  26.4 s
+14:25:33  Oceania|PHA|100|Fiber  27.3 s
+14:25:41  Oceania|PCL|100|Fiber  25.7 s
+14:25:48  Oceania|PU|100|Film  24.4 s
+14:25:52  Oceania|PVC|1000|Sphere  23.8 s
+14:25:57  Oceania|PAN|100|Film  24.1 s
+14:25:57  Oceania|TRWP|100|Film  24.0 s
+14:25:57  Oceania|PLA|100|Film  24.4 s
+14:25:58  Oceania|PHA|100|Film  24.1 s
+14:26:05  Oceania|PCL|100|Film  24.0 s
+14:26:11  Oceania|PU|1000|Sphere  23.7 s
+14:26:15  Oceania|PVC|1000|Fiber  22.5 s
+14:26:20  Oceania|PAN|1000|Sphere  23.4 s
+14:26:20  Oceania|TRWP|1000|Sphere  23.5 s
+14:26:20  Oceania|PLA|1000|Sphere  23.0 s
+14:26:21  Oceania|PHA|1000|Sphere  23.4 s
+14:26:28  Oceania|PCL|1000|Sphere  23.2 s
+14:26:34  Oceania|PU|1000|Fiber  22.6 s
+14:26:37  Oceania|PVC|5000|Sphere  21.9 s
+14:26:42  Oceania|PAN|1000|Fiber  22.2 s
+14:26:43  Oceania|TRWP|1000|Fiber  22.7 s
+14:26:43  Oceania|PLA|1000|Fiber  22.7 s
+14:26:44  Oceania|PHA|1000|Fiber  22.8 s
+14:26:50  Oceania|PCL|1000|Fiber  22.1 s
+14:26:56  Oceania|PU|5000|Sphere  22.2 s
+14:26:59  Oceania|PVC|5000|Fiber  21.9 s
+14:27:07  Oceania|PAN|5000|Sphere  24.6 s
+14:27:07  Oceania|TRWP|5000|Sphere  24.2 s
+14:27:07  Oceania|PLA|5000|Sphere  24.3 s
+14:27:08  Oceania|PHA|5000|Sphere  24.2 s
+14:27:15  Oceania|PCL|5000|Sphere  25.1 s
+14:27:22  Oceania|PU|5000|Fiber  26.0 s
+14:27:25  Oceania|PBSA|1|Sphere  24.8 s
+14:27:31  Oceania|PAN|5000|Fiber  24.1 s
+14:27:31  Oceania|TRWP|5000|Fiber  24.2 s
+14:27:31  Oceania|PLA|5000|Fiber  24.1 s
+14:27:32  Oceania|PHA|5000|Fiber  24.4 s
+14:27:41  Oceania|PCL|5000|Fiber  25.7 s
+14:27:49  Oceania|starch_blend|1|Sphere  27.0 s
+14:27:51  Oceania|PBSA|1|Fiber  26.3 s
+14:28:00  Oceania|PBAT|1|Sphere  29.0 s
+14:28:01  Oceania|Cotton|1|Sphere  29.1 s
+14:28:01  Oceania|Linen|1|Sphere  29.3 s
+14:28:02  Oceania|Viscose|1|Sphere  29.2 s
+14:28:09  Oceania|Rayon|1|Sphere  27.3 s
+14:28:15  Oceania|starch_blend|1|Fiber  25.5 s
+14:28:17  Oceania|PBSA|1|Film  26.4 s
+14:28:26  Oceania|PBAT|1|Fiber  25.3 s
+14:28:26  Oceania|Cotton|1|Fiber  25.3 s
+14:28:26  Oceania|Linen|1|Fiber  25.4 s
+14:28:28  Oceania|Viscose|1|Fiber  26.6 s
+14:28:38  Oceania|Rayon|1|Fiber  29.4 s
+14:28:47  Oceania|starch_blend|1|Film  32.0 s
+14:28:51  Oceania|PBSA|10|Sphere  33.3 s
+14:28:59  Oceania|PBAT|1|Film  33.9 s
+14:29:00  Oceania|Cotton|1|Film  34.3 s
+14:29:01  Oceania|Linen|1|Film  34.4 s
+14:29:02  Oceania|Viscose|1|Film  33.4 s
+14:29:10  Oceania|Rayon|1|Film  32.3 s
+14:29:17  Oceania|starch_blend|10|Sphere  30.5 s
+14:29:19  Oceania|PBSA|10|Fiber  28.1 s
+14:29:28  Oceania|PBAT|10|Sphere  28.3 s
+14:29:28  Oceania|Cotton|10|Sphere  27.6 s
+14:29:28  Oceania|Linen|10|Sphere  27.4 s
+14:29:29  Oceania|Viscose|10|Sphere  27.4 s
+14:29:37  Oceania|Rayon|10|Sphere  26.8 s
+14:29:43  Oceania|starch_blend|10|Fiber  25.8 s
+14:29:45  Oceania|PBSA|10|Film  26.6 s
+14:29:52  Oceania|PBAT|10|Fiber  24.1 s
+14:29:52  Oceania|Cotton|10|Fiber  24.4 s
+14:29:53  Oceania|Linen|10|Fiber  24.6 s
+14:29:54  Oceania|Viscose|10|Fiber  24.5 s
+14:30:02  Oceania|Rayon|10|Fiber  25.0 s
+14:30:08  Oceania|starch_blend|10|Film  25.2 s
+14:30:10  Oceania|PBSA|100|Sphere  24.6 s
+14:30:22  Oceania|PBAT|10|Film  29.9 s
+14:30:22  Oceania|Cotton|10|Film  30.2 s
+14:30:23  Oceania|Linen|10|Film  30.5 s
+14:30:25  Oceania|Viscose|10|Film  30.9 s
+14:30:33  Oceania|Rayon|10|Film  30.9 s
+14:30:40  Oceania|starch_blend|100|Sphere  31.6 s
+14:30:42  Oceania|PBSA|100|Fiber  32.1 s
+14:30:50  Oceania|PBAT|100|Sphere  28.0 s
+14:30:51  Oceania|Cotton|100|Sphere  28.2 s
+14:30:51  Oceania|Linen|100|Sphere  27.8 s
+14:30:52  Oceania|Viscose|100|Sphere  27.5 s
+14:31:00  Oceania|Rayon|100|Sphere  27.0 s
+14:31:08  Oceania|starch_blend|100|Fiber  27.6 s
+14:31:09  Oceania|PBSA|100|Film  26.9 s
+14:31:17  Oceania|PBAT|100|Fiber  27.1 s
+14:31:18  Oceania|Cotton|100|Fiber  27.1 s
+14:31:18  Oceania|Linen|100|Fiber  27.0 s
+14:31:19  Oceania|Viscose|100|Fiber  26.8 s
+14:31:26  Oceania|Rayon|100|Fiber  26.1 s
+14:31:34  Oceania|starch_blend|100|Film  26.0 s
+14:31:35  Oceania|PBSA|1000|Sphere  25.9 s
+14:31:43  Oceania|PBAT|100|Film  25.9 s
+14:31:44  Oceania|Cotton|100|Film  26.0 s
+14:31:44  Oceania|Linen|100|Film  26.0 s
+14:31:45  Oceania|Viscose|100|Film  25.9 s
+14:31:52  Oceania|Rayon|100|Film  25.8 s
+14:31:59  Oceania|starch_blend|1000|Sphere  25.1 s
+14:32:01  Oceania|PBSA|1000|Fiber  25.7 s
+14:32:09  Oceania|PBAT|1000|Sphere  25.8 s
+14:32:10  Oceania|Cotton|1000|Sphere  26.0 s
+14:32:10  Oceania|Linen|1000|Sphere  26.1 s
+14:32:11  Oceania|Viscose|1000|Sphere  25.9 s
+14:32:18  Oceania|Rayon|1000|Sphere  26.2 s
+14:32:25  Oceania|starch_blend|1000|Fiber  26.4 s
+14:32:26  Oceania|PBSA|5000|Sphere  25.5 s
+14:32:34  Oceania|PBAT|1000|Fiber  25.6 s
+14:32:34  Oceania|Cotton|1000|Fiber  24.6 s
+14:32:35  Oceania|Linen|1000|Fiber  24.5 s
+14:32:35  Oceania|Viscose|1000|Fiber  24.8 s
+14:32:43  Oceania|Rayon|1000|Fiber  24.3 s
+14:32:49  Oceania|starch_blend|5000|Sphere  24.0 s
+14:32:51  Oceania|PBSA|5000|Fiber  24.8 s
+14:33:00  Oceania|PBAT|5000|Sphere  25.7 s
+14:33:01  Oceania|Linen|5000|Sphere  26.2 s
+14:33:01  Oceania|Cotton|5000|Sphere  26.5 s
+14:33:02  Oceania|Viscose|5000|Sphere  26.2 s
+14:33:09  Oceania|Rayon|5000|Sphere  26.3 s
+14:33:16  Oceania|starch_blend|5000|Fiber  26.7 s
+14:33:19  Oceania|Lyocell|1|Sphere  27.5 s
+14:33:26  Oceania|PBAT|5000|Fiber  25.8 s
+14:33:27  Oceania|Linen|5000|Fiber  25.9 s
+14:33:27  Oceania|Cotton|5000|Fiber  25.9 s
+14:33:27  Oceania|Viscose|5000|Fiber  25.6 s
+14:33:31  Oceania|Rayon|5000|Fiber  22.3 s
+14:33:35  Oceania|Modal|1|Sphere  18.7 s
+14:33:35  Oceania|Lyocell|1|Fiber  16.6 s
+14:33:46  Oceania|Modal|1|Fiber  10.9 s
+14:33:47  Oceania|Lyocell|1|Film  11.2 s
+14:33:57  Oceania|Modal|1|Film  11.0 s
+14:33:57  Oceania|Lyocell|10|Sphere  10.9 s
+14:34:07  Oceania|Modal|10|Sphere  10.6 s
+14:34:08  Oceania|Lyocell|10|Fiber  10.7 s
+14:34:18  Oceania|Modal|10|Fiber  10.6 s
+14:34:19  Oceania|Lyocell|10|Film  10.4 s
+14:34:28  Oceania|Modal|10|Film  10.1 s
+14:34:29  Oceania|Lyocell|100|Sphere  10.2 s
+14:34:38  Oceania|Modal|100|Sphere  10.2 s
+14:34:39  Oceania|Lyocell|100|Fiber  10.2 s
+14:34:48  Oceania|Modal|100|Fiber  10.0 s
+14:34:49  Oceania|Lyocell|100|Film  9.8 s
+14:34:58  Oceania|Modal|100|Film  9.8 s
+14:34:59  Oceania|Lyocell|1000|Sphere  10.0 s
+14:35:08  Oceania|Modal|1000|Sphere  9.9 s
+14:35:09  Oceania|Lyocell|1000|Fiber  9.8 s
+14:35:18  Oceania|Modal|1000|Fiber  10.5 s
+14:35:19  Oceania|Lyocell|5000|Sphere  10.7 s
+14:35:28  Oceania|Modal|5000|Sphere  9.9 s
+14:35:29  Oceania|Lyocell|5000|Fiber  9.8 s
+14:35:37  Oceania|Modal|5000|Fiber  8.3 s
