@@ -378,13 +378,31 @@ fill_X <- function(prefix) {
 SF <- 1 #Oginah et al. (2025)
 
 # 1.1 Function to generate EEF Monte Carlo samples
+eef_params <- list(
+  EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
+  EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
+  EEF_s = list(meanlog = -1.709258248, sdlog = 0.197720485)
+)
+
+# TRWP-specific EEFs (physical effects) in water and soil [PAF m3/kg], 95% CI (z0.975=1.96)
+# Sediment EEF is kept as for the other polymers
+#   EEF_water_trwp_physical = 18.521 [1.688 - 203.244]
+#   EEF_soil_trwp_physical  = 0.197 [0.038 - 2.141] (CI not symmetric in log space: sdlog derived from the CI width)
+eef_params_trwp <- eef_params
+eef_params_trwp$EEF_w <- list(meanlog = log(18.521), sdlog = log(203.244 / 1.688) / (2 * 1.96))
+eef_params_trwp$EEF_s <- list(meanlog = log(0.197),  sdlog = log(2.141 / 0.038) / (2 * 1.96))
+
+# Same standard normal draws mapped to other lognormal parameters (no extra random numbers are drawn)
+rescale_eef_samples <- function(eef_samples, from_params, to_params) {
+  for (eef in names(to_params)) {
+    z <- (log(eef_samples[[eef]]) - from_params[[eef]]$meanlog) / from_params[[eef]]$sdlog
+    eef_samples[[eef]] <- exp(to_params[[eef]]$meanlog + to_params[[eef]]$sdlog * z)
+  }
+  eef_samples
+}
+
 generate_eef_samples <- function(n_samples = 1000) {
-  eef_params <- list(
-    EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
-    EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
-    EEF_s = list(meanlog = -1.709258248, sdlog = 0.197720485)
-  )
-  
+
   set.seed(123) #set a seed so that we get the same random numbers - if we run the code again, the differences won't be due to a new distribution of EEF
   eef_samples <- data.frame(
     EEF_w = rlnorm(n_samples, eef_params$EEF_w$meanlog, eef_params$EEF_w$sdlog),
@@ -398,6 +416,7 @@ generate_eef_samples <- function(n_samples = 1000) {
 
 #call the function with n_samples
 eef_monte_carlo <- generate_eef_samples(n_samples)
+eef_monte_carlo_trwp <- rescale_eef_samples(eef_monte_carlo, eef_params, eef_params_trwp)
 
 # 1.2 Helper function for elementary flow name
 get_elementary_flowname <- function(shape, pol, size, reg) {
@@ -1517,7 +1536,7 @@ cat("Calculating cumulative CF over time...\n")
 
 cf_cumulative <- calculate_cumulative_cf_over_time(
   mass_results = mass_results,
-  eef_samples = eef_monte_carlo,
+  eef_samples = if (pol == "TRWP") eef_monte_carlo_trwp else eef_monte_carlo, #TRWP-specific EEFs in water and soil
   states = states,
   compartment_names = compartment_names,
   volume_compartments = volume_compartments,

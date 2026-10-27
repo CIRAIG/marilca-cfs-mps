@@ -2,7 +2,7 @@
 
 DOI: v1.0.0 [![DOI](https://zenodo.org/badge/1165898289.svg)](https://doi.org/10.5281/zenodo.20087936)
 
-This repository provides the code and data used to compute fate factores (FFs) and characterization factors (CFs) based on SimpleBox object-oriented (SBoo). So far, SBoo Version 2026.3.1 was used (https://doi.org/10.5281/zenodo.19388881) 
+This repository provides the code and data used to compute fate factores (FFs) and characterization factors (CFs) based on SimpleBox object-oriented (SBoo). SBoo Version 2026.4.0 is used (https://github.com/rivm-syso/SBoo/releases/tag/2026.4.0). Earlier releases of this repository used SBoo 2026.3.1 (https://doi.org/10.5281/zenodo.19388881) 
 
 This repository provides all scripts and input data required to:
 
@@ -33,6 +33,13 @@ This will:
 ### Steady-State CFs
 
     source("02_Run_SB_CI.R")
+
+Run settings are at the top of the script (section "Run settings"):
+- `n_samples`: number of Monte Carlo runs per combination (default 100)
+- `n_cores`: by default, all cores but one on macOS/Linux, where the polymers of each region are run in parallel (forked processes) with a fixed seed per polymer (`parallel_seed`), so results are reproducible. On Windows, forking is not available and the script runs serially (`n_cores = 1`). The serial run reproduces the random number stream of previous versions, so its Monte Carlo samples differ from the parallel run
+- Loop subsets and `results_suffix` can be set for quick tests without overwriting the results
+
+Tire and road wear particles (TRWP) use TRWP-specific effect factors (physical effects) in water and soil: EEF_water = 18.521 [1.688 - 203.244] and EEF_soil = 0.197 [0.038 - 2.141] PAF m3/kg (95% CI). The sediment EEF is the same as for the other polymers.
 
 ### Dynamic Simulation
 
@@ -83,6 +90,7 @@ These CFs are based on:
     ├── 03_Default_CF.R               # Default CF calculation
     ├── 04_Run_SB_Dyn.R               # Dynamic model run 
     ├── Compare_outcomes.R            # Comparison of model outputs
+    ├── Compare_with_main.R           # Comparison of SI_C/SI_D with another git branch (default: main)
     ├── SI_Graphing.ipynb             # Graphing and visualization notebook
     │
     ├── LICENSE.md
