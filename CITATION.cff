@@ -1,0 +1,93 @@
+cff-version: 1.2.0
+message: "If you use these characterization factors, please cite the article and the version of the data and code used."
+title: "MarILCA PEBBLE: characterization factors for microplastics, tire particles and cellulosic fibers in life cycle assessment"
+version: 1.1.0
+date-released: 2026-10-28
+doi: 10.5281/zenodo.20087936
+license: CC-BY-SA-4.0
+repository-code: "https://github.com/CIRAIG/marilca-cfs-mps"
+type: software
+keywords:
+  - life cycle assessment
+  - characterization factors
+  - microplastics
+  - tire and road wear particles
+  - cellulosic fibers
+  - physical effects
+  - SimpleBox
+authors:
+  - family-names: Saadi
+    given-names: Nadim
+    affiliation: CIRAIG
+    orcid: "https://orcid.org/0000-0002-1748-7711"
+  - family-names: Hajjar
+    given-names: Carla
+    affiliation: CIRAIG
+    orcid: "https://orcid.org/0000-0002-3032-6234"
+  - family-names: Ospital
+    given-names: Louisa
+    affiliation: Polytechnique Montréal
+    orcid: "https://orcid.org/0009-0000-1697-7906"
+  - family-names: Quik
+    given-names: Joris T.K.
+    affiliation: National Institute for Public Health and the Environment
+    orcid: "https://orcid.org/0000-0002-7964-3652"
+  - family-names: Corella-Puertas
+    given-names: Elena
+    affiliation: Technical University of Denmark
+    orcid: "https://orcid.org/0000-0001-5316-5640"
+  - family-names: Hids
+    given-names: Anne R.
+    affiliation: National Institute for Public Health and the Environment
+    orcid: "https://orcid.org/0009-0006-0325-5924"
+  - family-names: Lebrun
+    given-names: Marion
+    affiliation: Norwegian University of Science and Technology
+    orcid: "https://orcid.org/0009-0008-5278-0201"
+  - family-names: Louvet
+    given-names: Juliette
+    affiliation: "Laboratoire des Sciences du Climat et de l'Environnement"
+    orcid: "https://orcid.org/0009-0007-3895-3295"
+  - family-names: Tang
+    given-names: Yibo
+    affiliation: CIRAIG
+    orcid: "https://orcid.org/0000-0002-2965-015X"
+  - family-names: Thonemann
+    given-names: Nils
+    affiliation: Leiden University
+    orcid: "https://orcid.org/0000-0001-5966-2656"
+  - family-names: Boulay
+    given-names: Anne-Marie
+    affiliation: CIRAIG
+    orcid: "https://orcid.org/0000-0003-1518-7931"
+preferred-citation:
+  type: article
+  title: "MarILCA characterization factors for microplastics, tire particles and cellulosic fibers in life cycle assessment: the PEBBLE method for regionalized physical impacts in marine, freshwater and terrestrial ecosystems"
+  journal: "Resources, Conservation and Recycling"
+  volume: 237
+  start: 109193
+  year: 2027
+  doi: 10.1016/j.resconrec.2026.109193
+  authors:
+    - family-names: Saadi
+      given-names: Nadim
+    - family-names: Hajjar
+      given-names: Carla
+    - family-names: Ospital
+      given-names: Louisa
+    - family-names: Quik
+      given-names: Joris T.K.
+    - family-names: Corella-Puertas
+      given-names: Elena
+    - family-names: Hids
+      given-names: Anne R.
+    - family-names: Lebrun
+      given-names: Marion
+    - family-names: Louvet
+      given-names: Juliette
+    - family-names: Tang
+      given-names: Yibo
+    - family-names: Thonemann
+      given-names: Nils
+    - family-names: Boulay
+      given-names: Anne-Marie

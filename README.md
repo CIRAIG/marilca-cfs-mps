@@ -1,6 +1,6 @@
 # MarILCA Characterization Factors for Microplastics, Tire Particles and Cellulosic Fibers in Life Cycle Assessment: Regionalized impacts in marine, freshwater and terrestrial ecosystems
 
-DOI: v1.0.0 [![DOI](https://zenodo.org/badge/1165898289.svg)](https://doi.org/10.5281/zenodo.20087936)
+[![DOI](https://zenodo.org/badge/1165898289.svg)](https://doi.org/10.5281/zenodo.20087936) (all versions; resolves to the latest version)
 
 This repository provides the code and data used to compute fate factores (FFs) and characterization factors (CFs) based on SimpleBox object-oriented (SBoo). SBoo Version 2026.4.0 is used (https://github.com/rivm-syso/SBoo/releases/tag/2026.4.0). Earlier releases of this repository used SBoo 2026.3.1 (https://doi.org/10.5281/zenodo.19388881) 
 
@@ -11,8 +11,19 @@ This repository provides all scripts and input data required to:
 - Generate graphs and figure
 
 If you use the CFs, please cite:
-- The publication (preprint: https://dx.doi.org/10.2139/ssrn.6727270)
-- The version used (with the DOI corresponding to the release used)
+- The publication: Saadi, N., Hajjar, C., Ospital, L., Quik, J.T.K., Corella-Puertas, E., Hids, A.R., Lebrun, M., Louvet, J., Tang, Y., Thonemann, N., Boulay, A.-M. (2027). MarILCA characterization factors for microplastics, tire particles and cellulosic fibers in life cycle assessment: the PEBBLE method for regionalized physical impacts in marine, freshwater and terrestrial ecosystems. *Resources, Conservation and Recycling*, 237, 109193. https://doi.org/10.1016/j.resconrec.2026.109193
+- The version used, with its DOI (see Versions below)
+
+Citation metadata is also provided in `CITATION.cff` ("Cite this repository" on GitHub).
+
+### Versions
+
+| Version | Date | DOI | SBoo version | Main changes |
+|---|---|---|---|---|
+| v1.1.0 | 2026-10-28 | to be added after the release | 2026.4.0 | TRWP-specific EEFs in water and soil, Linen soil degradation update, ReCiPe midpoint and endpoint CFs, faster code |
+| v1.0.0 | 2026-05-08 | [10.5281/zenodo.20087937](https://doi.org/10.5281/zenodo.20087937) | 2026.3.1 | First public release |
+
+All versions: [10.5281/zenodo.20087936](https://doi.org/10.5281/zenodo.20087936). The list of changes is in `CHANGELOG.md`.
 
 ---
 
@@ -97,7 +108,9 @@ Midpoint and endpoint sheets have one row per flow and impact category. The vari
     ├── input/                        # Model input files (Regionalized data and TrackMPD data)
     ├── results/                      # Model outputs
     │   └── ReCiPe/                   # ReCiPe midpoint and endpoint CFs (ReCiPe_CF.R, ReCiPe_CF.xlsx)
-    ├── figures/                      # Generated figures shown in the publication
+    ├── figures/                      # Figures shown in the publication and the code to make them
+    │   ├── SI_Graphing.ipynb         # Graphing and visualization notebook (figures of the publication and SI)
+    │   └── Plot_comparison_with_main.R  # Figure of the CF changes per material vs the previous version
     ├── previous marilca cfs/         # Previous CF datasets (MarILCA)
     │
     ├── InstallSBoo.R                 # Installation script
@@ -105,10 +118,10 @@ Midpoint and endpoint sheets have one row per flow and impact category. The vari
     ├── 02_Run_SB_CI.R                # Main steady-state model run
     ├── 03_Default_CF.R               # Default CF calculation
     ├── 04_Run_SB_Dyn.R               # Dynamic model run 
-    ├── Compare_outcomes.R            # Comparison of model outputs
     ├── Compare_with_main.R           # Comparison of SI_C/SI_D with another git branch (default: main)
-    ├── SI_Graphing.ipynb             # Graphing and visualization notebook
     │
+    ├── CHANGELOG.md                  # List of changes per version
+    ├── CITATION.cff                  # Citation metadata (also used by Zenodo)
     ├── LICENSE.md
     └── README.md
 

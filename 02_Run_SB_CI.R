@@ -340,6 +340,7 @@ eef_params <- list(
 )
 
 # TRWP-specific EEFs (physical effects) in water and soil [PAF m3/kg], 95% CI (z0.975=1.96)
+# Ospital et al. (2026), https://doi.org/10.2139/ssrn.7565081
 # Sediment EEF is kept as for the other polymers
 #   EEF_water_trwp_physical = 18.521 [1.688 - 203.244]
 #   EEF_soil_trwp_physical  = 0.197 [0.038 - 2.141] (CI not symmetric in log space: sdlog derived from the CI width)

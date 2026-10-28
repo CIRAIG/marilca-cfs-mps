@@ -1,6 +1,6 @@
 # Figure of the CF changes per material vs another git branch (default: main)
 # Run from the repository root after Compare_with_main.R:
-#   source("Plot_comparison_with_main.R")
+#   source("figures/Plot_comparison_with_main.R")
 # Output: figures/Comparison_with_previous_version_CF_ratios.png
 
 ## Load libraries ----------------------------------------------------------
