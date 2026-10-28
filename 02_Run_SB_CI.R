@@ -201,6 +201,17 @@ tot_num_species_fresh = 150000
 tot_num_species_terr = 1600000
 list_tot_species = c(tot_num_species_marine, tot_num_species_fresh, tot_num_species_terr)
 
+## Run settings ----------------------------------------------------------
+n_samples <- 100 #Monte Carlo runs per combination
+# n_cores > 1: polymers of a region are run in parallel (forked processes, macOS/Linux only).
+#              Each polymer gets its own seed, so results are reproducible but Monte Carlo samples differ from the serial run
+# n_cores = 1: serial, same random number stream as previous versions of this script (reproduces the published results)
+n_cores <- if (.Platform$OS.type == "windows") 1 else max(1, parallel::detectCores() - 1) #polymers are run in parallel (forking is not available on Windows)
+parallel_seed <- 123
+# For quick tests, subset the loops, e.g.:
+# region_names <- "Europe"; polymer_names <- c("EPS", "TRWP"); sizes <- c(1, 100); shapes <- "Sphere"; n_samples <- 5
+results_suffix <- "" #e.g. "_test" to avoid overwriting the results files during tests
+
 ## Functions for matrix aggregations ------------------------------------
 Xfree <- function(k_free_agg, k_free_att, k_agg_tot, k_att_tot) {
   1 / (1 + (k_free_agg / k_agg_tot) + (k_free_att / k_att_tot))
@@ -243,136 +254,76 @@ setup_fill_patterns <- function(first_mat, X_list) {
     }
   }
   
+  # Indices of the X cells to fill (only prefixes for which free, agg and att states all exist)
+  has_all <- sapply(X_list, function(prefix) all(paste0(prefix, c("S", "A", "P")) %in% filtered_names))
+  X_idx <- data.frame(
+    col  = which(has_all),
+    free = match(paste0(X_list[has_all], "S"), filtered_names),
+    agg  = match(paste0(X_list[has_all], "A"), filtered_names),
+    att  = match(paste0(X_list[has_all], "P"), filtered_names)
+  )
+
   # Return what we CAN pre-compute
   return(list(
     keep_idx = keep_idx,
     filtered_names = filtered_names,
     A_mat = A_mat,           # Always the same pattern
     X_list = X_list,
-    # We also store which cells in X need filling
-    X_cells = lapply(X_list, function(prefix) {
-      list(
-        free = paste0(prefix, "S"),
-        agg = paste0(prefix, "A"),
-        att = paste0(prefix, "P")
-      )
-    })
+    X_idx = X_idx
   ))
 }
 
-# Function to fill X matrix for a specific k_matrix
-fill_X_matrix <- function(k_mat_filtered, setup) {
-  # Create empty X matrix
-  X <- matrix(0, nrow = nrow(k_mat_filtered), ncol = length(setup$X_list))
-  colnames(X) <- setup$X_list
-  rownames(X) <- rownames(k_mat_filtered)
-  
-  # Fill X matrix using actual k_matrix values
-  for(prefix in setup$X_list) {
-    free <- paste0(prefix, "S")
-    agg <- paste0(prefix, "A")
-    att <- paste0(prefix, "P")
-    
-    # Check if all compartments exist in filtered matrix
-    if(all(c(free, agg, att) %in% rownames(k_mat_filtered))) {
-      # Get the actual values from THIS k_matrix
-      k_free_agg <- abs(k_mat_filtered[agg, free])
-      k_free_att <- abs(k_mat_filtered[att, free])
-      k_agg_tot <- abs(k_mat_filtered[agg, agg])
-      k_att_tot <- abs(k_mat_filtered[att, att])
-      
-      # Fill X matrix
-      X[free, prefix] <- Xfree(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
-      X[agg, prefix] <- Xagg(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
-      X[att, prefix] <- Xatt(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
-    }
-  }
-  
-  return(X)
-}
-
-# Main processing function for one k_matrix
-process_single_matrix <- function(k_mat, setup) {
+# Aggregated K matrix (free + aggregated + attached species lumped per compartment) for one k_matrix
+compute_K_final <- function(k_mat, setup) {
   # Filter matrix
   k_filtered <- k_mat[setup$keep_idx, setup$keep_idx, drop = FALSE]
-  
-  # Create X matrix (dynamic - uses actual k values)
-  X_mat <- fill_X_matrix(k_filtered, setup)
-  
+  stopifnot(identical(rownames(k_filtered), setup$filtered_names))
+
+  # Create X matrix (dynamic - uses actual k values), filled with matrix indexing instead of a loop over names
+  ix <- setup$X_idx
+  k_free_agg <- abs(k_filtered[cbind(ix$agg, ix$free)])
+  k_free_att <- abs(k_filtered[cbind(ix$att, ix$free)])
+  k_agg_tot  <- abs(k_filtered[cbind(ix$agg, ix$agg)])
+  k_att_tot  <- abs(k_filtered[cbind(ix$att, ix$att)])
+
+  X_mat <- matrix(0, nrow = nrow(k_filtered), ncol = length(setup$X_list),
+                  dimnames = list(rownames(k_filtered), setup$X_list))
+  X_mat[cbind(ix$free, ix$col)] <- Xfree(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
+  X_mat[cbind(ix$agg, ix$col)]  <- Xagg(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
+  X_mat[cbind(ix$att, ix$col)]  <- Xatt(k_free_agg, k_free_att, k_agg_tot, k_att_tot)
+
   # Compute K1X and K_final
   K1X <- k_filtered %*% X_mat
-  K_final <- setup$A_mat %*% K1X
-  
-  # Invert and compute fate factors
-  ff_matrix <- (-1 / 86400) * solve(K_final) #seconds to day 
-  rownames(ff_matrix) <- paste0(rownames(ff_matrix), "S")
-  
-  return(ff_matrix)
+  setup$A_mat %*% K1X
 }
 
-#process one matrix until chosen time horizon
-process_single_matrix_time_horizon <- function(k_mat, setup, time_horizon_seconds) {
-  # Filter matrix
-  k_filtered <- k_mat[setup$keep_idx, setup$keep_idx, drop = FALSE]
-  orig_rownames <- rownames(k_mat)[setup$keep_idx] # Store original compartment names (from k_mat)
-  # Create X matrix (dynamic - uses actual k values)
-  X_mat <- fill_X_matrix(k_filtered, setup)
-  
-  # Compute K1X and K_final
-  K1X <- k_filtered %*% X_mat
-  K_final <- setup$A_mat %*% K1X
-  
+# "Solver" for World$Solve that only builds the k matrices of the Monte Carlo runs (World$K_matrix())
+# The SBoo steady-state masses are not used here (FFs are computed from the k matrices below),
+# so skipping rootSolve::runsteady makes World$Solve ~3x faster. The k matrices are identical.
+KMatrixOnlySolver <- function(k, e, parms) {
+  list(rep(NA_real_, nrow(k)), e)
+}
+
+# Steady-state FFs and time-horizon FFs for one k_matrix [days]
+# K_final and its inverse are computed once and shared by all horizons
+compute_ff_matrices <- function(k_mat, setup, time_horizons_seconds) {
+  K_final <- compute_K_final(k_mat, setup)
   K_inv <- solve(K_final)
-  # Calculate matrix exponential
-  exp_KT <- expm(K_final * time_horizon_seconds) #k matrix is in seconds
-  
-  # Calculate finite-time fate factor
-  FF_T <- K_inv %*% (exp_KT - diag(nrow(K_final))) #FF = K^-1 * (exp(K*T) - I)
-  FF_T_days <- FF_T / 86400 #seconds to day (FFs are stored as days)
-  if (is.null(rownames(FF_T_days))) {
-    print(rownames(FF_T_days))
-    print(colnames(FF_T_days))
-    print(K_final)
-    print(FF_T_days)
-    rownames(FF_T_days) <- paste0(orig_rownames, "S")
-  } else {
-    rownames(FF_T_days) <- paste0(rownames(FF_T_days), "S")
-  }
 
-  return(FF_T_days)
-}
+  # Steady state: FF = -K^-1
+  ff_ss <- (-1 / 86400) * K_inv #seconds to day
+  rownames(ff_ss) <- paste0(rownames(ff_ss), "S")
 
+  # Time horizon: FF = K^-1 * (exp(K*T) - I)
+  I_mat <- diag(nrow(K_final))
+  ff_T <- lapply(time_horizons_seconds, function(time_horizon_seconds) {
+    exp_KT <- expm(K_final * time_horizon_seconds) #k matrix is in seconds
+    FF_T_days <- K_inv %*% (exp_KT - I_mat) / 86400 #seconds to day (FFs are stored as days)
+    rownames(FF_T_days) <- paste0(rownames(K_inv), "S")
+    FF_T_days
+  })
 
-
-# Nested loops structure
-setup <- NULL
-n_samples <- 100
-
-fill_X <- function(prefix) {
-  free <- paste0(prefix, "S")
-  agg  <- paste0(prefix, "A")
-  att  <- paste0(prefix, "P")
-  
-  X[free, prefix] <<- Xfree(
-    abs(k_matrix_filtered[agg, free]),      
-    abs(k_matrix_filtered[att, free]),      
-    abs(k_matrix_filtered[agg, agg]),      
-    abs(k_matrix_filtered[att, att])        
-  )
-  
-  X[agg, prefix] <<- Xagg(
-    abs(k_matrix_filtered[agg, free]),     
-    abs(k_matrix_filtered[att, free]),     
-    abs(k_matrix_filtered[agg, agg]),       
-    abs(k_matrix_filtered[att, att])        
-  )
-  
-  X[att, prefix] <<- Xatt(
-    abs(k_matrix_filtered[agg, free]),     
-    abs(k_matrix_filtered[att, free]),     
-    abs(k_matrix_filtered[agg, agg]),       
-    abs(k_matrix_filtered[att, att])      
-  )
+  c(list(ss = ff_ss), ff_T)
 }
 
 # 1 Code for CFs uncertainty -----------------------------------------------
@@ -382,14 +333,33 @@ fill_X <- function(prefix) {
 SF <- 1 #Oginah et al. (2025)
 
 ### 1.1 Function to generate EEF Monte Carlo samples ---------------------
+eef_params <- list(
+  EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
+  EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
+  EEF_s = list(meanlog = -1.709258248, sdlog = 0.197720485)
+)
+
+# TRWP-specific EEFs (physical effects) in water and soil [PAF m3/kg], 95% CI (z0.975=1.96)
+# Ospital et al. (2026), https://doi.org/10.2139/ssrn.7565081
+# Sediment EEF is kept as for the other polymers
+#   EEF_water_trwp_physical = 18.521 [1.688 - 203.244]
+#   EEF_soil_trwp_physical  = 0.197 [0.038 - 2.141] (CI not symmetric in log space: sdlog derived from the CI width)
+eef_params_trwp <- eef_params
+eef_params_trwp$EEF_w <- list(meanlog = log(18.521), sdlog = log(203.244 / 1.688) / (2 * 1.96))
+eef_params_trwp$EEF_s <- list(meanlog = log(0.197),  sdlog = log(2.141 / 0.038) / (2 * 1.96))
+
+# Same standard normal draws mapped to other lognormal parameters (no extra random numbers are drawn,
+# so the random number stream used by SBoo afterwards is unchanged)
+rescale_eef_samples <- function(eef_samples, from_params, to_params) {
+  for (eef in names(to_params)) {
+    z <- (log(eef_samples[[eef]]) - from_params[[eef]]$meanlog) / from_params[[eef]]$sdlog
+    eef_samples[[eef]] <- exp(to_params[[eef]]$meanlog + to_params[[eef]]$sdlog * z)
+  }
+  eef_samples
+}
+
 generate_eef_samples <- function(n_samples = 1000) {
-  
-  eef_params <- list(
-    EEF_w = list(meanlog = 6.973081061, sdlog = 0.557267175),
-    EEF_sed = list(meanlog = 2.783343185, sdlog = 1.146282228),
-    EEF_s = list(meanlog = -1.709258248, sdlog = 0.197720485)
-  )
-  
+
   set.seed(123) #set a seed so that we get the same random numbers - if we run the code again, the differences won't be due to a new distribution of EEF
   eef_samples <- data.frame(
     EEF_w = rlnorm(n_samples, eef_params$EEF_w$meanlog, eef_params$EEF_w$sdlog),
@@ -403,6 +373,7 @@ generate_eef_samples <- function(n_samples = 1000) {
 
 #call the function with n_samples
 eef_monte_carlo <- generate_eef_samples(n_samples)
+eef_monte_carlo_trwp <- rescale_eef_samples(eef_monte_carlo, eef_params, eef_params_trwp)
 
 ### 1.2 Helper function for elementary flow name --------------------------
 get_elementary_flowname <- function(shape, pol, size, reg) {
@@ -414,318 +385,143 @@ get_elementary_flowname <- function(shape, pol, size, reg) {
   )
 }
 
-### 1.3 Function to process ONE Monte Carlo iteration for FF and EEF ------
-process_single_iteration <- function(Masses_df, eef_iter, states, reg, pol, size, shape,
-                                     emission_compartment_name, volume_compartments, areas_compartments) {
-  
-  # Process FF data and combine with EEF
-  processed <- Masses_df |>
-    left_join(states, by = "Abbr") |>
-    group_by(Scale, SubCompart) |>
-    summarise(FF = sum(FF), .groups = "drop") |>
-    filter(!Scale %in% c("Arctic", "Moderate", "Tropic") & SubCompart != "othersoil") |>
-    mutate(SubCompart = ifelse(Scale %in% c("Regional", "Continental") & 
-                                 SubCompart %in% c("air", "cloudwater"),
-                               "air", SubCompart)) |>
-    group_by(Scale, SubCompart) |>
-    summarise(FF = sum(FF), .groups = "drop") |>
-    mutate(
-      Scale = factor(Scale, levels = c("Regional", "Continental")),
-      SubCompart = factor(SubCompart, levels = c("air","river","lake","sea","deepocean",
-                                                 "freshwatersediment","lakesediment",
-                                                 "marinesediment","naturalsoil","agriculturalsoil"))
-    ) |>
-    arrange(Scale, SubCompart) |>
-    mutate(Scale = recode(Scale, "Continental" = "Global", "Regional" = "Continental")) |>
-    
-    # Map EEFs to compartments
-    mutate(
-      eef = case_when(
-        SubCompart == "air" ~ eef_iter$EEF_air,
-        SubCompart %in% c("river", "lake", "sea", "deepocean") ~ eef_iter$EEF_w,
-        SubCompart %in% c("freshwatersediment", "lakesediment", "marinesediment") ~ eef_iter$EEF_sed,
-        SubCompart %in% c("naturalsoil") ~ eef_iter$EEF_s, #in agricultural soil eef=0 
-        TRUE ~ 0
-      ),
-      volume = volume_compartments,
-      areas = areas_compartments,
-      CF_comp_PAF_m3_day = FF * eef,
-      CF_comp_PAF_day = CF_comp_PAF_m3_day / volume,
-      
-      # Metadata
-      region = reg,
-      polymer = pol,
-      size = size,
-      shape = shape,
-      emission_compartment = emission_compartment_name
+### 1.3 Mapping of SBoo states to the receiving compartments --------------
+# All the steps from FFs to CFs are linear, so all Monte Carlo samples and emission compartments
+# are processed at once with matrix products (instead of one dplyr pipeline per sample and emission compartment)
+receiving_subcomparts <- c("air","river","lake","sea","deepocean",
+                           "freshwatersediment","lakesediment",
+                           "marinesediment","naturalsoil","agriculturalsoil")
+
+build_receiving_map <- function(ff_rownames, states) {
+  st <- states[match(ff_rownames, states$Abbr), ]
+  st_scale <- as.character(st$Scale)
+  st_sub <- as.character(st$SubCompart)
+  # air and cloudwater are merged; global SBoo scales and othersoil are dropped
+  st_sub <- ifelse(st_scale %in% c("Regional", "Continental") & st_sub %in% c("air", "cloudwater"), "air", st_sub)
+
+  # Receiving compartments in the order Regional (=continental LCIA), Continental (=global LCIA) x receiving_subcomparts
+  # This is the order of receiving_compartments, volume_compartments, areas_compartments and of the SDF columns
+  rec_scale <- rep(c("Regional", "Continental"), each = length(receiving_subcomparts))
+  rec_sub <- rep(receiving_subcomparts, times = 2)
+
+  j <- which(st_scale %in% c("Regional", "Continental") & st_sub != "othersoil")
+  i <- match(paste(st_scale[j], st_sub[j]), paste(rec_scale, rec_sub))
+  stopifnot(!anyNA(i))
+
+  # G sums the FFs of the SBoo states into the receiving compartments: FF_rec = G %*% FF
+  G <- matrix(0, nrow = length(rec_sub), ncol = length(ff_rownames))
+  G[cbind(i, j)] <- 1
+  stopifnot(all(rowSums(G) > 0))
+
+  list(
+    G = G,
+    Scale = factor(ifelse(rec_scale == "Regional", "Continental", "Global"), levels = c("Continental", "Global")),
+    SubCompart = factor(rec_sub, levels = receiving_subcomparts),
+    # EEF applied to each receiving compartment (in agricultural soil eef=0)
+    eef_type = case_when(
+      rec_sub == "air" ~ "EEF_air",
+      rec_sub %in% c("river", "lake", "sea", "deepocean") ~ "EEF_w",
+      rec_sub %in% c("freshwatersediment", "lakesediment", "marinesediment") ~ "EEF_sed",
+      rec_sub == "naturalsoil" ~ "EEF_s",
+      TRUE ~ "none"
+    ),
+    # Fraction of species in each receiving compartment, used for PDF·m²·year
+    frac_species_m2 = case_when(
+      rec_sub %in% c("river", "lake") ~ FracSpe_wc_aqua,
+      rec_sub %in% c("freshwatersediment", "lakesediment") ~ FracSpe_sed_aqua,
+      rec_sub == "sea" ~ FracSpe_ws_marine,
+      rec_sub == "deepocean" ~ FracSpe_wc_marine,
+      rec_sub == "marinesediment" ~ FracSpe_sed_marine,
+      TRUE ~ 1
+    ),
+    # Ecosystem of each receiving compartment, used for PDF·m²·year (air is not included)
+    ecosystem_m2 = rbind(
+      Marine_Ecosystem = as.numeric(rec_sub %in% c("sea", "deepocean", "marinesediment")),
+      Freshwater_Ecosystem = as.numeric(rec_sub %in% c("river", "freshwatersediment", "lake", "lakesediment")),
+      Terrestrial_Ecosystem = as.numeric(rec_sub %in% c("naturalsoil", "agriculturalsoil"))
     )
-  
-  return(processed)
-}
-
-### 1.4 Function to calculate CFs for one iteration ----------------------
-calculate_cfs_for_iteration <- function(iter_data, SDF, SDF_GEP, SF, list_tot_species,
-                                        FracSpe_wc_aqua, FracSpe_sed_aqua,
-                                        FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine,
-                                        shape, pol, size, reg, emission_compartment_name) {
-  
-  # Get CF vector
-  cf_vector <- as.matrix(iter_data$CF_comp_PAF_day)
-  
-  # 1. Midpoint CFs (PAF_loc·day)
-  cf_mid_matrix <- as.matrix(SDF) %*% cf_vector
-  cf_mid_marine <- cf_mid_matrix[1, 1]
-  cf_mid_freshwater <- cf_mid_matrix[2, 1]
-  cf_mid_terrestrial <- cf_mid_matrix[3, 1]
-  cf_mid_total <- sum(cf_mid_matrix)
-  
-  # 2. Endpoint CFs (PDF·year)
-  cf_mid_matrix_gep <- as.matrix(SDF_GEP) %*% cf_vector #Compute PAF using the SDF_GEP instead of SDF for GLAM
-  cf_mid_marine_gep <- cf_mid_matrix_gep[1, 1]
-  cf_mid_freshwater_gep <- cf_mid_matrix_gep[2, 1]
-  cf_mid_terrestrial_gep <- cf_mid_matrix_gep[3, 1]
-  cf_mid_total_gep <- sum(cf_mid_matrix_gep)
-  cf_end_pdf_marine <- cf_mid_marine_gep * SF / 365
-  cf_end_pdf_freshwater <- cf_mid_freshwater_gep * SF / 365
-  cf_end_pdf_terrestrial <- cf_mid_terrestrial_gep * SF / 365
-  cf_end_pdf_total <- cf_mid_total_gep * SF / 365
-  
-  # 3. Endpoint CFs (species·year)
-  #cf_species_matrix <- (t(as.matrix(list_tot_species)) * as.matrix(SDF)) %*% cf_vector * SF / 365
-  cf_species_matrix <- (as.matrix(SDF) * list_tot_species) %*% cf_vector * SF / 365
-  cf_species_marine <- cf_species_matrix[1, 1]
-  cf_species_freshwater <- cf_species_matrix[2, 1]
-  cf_species_terrestrial <- cf_species_matrix[3, 1]
-  cf_species_total <- sum(cf_species_matrix)
-  
-  # 4. PDF·m²·year
-  cf_pdf_m2 <- calculate_pdf_m2_year(iter_data, SF,
-                                     FracSpe_wc_aqua, FracSpe_sed_aqua,
-                                     FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine)
-  
-  # Combine all results
-  cf_results <- data.frame(
-    # Metadata
-    elementary_flowname = get_elementary_flowname(shape, pol, size, reg),
-    region = reg,
-    polymer = pol,
-    size = size,
-    shape = shape,
-    emission_compartment = emission_compartment_name,
-    
-    # Midpoint CFs (PAF·day)
-    CF_mid_PAF_day_marine = cf_mid_marine,
-    CF_mid_PAF_day_freshwater = cf_mid_freshwater,
-    CF_mid_PAF_day_terrestrial = cf_mid_terrestrial,
-    CF_mid_PAF_day_total = cf_mid_total,
-    
-    # Endpoint CFs (PDF·year)
-    CF_end_PDF_year_marine = cf_end_pdf_marine,
-    CF_end_PDF_year_freshwater = cf_end_pdf_freshwater,
-    CF_end_PDF_year_terrestrial = cf_end_pdf_terrestrial,
-    CF_end_PDF_year_total = cf_end_pdf_total,
-    
-    # Endpoint CFs (species·year)
-    CF_end_species_year_marine = cf_species_marine,
-    CF_end_species_year_freshwater = cf_species_freshwater,
-    CF_end_species_year_terrestrial = cf_species_terrestrial,
-    CF_end_species_year_total = cf_species_total,
-    
-    # PDF·m²·year
-    CF_end_PDF_m2_year_marine = cf_pdf_m2$Marine_Ecosystem,
-    CF_end_PDF_m2_year_freshwater = cf_pdf_m2$Freshwater_Ecosystem,
-    CF_end_PDF_m2_year_terrestrial = cf_pdf_m2$Terrestrial_Ecosystem,
-    CF_end_PDF_m2_year_total = cf_pdf_m2$CF_end_PDF_m2_year,
-    
-    stringsAsFactors = FALSE
   )
-  
-  return(cf_results)
-}
-
-### 1.5 Function to calculate PDF·m²·year (from your original code) ------
-calculate_pdf_m2_year <- function(iter_data, SF,
-                                  FracSpe_wc_aqua, FracSpe_sed_aqua,
-                                  FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine) {
-  
-  cf_pdf_m2 <- iter_data |> 
-    mutate(CF_comp_PDF_m2_year = CF_comp_PAF_day * areas * SF / 365) |> 
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("river"),
-                                        CF_comp_PDF_m2_year * FracSpe_wc_aqua , CF_comp_PDF_m2_year)) |> 
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("freshwatersediment"),
-                                        CF_comp_PDF_m2_year * FracSpe_sed_aqua, CF_comp_PDF_m2_year)) |> 
-    
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("lake"),
-                                        CF_comp_PDF_m2_year * FracSpe_wc_aqua, CF_comp_PDF_m2_year)) |>
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("lakesediment"),
-                                        CF_comp_PDF_m2_year * FracSpe_sed_aqua, CF_comp_PDF_m2_year)) |>
-    
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("sea"),
-                                        CF_comp_PDF_m2_year * FracSpe_ws_marine, CF_comp_PDF_m2_year)) |>
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("deepocean"),
-                                        CF_comp_PDF_m2_year * FracSpe_wc_marine, CF_comp_PDF_m2_year)) |>
-    mutate(CF_comp_PDF_m2_year = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("marinesediment"),
-                                        CF_comp_PDF_m2_year * FracSpe_sed_marine, CF_comp_PDF_m2_year)) |>
-    
-    # Rename superimposed compartments
-    mutate(SubCompart = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("river", "freshwatersediment"),
-                               "fw_tot", as.character(SubCompart))) |> 
-    mutate(SubCompart = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("lake", "lakesediment"),
-                               "lw_tot", as.character(SubCompart))) |>
-    mutate(SubCompart = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("sea", "deepocean", "marinesediment"),
-                               "sw_tot", as.character(SubCompart))) |>
-    group_by(Scale, SubCompart) |>
-    summarise(CF_end_PDF_m2_year = sum(CF_comp_PDF_m2_year), .groups = "drop") |>
-    
-    # Combine impacts by ecosystem
-    mutate(Marine_Ecosystem = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("sw_tot"),
-                                     CF_end_PDF_m2_year, 0)) |> 
-    mutate(Freshwater_Ecosystem = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("fw_tot","lw_tot"),
-                                         CF_end_PDF_m2_year, 0)) |> 
-    mutate(Terrestrial_Ecosystem = ifelse(Scale %in% c("Global", "Continental") & SubCompart %in% c("naturalsoil","agriculturalsoil"),
-                                          CF_end_PDF_m2_year, 0)) |> 
-    summarise(
-      Marine_Ecosystem = sum(Marine_Ecosystem, na.rm = TRUE),
-      Freshwater_Ecosystem = sum(Freshwater_Ecosystem, na.rm = TRUE),
-      Terrestrial_Ecosystem = sum(Terrestrial_Ecosystem, na.rm = TRUE)
-    ) |>
-    mutate(CF_end_PDF_m2_year = Marine_Ecosystem + Freshwater_Ecosystem + Terrestrial_Ecosystem)
-  
-  return(cf_pdf_m2)
 }
 
 # 2  Process Monte Carlo -------------------------------------------------------
 
 process_monte_carlo_combination <- function(ff_matrices_list, eef_samples, reg, pol, size, shape,
-                                            emission_compartments, states, compartment_names,
+                                            emission_compartments, rec_map, compartment_names,
                                             volume_compartments, areas_compartments,
-                                            SDF, SDF_GEP, SF, list_tot_species,
-                                            FracSpe_wc_aqua, FracSpe_sed_aqua,
-                                            FracSpe_ws_marine, FracSpe_wc_marine, FracSpe_sed_marine) {
-  
+                                            SDF, SDF_GEP, SF, list_tot_species) {
+
   # Determine sample size
-  n_ff_samples <- length(ff_matrices_list)
-  n_eef_samples <- nrow(eef_samples)
-  n_samples <- min(n_ff_samples, n_eef_samples)
-  
-  # Initialize results storage
-  all_ff_data <- list()
-  all_cf_mid <- list()
-  all_cf_end_pdf <- list()
-  all_cf_end_species <- list()
-  all_cf_end_pdf_m2 <- list()
-  
-  # Loop over emission compartments
-  for(emission_compartment in emission_compartments) {
-    
-    # Pre-extract FF values for this emission compartment
-    ff_columns_list <- lapply(ff_matrices_list[1:n_samples], function(ff_mat) {
-      ff_mat[, emission_compartment, drop = FALSE]
-    })
-    
-    # Process each Monte Carlo iteration
-    for(i in 1:n_samples) {
-      
-      # A. Get FF data for this iteration
-      Masses <- ff_columns_list[[i]]
-      Masses_df <- as.data.frame(Masses)
-      Masses_df$Abbr <- rownames(Masses_df)
-      colnames(Masses_df)[1] <- "FF"
-      
-      # B. Get EEF for this iteration
-      eef_iter <- eef_samples[i, ]
-      
-      # C. Process FF and combine with EEF
-      iter_data <- process_single_iteration(
-        Masses_df = Masses_df,
-        eef_iter = eef_iter,
-        states = states,
-        reg = reg,
-        pol = pol,
-        size = size,
-        shape = shape,
-        emission_compartment_name = compartment_names[emission_compartment],
-        volume_compartments = volume_compartments,
-        areas_compartments = areas_compartments
-      )
-      
-      # Store FF data for statistics
-      all_ff_data[[paste(emission_compartment, i, sep = "_")]] <- iter_data
-      
-      # D. Calculate CFs for this iteration
-      cf_results <- calculate_cfs_for_iteration(
-        iter_data = iter_data,
-        SDF = SDF,
-        SDF_GEP = SDF_GEP,
-        SF = SF,
-        list_tot_species = list_tot_species,
-        FracSpe_wc_aqua = FracSpe_wc_aqua,
-        FracSpe_sed_aqua = FracSpe_sed_aqua,
-        FracSpe_ws_marine = FracSpe_ws_marine,
-        FracSpe_wc_marine = FracSpe_wc_marine,
-        FracSpe_sed_marine = FracSpe_sed_marine,
-        shape = shape,
-        pol = pol,
-        size = size,
-        reg = reg,
-        emission_compartment_name = compartment_names[emission_compartment]
-      )
-      
-      # Add iteration number
-      cf_results$mc_iteration <- i
-      
-      # Store CF results
-      all_cf_mid[[paste(emission_compartment, i, sep = "_")]] <- cf_results[, c(
-        "elementary_flowname", "region", "polymer", "size", "shape", 
-        "emission_compartment", "mc_iteration",
-        "CF_mid_PAF_day_marine", "CF_mid_PAF_day_freshwater", 
-        "CF_mid_PAF_day_terrestrial", "CF_mid_PAF_day_total"
-      )]
-      
-      all_cf_end_pdf[[paste(emission_compartment, i, sep = "_")]] <- cf_results[, c(
-        "elementary_flowname", "region", "polymer", "size", "shape", 
-        "emission_compartment", "mc_iteration",
-        "CF_end_PDF_year_marine", "CF_end_PDF_year_freshwater", 
-        "CF_end_PDF_year_terrestrial", "CF_end_PDF_year_total"
-      )]
-      
-      all_cf_end_species[[paste(emission_compartment, i, sep = "_")]] <- cf_results[, c(
-        "elementary_flowname", "region", "polymer", "size", "shape", 
-        "emission_compartment", "mc_iteration",
-        "CF_end_species_year_marine", "CF_end_species_year_freshwater", 
-        "CF_end_species_year_terrestrial", "CF_end_species_year_total"
-      )]
-      
-      all_cf_end_pdf_m2[[paste(emission_compartment, i, sep = "_")]] <- cf_results[, c(
-        "elementary_flowname", "region", "polymer", "size", "shape", 
-        "emission_compartment", "mc_iteration",
-        "CF_end_PDF_m2_year_marine", "CF_end_PDF_m2_year_freshwater", 
-        "CF_end_PDF_m2_year_terrestrial", "CF_end_PDF_m2_year_total"
-      )]
-    }
+  n_samples <- min(length(ff_matrices_list), nrow(eef_samples))
+  n_emis <- length(emission_compartments)
+  n_rec <- nrow(rec_map$G)
+
+  # A. FFs in the receiving compartments: n_rec x (n_emis * n_samples), columns ordered by sample, then emission compartment
+  FF <- do.call(cbind, lapply(ff_matrices_list[1:n_samples], function(ff_mat) {
+    rec_map$G %*% ff_mat[, emission_compartments, drop = FALSE]
+  }))
+  emis_idx <- rep(seq_len(n_emis), times = n_samples)
+  mc_iteration <- rep(seq_len(n_samples), each = n_emis)
+  emission_compartment_names <- unname(compartment_names[emission_compartments])
+
+  # B. Combine with the EEF of each sample
+  eef_by_type <- rbind(
+    EEF_air = eef_samples$EEF_air[1:n_samples],
+    EEF_w = eef_samples$EEF_w[1:n_samples],
+    EEF_sed = eef_samples$EEF_sed[1:n_samples],
+    EEF_s = eef_samples$EEF_s[1:n_samples],
+    none = 0
+  )
+  eef <- eef_by_type[rec_map$eef_type, mc_iteration, drop = FALSE]
+  CF_comp_PAF_m3_day <- FF * eef
+  CF_comp_PAF_day <- CF_comp_PAF_m3_day / volume_compartments
+
+  # C. CFs per ecosystem (rows: marine, freshwater, terrestrial)
+  # 1. Midpoint CFs (PAF_loc·day)
+  cf_mid <- as.matrix(SDF) %*% CF_comp_PAF_day
+  # 2. Endpoint CFs (PDF·year): Compute PAF using the SDF_GEP instead of SDF for GLAM
+  cf_end_pdf <- as.matrix(SDF_GEP) %*% CF_comp_PAF_day * SF / 365
+  # 3. Endpoint CFs (species·year)
+  cf_species <- (as.matrix(SDF) * list_tot_species) %*% CF_comp_PAF_day * SF / 365
+  # 4. PDF·m²·year
+  CF_comp_PDF_m2_year <- CF_comp_PAF_day * areas_compartments * SF / 365 * rec_map$frac_species_m2
+  cf_pdf_m2 <- rec_map$ecosystem_m2 %*% CF_comp_PDF_m2_year
+
+  # D. Long data frames for the statistics
+  meta <- data.frame(
+    elementary_flowname = get_elementary_flowname(shape, pol, size, reg),
+    region = reg,
+    polymer = pol,
+    size = size,
+    shape = shape,
+    emission_compartment = emission_compartment_names[emis_idx],
+    mc_iteration = mc_iteration,
+    stringsAsFactors = FALSE
+  )
+  cf_long <- function(cf_mat, cf_prefix) {
+    df <- data.frame(cf_mat[1, ], cf_mat[2, ], cf_mat[3, ], colSums(cf_mat))
+    colnames(df) <- paste0(cf_prefix, c("_marine", "_freshwater", "_terrestrial", "_total"))
+    cbind(meta, df)
   }
-  
-  # Combine all results
-  all_ff_combined <- bind_rows(all_ff_data)
-  cf_mid_combined <- bind_rows(all_cf_mid)
-  cf_end_pdf_combined <- bind_rows(all_cf_end_pdf)
-  cf_end_species_combined <- bind_rows(all_cf_end_species)
-  cf_end_pdf_m2_combined <- bind_rows(all_cf_end_pdf_m2)
-  
-  # Calculate statistics
-  ff_stats <- calculate_ff_statistics(all_ff_combined)
-  cf_mid_stats <- calculate_cf_statistics(cf_mid_combined, "CF_mid_PAF_day")
-  cf_end_pdf_stats <- calculate_cf_statistics(cf_end_pdf_combined, "CF_end_PDF_year")
-  cf_end_species_stats <- calculate_cf_statistics(cf_end_species_combined, "CF_end_species_year")
-  cf_end_pdf_m2_stats <- calculate_cf_statistics(cf_end_pdf_m2_combined, "CF_end_PDF_m2_year")
-  
-  # Return all results
+
+  all_ff_combined <- data.frame(
+    region = reg,
+    polymer = pol,
+    size = size,
+    shape = shape,
+    emission_compartment = rep(emission_compartment_names[emis_idx], each = n_rec),
+    Scale = rep(rec_map$Scale, times = ncol(FF)),
+    SubCompart = rep(rec_map$SubCompart, times = ncol(FF)),
+    FF = as.vector(FF),
+    stringsAsFactors = FALSE
+  )
+
+  # Return all statistics
   return(list(
-    ff_stats = ff_stats,
-    cf_mid_stats = cf_mid_stats,
-    cf_end_pdf_stats = cf_end_pdf_stats,
-    cf_end_species_stats = cf_end_species_stats,
-    cf_end_pdf_m2_stats = cf_end_pdf_m2_stats
+    ff_stats = calculate_ff_statistics(all_ff_combined),
+    cf_mid_stats = calculate_cf_statistics(cf_long(cf_mid, "CF_mid_PAF_day"), "CF_mid_PAF_day"),
+    cf_end_pdf_stats = calculate_cf_statistics(cf_long(cf_end_pdf, "CF_end_PDF_year"), "CF_end_PDF_year"),
+    cf_end_species_stats = calculate_cf_statistics(cf_long(cf_species, "CF_end_species_year"), "CF_end_species_year"),
+    cf_end_pdf_m2_stats = calculate_cf_statistics(cf_long(cf_pdf_m2, "CF_end_PDF_m2_year"), "CF_end_PDF_m2_year")
   ))
 }
 
@@ -858,32 +654,12 @@ calculate_cf_statistics <- function(cf_data, cf_prefix) {
 
 # Get the names and abbreviations of all compartments
 states <- World$states$asDataFrame
-count <- 0
 
-# Initialize empty results dataframes
-results_FF <- data.frame()
-results_CF_mid_PAF_day <- data.frame()
-results_CF_end_PDF_year <- data.frame()
-results_CF_end_species_year <- data.frame()
-results_CF_end_PDF_m2_year <- data.frame()
-
-results_FF_20_yrs <- data.frame()
-results_CF_mid_PAF_day_20_yrs <- data.frame()
-results_CF_end_PDF_year_20_yrs <- data.frame()
-results_CF_end_species_year_20_yrs <- data.frame()
-results_CF_end_PDF_m2_year_20_yrs <- data.frame()
-
-results_FF_100_yrs <- data.frame()
-results_CF_mid_PAF_day_100_yrs <- data.frame()
-results_CF_end_PDF_year_100_yrs <- data.frame()
-results_CF_end_species_year_100_yrs <- data.frame()
-results_CF_end_PDF_m2_year_100_yrs <- data.frame()
-
-
-#####Loading bar
-n <- length(region_names) * length(polymer_names) * length(sizes) * length(shapes) * length(emission_compartments)
-pb <- txtProgressBar(min = 0, max = n, style = 3)
-count <- 0
+# Results of each combination (combined into the results dataframes after the loops)
+all_results <- list()
+setup <- NULL
+rec_map <- NULL
+start_time <- Sys.time()
 
 # Variables to test -------------------------------------------------------
 reg = "North America"
@@ -1070,67 +846,76 @@ for(reg in region_names){
   SDF_GEP["Terrestrial_Ecosystem", "agr_soil_G"] <- SDF_TE_agr_soil_G_GEP
   ###
   
-  # Polymer loop
-  for(pol in polymer_names){
+  # Polymer loop: one function call per polymer, so that polymers can be run in parallel (n_cores > 1)
+  run_polymer <- function(pol) {
     #Import the properties of that polymer from the df
     print(pol)
+    if (n_cores > 1) {
+      set.seed(parallel_seed + 1000 * match(reg, region_names) + match(pol, polymer_names))
+    }
+    combination_results <- list()
+    vars_to_update <- c()
+
     polymer_df <- plastic_values[,c("varName","SubCompart",pol)]
     names(polymer_df)[ncol(polymer_df)] <- "Waarde" #rename the last column "Waarde" instead of name of pol
     polymer_df_selected <- polymer_df |>
       #slice(1:22) |>
       mutate(Waarde=as.numeric(Waarde))
-    
+
     #Set the new values for RhoS, Kssdr, CorFacSSA and MinSettVel for the specific polymer
     World$mutateVars(polymer_df_selected)
     #World$UpdateDirty(unique(polymer_df$varName))
     vars_to_update <- c(vars_to_update,unique(polymer_df_selected$varName))
-    
+
     World$SetConst(Degrading_enzyme = polymer_df$Waarde[polymer_df$varName == "Degrading_enzyme"])
     World$SetConst(DegApproach = polymer_df$Waarde[polymer_df$varName == "DegApproach"])
-    
+
     #Import distribution on degradation data
     degradation_CI <- degradation_CI_all  %>%
       filter(pol == !!pol) #Keep only the rows where distribution is defined for pol
-    
+
     varFuns <- World$makeInvFuns(degradation_CI)
-    
+
+    #TRWP-specific EEFs in water and soil
+    eef_samples_pol <- if (pol == "TRWP") eef_monte_carlo_trwp else eef_monte_carlo
+
     #loop over size
     for (size in sizes) {
       print(size)
       size_df <- data.frame(varName = "RadS",
                             Waarde = size/2*1000) #convert D to R and convert um to nm (SBoo takes RadS as nm)
-      
+
       World$mutateVars(size_df)
       #World$UpdateDirty(unique(variable_df$varName))
       vars_to_update <- c(vars_to_update,unique(size_df$varName))
-      
+
       #Loop over shape
       for (shape in shapes) {
-        
+
         #Define the dimensions of the microplastics emissions (not just diameter or thickness) - SB input is um for sides
         if (shape == "Sphere" | shape == "Default") {
           Longest_side <- size #Here size = diameter
-          Intermediate_side <- size 
-          Shortest_side <- size 
+          Intermediate_side <- size
+          Shortest_side <- size
         } else if (shape == "Ellipsoid") {
-          Longest_side <- size 
-          Intermediate_side <- size 
+          Longest_side <- size
+          Intermediate_side <- size
           Shortest_side <- size
         } else if (shape == "Cube" | shape == "Box" | shape == "Film") {
           Shortest_side <- size #Thickness
           Intermediate_side <- Shortest_side * 30 #Kooi & Koelmans (2019): SI
           if (Shortest_side < 100 ) {
-            Longest_side <- Shortest_side*100 
+            Longest_side <- Shortest_side*100
           } else {
             Longest_side <- Shortest_side*30
           }
         } else if (shape == "Cylindric - circular" | shape == "Fiber") {
-          Shortest_side <- size 
+          Shortest_side <- size
           Intermediate_side <- Shortest_side #equal for fibers
           if (Shortest_side == 1 ) {
-            Longest_side <- Shortest_side*50 
+            Longest_side <- Shortest_side*50
           } else if (Shortest_side == 1000 || Shortest_side == 5000) { #microfiber range is defined with respect to the diameter <5000, not the length
-            Longest_side <- Shortest_side*5 
+            Longest_side <- Shortest_side*5
           } else{
             Longest_side <- Shortest_side*10
           }
@@ -1139,14 +924,14 @@ for(reg in region_names){
           Intermediate_side <- size
           Shortest_side <- size
         } else {
-          return("Invalid shape! Please choose from Sphere, Ellipsoid, Cube, Box, Cylindric - circular, or Cylindric - elliptic.")
+          stop("Invalid shape! Please choose from Sphere, Ellipsoid, Cube, Box, Cylindric - circular, or Cylindric - elliptic.")
         }
-        
+
         if (Shortest_side > 5000 || Intermediate_side > 5000 ) {
-          next  # Skip if one dimension exceeds 5000, except for microfibers, which can have length >5000um 
+          next  # Skip if one dimension exceeds 5000, except for microfibers, which can have length >5000um
           #(Scientific Coalition for an Effective Plastic Treaty). Therefore, Longest_side is not part of the check.
         } #Microfiber
-        
+
         shape_df <- data.frame(varName = "Shape", Waarde = as.character(shape))
         dimensions_df <- data.frame(
           varName = c("Shortest_side", "Intermediate_side", "Longest_side"),
@@ -1155,183 +940,124 @@ for(reg in region_names){
         World$mutateVars(shape_df)
         World$mutateVars(dimensions_df)
         #World$UpdateDirty(unique(c(shape_df$varName, dimensions_df$varName)))
-        
+
         vars_to_update <- c(vars_to_update,unique(shape_df$varName),unique(dimensions_df$varName))
-        
-        #UpdateDirty with the names of all variables that were changed, in all the loops
-        #World$UpdateDirty(vars_to_update)
+
         filtered_trackmpd_data <- trackmpd %>%
-          filter(region == reg, 
-                 polymer == pol, 
-                 size == !!size, 
+          filter(region == reg,
+                 polymer == pol,
+                 size == !!size,
                  shape == !!shape)
-        
-        
+
         World$mutateVars(filtered_trackmpd_data)
         vars_to_update <- c(vars_to_update,unique(filtered_trackmpd_data$varName))
-        
+
         filtered_trackmpd_data_glo <- trackmpd %>%
-          filter(region == 'Global', 
-                 polymer == pol, 
-                 size == !!size, 
+          filter(region == 'Global',
+                 polymer == pol,
+                 size == !!size,
                  shape == !!shape)
-        
-        
+
         World$mutateVars(filtered_trackmpd_data_glo)
-        vars_to_update <- c(vars_to_update,unique(filtered_trackmpd_data$varName))
-        
+        vars_to_update <- c(vars_to_update,unique(filtered_trackmpd_data_glo$varName))
+
         #UpdateDirty with the names of all variables that were changed, in all the loops
         World$UpdateDirty(vars_to_update)
-        #k_detailed = World$fetchData("kaas")
-        
+
         #solve
-        #emissions <- data.frame(Abbr = c("aRS"), Emis = 1/3600/24) #emission of 1kg/d input in kg/s - resulting steady state masses (kg) can be divided by 1 (kg/d) to get FF (d)
         emissions <- data.frame(Abbr = c("aRS"), Emis = 1/3600/24, RUN = (1:n_samples)) #emission of 1kg/d input in kg/s - resulting steady state masses (kg) can be divided by 1 (kg/d) to get FF (d)
-        World$NewSolver("SteadyStateSolver")
+        World$NewSolver("KMatrixOnlySolver")
         World$Solve(emissions = emissions, var_box_df = degradation_CI, var_invFun = varFuns, nRUNs = n_samples)
-        
-        #Masses <- World$Masses()
-        #k_matrix = World$exportEngineR()
+
         k_matrix = World$K_matrix() #New in SBoo: this returns a list of matrix for the probabilistic solver
-        #k_detailed_eps_1 = World$fetchData("kaas")
-        #k_matrix_1 = k_matrix[[1]]
-        
+
         # Setup on first iteration (only structure)
         if(is.null(setup)) {
-          first_mat <- k_matrix[[1]]
-          setup <- setup_fill_patterns(first_mat, X_list)
+          setup <<- setup_fill_patterns(k_matrix[[1]], X_list)
         }
-        
-        # Process all Monte Carlo samples
-        ff_matrices_list <- lapply(k_matrix, function(k_mat) {
-          process_single_matrix(k_mat, setup)
+
+        # FFs of all Monte Carlo samples: steady state, 20 yrs and 100 yrs time horizon
+        # (DYNAMIC FATE FACTORS: mass integrated from 0 to the time horizon, CFs integrate impacts from 0 to the time horizon)
+        ff_matrices <- lapply(k_matrix, function(k_mat) {
+          compute_ff_matrices(k_mat, setup, c(time_horizon_seconds_1, time_horizon_seconds_2))
         })
-        
-        #ff_1 <- ff_matrices_list[[1]]
-        
-        # Process ALL Monte Carlo samples for this combination
-        all_results <- process_monte_carlo_combination(
-          ff_matrices_list = ff_matrices_list,
-          eef_samples = eef_monte_carlo,
-          reg = reg,
-          pol = pol,  
-          size = size,
-          shape = shape,
-          emission_compartments = emission_compartments,
-          states = states,
-          compartment_names = compartment_names,
-          volume_compartments = volume_compartments,
-          areas_compartments = areas_compartments,
-          SDF = SDF,
-          SDF_GEP = SDF_GEP,
-          SF = SF,
-          list_tot_species = list_tot_species,
-          FracSpe_wc_aqua = FracSpe_wc_aqua,
-          FracSpe_sed_aqua = FracSpe_sed_aqua,
-          FracSpe_ws_marine = FracSpe_ws_marine,
-          FracSpe_wc_marine = FracSpe_wc_marine,
-          FracSpe_sed_marine = FracSpe_sed_marine
+
+        if (is.null(rec_map)) {
+          rec_map <<- build_receiving_map(rownames(ff_matrices[[1]]$ss), states)
+        }
+
+        process_ff <- function(ff_matrices_list) {
+          process_monte_carlo_combination(
+            ff_matrices_list = ff_matrices_list,
+            eef_samples = eef_samples_pol,
+            reg = reg,
+            pol = pol,
+            size = size,
+            shape = shape,
+            emission_compartments = emission_compartments,
+            rec_map = rec_map,
+            compartment_names = compartment_names,
+            volume_compartments = volume_compartments,
+            areas_compartments = areas_compartments,
+            SDF = SDF,
+            SDF_GEP = SDF_GEP,
+            SF = SF,
+            list_tot_species = list_tot_species
+          )
+        }
+
+        combination_results[[length(combination_results) + 1]] <- list(
+          ss = process_ff(lapply(ff_matrices, `[[`, 1)),
+          yrs_20 = process_ff(lapply(ff_matrices, `[[`, 2)),
+          yrs_100 = process_ff(lapply(ff_matrices, `[[`, 3))
         )
-        
-        # Append to results dataframes
-        results_FF <- bind_rows(results_FF, all_results$ff_stats)
-        results_CF_mid_PAF_day <- bind_rows(results_CF_mid_PAF_day, all_results$cf_mid_stats)
-        results_CF_end_PDF_year <- bind_rows(results_CF_end_PDF_year, all_results$cf_end_pdf_stats)
-        results_CF_end_species_year <- bind_rows(results_CF_end_species_year, all_results$cf_end_species_stats)
-        results_CF_end_PDF_m2_year <- bind_rows(results_CF_end_PDF_m2_year, all_results$cf_end_pdf_m2_stats)
-        
-        
-        ###############
-        #DYNAMIC FATE FACTORS
-        #Solve the fate factors by integrating mass until the chosen time horizon (e.g. 0 to 100 yrs)
-        #Then, we repeat the same calculations for CFs which integrates impacts from 0 to Tim horizon
-        ###############
-        # Process all Monte Carlo samples
-        ff_matrices_list_20_yrs  <- lapply(k_matrix, function(k_mat) {
-          process_single_matrix_time_horizon(k_mat, setup, time_horizon_seconds_1)
-        })
-        
-        #Call the CFs code with the new dynamic FFs
-        all_results_20_yrs <- process_monte_carlo_combination(
-          ff_matrices_list = ff_matrices_list_20_yrs,
-          eef_samples = eef_monte_carlo,
-          reg = reg,
-          pol = pol,  
-          size = size,
-          shape = shape,
-          emission_compartments = emission_compartments,
-          states = states,
-          compartment_names = compartment_names,
-          volume_compartments = volume_compartments,
-          areas_compartments = areas_compartments,
-          SDF = SDF,
-          SDF_GEP = SDF_GEP,
-          SF = SF,
-          list_tot_species = list_tot_species,
-          FracSpe_wc_aqua = FracSpe_wc_aqua,
-          FracSpe_sed_aqua = FracSpe_sed_aqua,
-          FracSpe_ws_marine = FracSpe_ws_marine,
-          FracSpe_wc_marine = FracSpe_wc_marine,
-          FracSpe_sed_marine = FracSpe_sed_marine
-        )
-        
-        # Append to results dataframes: 20 yrs time horizon only for ReCiPe
-        results_FF_20_yrs <- bind_rows(results_FF_20_yrs, all_results_20_yrs$ff_stats)
-        results_CF_mid_PAF_day_20_yrs <- bind_rows(results_CF_mid_PAF_day_20_yrs, all_results_20_yrs$cf_mid_stats)
-        #results_CF_end_PDF_year_20_yrs <- bind_rows(results_CF_end_PDF_year_20_yrs, all_results_20_yrs$cf_end_pdf_stats)
-        results_CF_end_species_year_20_yrs <- bind_rows(results_CF_end_species_year_20_yrs, all_results_20_yrs$cf_end_species_stats)
-        #results_CF_end_PDF_m2_year_20_yrs <- bind_rows(results_CF_end_PDF_m2_year_20_yrs, all_results_20_yrs$cf_end_pdf_m2_stats)
-        
-        ###Again with 100yrs horizon
-        
-        # Process all Monte Carlo samples
-        ff_matrices_list_100_yrs  <- lapply(k_matrix, function(k_mat) {
-          process_single_matrix_time_horizon(k_mat, setup, time_horizon_seconds_2)
-        })
-        
-        #CAll the CFs code with the new dynamic FFs
-        all_results_100_yrs <- process_monte_carlo_combination(
-          ff_matrices_list = ff_matrices_list_100_yrs,
-          eef_samples = eef_monte_carlo,
-          reg = reg,
-          pol = pol,  
-          size = size,
-          shape = shape,
-          emission_compartments = emission_compartments,
-          states = states,
-          compartment_names = compartment_names,
-          volume_compartments = volume_compartments,
-          areas_compartments = areas_compartments,
-          SDF = SDF,
-          SDF_GEP = SDF_GEP,
-          SF = SF,
-          list_tot_species = list_tot_species,
-          FracSpe_wc_aqua = FracSpe_wc_aqua,
-          FracSpe_sed_aqua = FracSpe_sed_aqua,
-          FracSpe_ws_marine = FracSpe_ws_marine,
-          FracSpe_wc_marine = FracSpe_wc_marine,
-          FracSpe_sed_marine = FracSpe_sed_marine
-        )
-        
-        # Append to results dataframes
-        results_FF_100_yrs <- bind_rows(results_FF_100_yrs, all_results_100_yrs$ff_stats)
-        results_CF_mid_PAF_day_100_yrs <- bind_rows(results_CF_mid_PAF_day_100_yrs, all_results_100_yrs$cf_mid_stats)
-        results_CF_end_PDF_year_100_yrs <- bind_rows(results_CF_end_PDF_year_100_yrs, all_results_100_yrs$cf_end_pdf_stats)
-        results_CF_end_species_year_100_yrs <- bind_rows(results_CF_end_species_year_100_yrs, all_results_100_yrs$cf_end_species_stats)
-        results_CF_end_PDF_m2_year_100_yrs <- bind_rows(results_CF_end_PDF_m2_year_100_yrs, all_results_100_yrs$cf_end_pdf_m2_stats)
-        
-        
+
         vars_to_update = c() #reset to avoid recomputing vars that have not changed and making vars_to_update excessively long
       }
     }
+    combination_results
   }
+
+  if (n_cores > 1) {
+    polymer_results <- parallel::mclapply(polymer_names, run_polymer, mc.cores = n_cores, mc.preschedule = FALSE)
+    failed <- vapply(polymer_results, function(x) inherits(x, "try-error"), logical(1))
+    if (any(failed)) {
+      stop("Polymer(s) failed in ", reg, ": ", paste(polymer_names[failed], collapse = ", "), "\n",
+           paste(unlist(polymer_results[failed]), collapse = "\n"))
+    }
+  } else {
+    polymer_results <- lapply(polymer_names, run_polymer)
+  }
+  all_results <- c(all_results, unlist(polymer_results, recursive = FALSE))
 }
-close(pb)
+print(Sys.time() - start_time)
+
+# Combine results of all combinations
+bind_results <- function(time_key, stats_key) {
+  bind_rows(lapply(all_results, function(x) x[[time_key]][[stats_key]]))
+}
+
+results_FF <- bind_results("ss", "ff_stats")
+results_CF_mid_PAF_day <- bind_results("ss", "cf_mid_stats")
+results_CF_end_PDF_year <- bind_results("ss", "cf_end_pdf_stats")
+results_CF_end_species_year <- bind_results("ss", "cf_end_species_stats")
+results_CF_end_PDF_m2_year <- bind_results("ss", "cf_end_pdf_m2_stats")
+
+# 20 yrs time horizon only for ReCiPe
+results_FF_20_yrs <- bind_results("yrs_20", "ff_stats")
+results_CF_mid_PAF_day_20_yrs <- bind_results("yrs_20", "cf_mid_stats")
+results_CF_end_species_year_20_yrs <- bind_results("yrs_20", "cf_end_species_stats")
+
+results_FF_100_yrs <- bind_results("yrs_100", "ff_stats")
+results_CF_mid_PAF_day_100_yrs <- bind_results("yrs_100", "cf_mid_stats")
+results_CF_end_PDF_year_100_yrs <- bind_results("yrs_100", "cf_end_pdf_stats")
+results_CF_end_species_year_100_yrs <- bind_results("yrs_100", "cf_end_species_stats")
+results_CF_end_PDF_m2_year_100_yrs <- bind_results("yrs_100", "cf_end_pdf_m2_stats")
 
 
 # Path
 ####Save steady state FFs and CFs
-out_file <- "../../results/results_FF_CF_CI.xlsx"
+out_file <- paste0("../../results/results_FF_CF_CI", results_suffix, ".xlsx")
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {
@@ -1362,7 +1088,7 @@ saveWorkbook(wb, out_file, overwrite = TRUE)
 
 
 ####Save time explicit FFs and CFs
-out_file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
+out_file <- paste0("../../results/results_FF_CF_CI_time_horizon", results_suffix, ".xlsx")
 
 # Load workbook if it exists, otherwise create a new one
 wb <- if (file.exists(out_file)) {

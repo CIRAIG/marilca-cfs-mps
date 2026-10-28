@@ -14,14 +14,14 @@
 SBInstallFolder <- NULL
 
 # you can specify a tag
-# tag <- "2025.04.0"
+# tag <- "2026.4.0"
 # or if
 # tag = NA
 # The devBranch name is used, default is development branch which contains latest updates.
 
 source("installRequirements.R")
 
-InstallSBoo <- function(Release = "2025.04.0", # tag for release use NA for branch
+InstallSBoo <- function(Release = "2026.4.0", # tag for release use NA for branch
                         devBranch = "development",
                         Temp_Folder = "C:/Temp" # an existing folder where SimpleBox is to be installed
 ){
@@ -122,6 +122,6 @@ InstallSBoo <- function(Release = "2025.04.0", # tag for release use NA for bran
   }
 }
 
-InstallSBoo(Release = NA,
+InstallSBoo(Release = "2026.4.0",
             devBranch = "development",
             Temp_Folder = NA)
