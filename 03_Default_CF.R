@@ -5,8 +5,13 @@ library(readxl)
 library(dplyr)
 `%notin%` <- Negate(`%in%`)
 
-#file <- "../../results/results_FF_CF_CI.xlsx"
-file <- "../../results/results_FF_CF_CI_time_horizon.xlsx"
+# Both result files are processed: steady state -> SI_C, time horizon -> SI_D
+files_to_process <- c("../../results/results_FF_CF_CI.xlsx",
+                      "../../results/results_FF_CF_CI_time_horizon.xlsx")
+
+# Each file is processed in its own environment (local), so no objects are carried over between files
+for (file in files_to_process) local({
+message("\n=== Processing ", file, " ===")
 
 # Load workbook
 wb_in <- loadWorkbook(file)
@@ -771,5 +776,7 @@ for (sheet in extra_sheets) {
 
 # save workbook after loop
 saveWorkbook(wb_out, file_out, overwrite = TRUE)
+message("Saved ", file_out)
+}) # end of loop over files_to_process
 
 message("\n=== Processing complete ===")
