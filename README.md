@@ -76,11 +76,27 @@ These CFs are based on:
 
 ---
 
-## 4. Repository Structure
+## 4. ReCiPe CFs
+
+To compute the **ReCiPe CFs** for the three cultural perspectives (Individualist: 20 years, Hierarchist: 100 years, Egalitarian: steady state), run from the repository root after `03_Default_CF.R`:
+
+    source("results/ReCiPe/ReCiPe_CF.R")
+
+This creates `results/ReCiPe/ReCiPe_CF.xlsx` with:
+- Midpoint CFs in kg PET, 1µm, sphere, rw-eq/kg (freshwater), sw-eq/kg (marine) and ns-eq/kg (terrestrial physical effects), one sheet per cultural perspective. Reference flow: PET, 1µm, sphere, World region, emitted to river water (rw), seawater surface (sw) or natural soil (ns)
+- Endpoint CFs (species·yr/kg), one sheet per cultural perspective
+- Midpoint to endpoint conversion factors (species·yr/kg PET, 1µm, sphere, rw/sw/ns-eq)
+
+Midpoint and endpoint sheets have one row per flow and impact category. The variables are documented in the README sheet of the file.
+
+---
+
+## 5. Repository Structure
 
     ├── data/                         # Scenario-specific datasets for SBoo
     ├── input/                        # Model input files (Regionalized data and TrackMPD data)
     ├── results/                      # Model outputs
+    │   └── ReCiPe/                   # ReCiPe midpoint and endpoint CFs (ReCiPe_CF.R, ReCiPe_CF.xlsx)
     ├── figures/                      # Generated figures shown in the publication
     ├── previous marilca cfs/         # Previous CF datasets (MarILCA)
     │
