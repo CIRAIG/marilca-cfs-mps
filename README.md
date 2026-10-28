@@ -20,7 +20,7 @@ Citation metadata is also provided in `CITATION.cff` ("Cite this repository" on 
 
 | Version | Date | DOI | SBoo version | Main changes |
 |---|---|---|---|---|
-| v1.1.0 | 2026-10-28 | to be added after the release | 2026.4.0 | TRWP-specific EEFs in water and soil, Linen soil degradation update, ReCiPe midpoint and endpoint CFs, faster code |
+| v1.1.0 | 2026-10-28 | [10.5281/zenodo.23735051](https://doi.org/10.5281/zenodo.23735051) | 2026.4.0 | TRWP-specific EEFs in water and soil, Linen soil degradation update, ReCiPe midpoint and endpoint CFs, faster code |
 | v1.0.0 | 2026-05-08 | [10.5281/zenodo.20087937](https://doi.org/10.5281/zenodo.20087937) | 2026.3.1 | First public release |
 
 All versions: [10.5281/zenodo.20087936](https://doi.org/10.5281/zenodo.20087936). The list of changes is in `CHANGELOG.md`.
